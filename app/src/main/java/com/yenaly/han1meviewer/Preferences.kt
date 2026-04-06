@@ -46,6 +46,9 @@ object Preferences {
 
     val loginStateFlow = MutableStateFlow(isAlreadyLogin)
 
+    val savedUserId: String
+        get() = preferenceSp.getString(SAVED_USER_ID,"") ?: ""
+
     /**
      * 保存的string格式的登入cookie
      */
@@ -144,6 +147,10 @@ object Preferences {
         get() = preferenceSp.getString(NetworkSettingsFragment.DOMAIN_NAME, HANIME_URL[0])
             ?: HANIME_URL[0]
 
+    val selectedBaseUrl: String
+        get() = preferenceSp.getString(NetworkSettingsFragment.SELECTED_BASE_URL, HANIME_URL[0])
+            ?: HANIME_URL[0]
+
     val useBuiltInHosts: Boolean
         get() = preferenceSp.getBoolean(NetworkSettingsFragment.USE_BUILT_IN_HOSTS, false)
 
@@ -206,6 +213,9 @@ object Preferences {
             // HanimeDownloadManager.MAX_CONCURRENT_DOWNLOAD_DEF
             HanimeDownloadManagerV2.MAX_CONCURRENT_DOWNLOAD_DEF
         )
+
+    val collapseDownloadedGroup: Boolean
+        get() = preferenceSp.getBoolean(HomeSettingsFragment.COLLAPSE_DOWNLOADED_GROUP,false)
     val isUsePrivateStorage: Boolean
         get() = preferenceSp.getBoolean(DownloadSettingsFragment.USE_PRIVATE_STORAGE,true)
     val safDownloadPath: String?
@@ -220,6 +230,9 @@ object Preferences {
 
     val searchArtistIgnoreVideoType: Boolean
         get() = preferenceSp.getBoolean(HomeSettingsFragment.SEARCH_ARTIST_IGNORE_VIDEO_TYPE,false)
+
+    val disableMobileDataWarning: Boolean
+        get() = preferenceSp.getBoolean(HomeSettingsFragment.DISABLE_MOBILE_DATA_WARNING,false)
 
     /**
      * MPV播放器设置

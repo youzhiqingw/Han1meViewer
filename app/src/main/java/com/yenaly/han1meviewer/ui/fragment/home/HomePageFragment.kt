@@ -55,6 +55,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
 import com.yenaly.han1meviewer.ADVANCED_SEARCH_MAP
 import com.yenaly.han1meviewer.HAdvancedSearch
+import com.yenaly.han1meviewer.HanimeConstants.HANIME_URL
+import com.yenaly.han1meviewer.Preferences
 import com.yenaly.han1meviewer.R
 import com.yenaly.han1meviewer.advancedSearchMapOf
 import com.yenaly.han1meviewer.databinding.FragmentHomePageBinding
@@ -74,6 +76,7 @@ import com.yenaly.han1meviewer.ui.viewmodel.MainViewModel
 import com.yenaly.han1meviewer.util.addUpdateListener
 import com.yenaly.han1meviewer.util.checkBadGuy
 import com.yenaly.han1meviewer.util.colorTransition
+import com.yenaly.han1meviewer.util.openVideo
 import com.yenaly.yenaly_libs.base.YenalyFragment
 import com.yenaly.yenaly_libs.utils.application
 import com.yenaly.yenaly_libs.utils.getSpValue
@@ -102,36 +105,43 @@ class HomePageFragment : YenalyFragment<FragmentHomePageBinding>(),
 
     val viewModel by activityViewModels<MainViewModel>()
     val checkInViewModel by activityViewModels<CheckInCalendarViewModel>()
-    private val latestHanimeAdapter = HanimeVideoRvAdapter()
-    private val latestReleaseAdapter = HanimeVideoRvAdapter()
-    private val latestUploadAdapter = HanimeVideoRvAdapter()
-    private val chineseSubtitleAdapter = HanimeVideoRvAdapter()
-    private val hanimeTheyWatchedAdapter = HanimeVideoRvAdapter()
-    private val hanimeCurrentAdapter = HanimeVideoRvAdapter()
-    private val hotHanimeMonthlyAdapter = HanimeVideoRvAdapter()
-    private val animeShortAdapter = HanimeVideoRvAdapter()
-    private val motionAnimeAdapter = HanimeVideoRvAdapter()
-    private val thereDWorkAdapter = HanimeVideoRvAdapter()
-    private val douJinWorkAdapter = HanimeVideoRvAdapter()
-    private val cosplayAdapter = HanimeVideoRvAdapter()
-    private val newAnimeTrailerAdapter = HanimeVideoRvAdapter()
+    private val latestHanimeAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
+    private val latestReleaseAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
+    private val ecchiAnimeAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
+    private val shortEpisodeAnimeAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
+    private val twoPointFiveDAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
+    private val threeDCGAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
+    private val motionAnimeAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
+    private val twoDAnimeAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
+    private val aiGeneratedAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
+    private val mmdAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
+    private val cosplayAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
+    private val watchingNowAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
+    private val newAnimeTrailerAdapter = HanimeVideoRvAdapter(onItemClick = { item -> openVideo(item.videoCode) })
     private val someFunnyTouchListener = FunnyTouchListener(application) {
         showShortToast("WTF?")
     }
     private var announcementCardAdapter: AnnouncementCardAdapter? = null
     private lateinit var onBackPressedCallback: OnBackPressedCallback
+    private val isAVSite = Preferences.baseUrl == HANIME_URL[3]
     private val concatAdapter by lazy {
         ConcatAdapter(
-            VideoColumnTitleAdapter(requireContext(),R.string.latest_hanime).apply {
+            //---------里番、日本AV---------//
+            VideoColumnTitleAdapter(
+                requireContext(),
+                if (isAVSite) R.string.latest_av else R.string.latest_hanime
+            ).apply {
                 onMoreHanimeListener = {
-                    showSearchFragment(advancedSearchMapOf(HAdvancedSearch.GENRE to "裏番"))
+                    showSearchFragment(advancedSearchMapOf(
+                        HAdvancedSearch.GENRE to if (isAVSite) "日本AV" else "裏番"
+                    ))
                 }
             },
-            latestHanimeAdapter
+            ecchiAnimeAdapter
                 .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
                 .apply {
                     doOnWrap {
-                        val key = "latestHanime"
+                        val key = "ecchiAnime"
                         val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
                         val pos = viewModel.horizontalScrollPositions[key] ?: 0
                         post { lm.scrollToPositionWithOffset(pos, 0) }
@@ -142,6 +152,7 @@ class HomePageFragment : YenalyFragment<FragmentHomePageBinding>(),
                         })
                     }
                 },
+            //---------最新上市---------//
             VideoColumnTitleAdapter(requireContext(),R.string.latest_release).apply {
                 onMoreHanimeListener = {
                     showSearchFragment(advancedSearchMapOf(HAdvancedSearch.SORT to "最新上市"))
@@ -162,12 +173,16 @@ class HomePageFragment : YenalyFragment<FragmentHomePageBinding>(),
                         })
                     }
                 },
-            VideoColumnTitleAdapter(requireContext(),R.string.latest_upload).apply {
+            //---------最新上传---------//
+            VideoColumnTitleAdapter(requireContext(), R.string.latest_upload
+            ).apply {
                 onMoreHanimeListener = {
-                    showSearchFragment(advancedSearchMapOf(HAdvancedSearch.SORT to "最新上傳"))
+                    showSearchFragment(
+                        advancedSearchMapOf(HAdvancedSearch.SORT to "最新上傳")
+                    )
                 }
             },
-            latestUploadAdapter
+            latestHanimeAdapter
                 .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
                 .apply {
                     doOnWrap {
@@ -182,96 +197,24 @@ class HomePageFragment : YenalyFragment<FragmentHomePageBinding>(),
                         })
                     }
                 },
-            VideoColumnTitleAdapter(requireContext(),R.string.chinese_subtitle).apply {
+            //---------他们在看---------//
+            VideoColumnTitleAdapter(
+                requireContext(),
+                 R.string.they_watched
+            ).apply {
                 onMoreHanimeListener = {
-                    showSearchFragment(advancedSearchMapOf(HAdvancedSearch.TAGS to hashMapOf("video_attributes" to "中文字幕")))
+                    showSearchFragment(
+                        advancedSearchMapOf(
+                            HAdvancedSearch.SORT to "他們在看"
+                        )
+                    )
                 }
             },
-            chineseSubtitleAdapter
+            watchingNowAdapter
                 .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
                 .apply {
                     doOnWrap {
-                        val key = "chineseSubtitle"
-                        val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
-                        val pos = viewModel.horizontalScrollPositions[key] ?: 0
-                        post { lm.scrollToPositionWithOffset(pos, 0) }
-                        addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                            override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
-                                viewModel.horizontalScrollPositions[key] = lm.findFirstVisibleItemPosition()
-                            }
-                        })
-                    }
-                },
-            VideoColumnTitleAdapter(requireContext(),R.string.they_watched).apply {
-                onMoreHanimeListener = {
-                    showSearchFragment(advancedSearchMapOf(HAdvancedSearch.SORT to "他們在看"))
-                }
-            },
-            hanimeTheyWatchedAdapter
-                .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
-                .apply {
-                    doOnWrap {
-                        val key = "hanimeTheyWatched"
-                        val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
-                        val pos = viewModel.horizontalScrollPositions[key] ?: 0
-                        post { lm.scrollToPositionWithOffset(pos, 0) }
-                        addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                            override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
-                                viewModel.horizontalScrollPositions[key] = lm.findFirstVisibleItemPosition()
-                            }
-                        })
-                    }
-                },
-            VideoColumnTitleAdapter(requireContext(),R.string.ranking_today).apply {
-                onMoreHanimeListener = {
-                    showSearchFragment(advancedSearchMapOf(HAdvancedSearch.SORT to "本日排行"))
-                }
-            },
-            hanimeCurrentAdapter
-                .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
-                .apply {
-                    doOnWrap {
-                        val key = "hanimeCurrent"
-                        val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
-                        val pos = viewModel.horizontalScrollPositions[key] ?: 0
-                        post { lm.scrollToPositionWithOffset(pos, 0) }
-                        addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                            override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
-                                viewModel.horizontalScrollPositions[key] = lm.findFirstVisibleItemPosition()
-                            }
-                        })
-                    }
-                },
-            VideoColumnTitleAdapter(requireContext(),R.string.ranking_this_month).apply {
-                onMoreHanimeListener = {
-                    showSearchFragment(advancedSearchMapOf(HAdvancedSearch.SORT to "本月排行"))
-                }
-            },
-            hotHanimeMonthlyAdapter
-                .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)}
-                .apply {
-                    doOnWrap {
-                        val key = "hotHanimeMonthly"
-                        val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
-                        val pos = viewModel.horizontalScrollPositions[key] ?: 0
-                        post { lm.scrollToPositionWithOffset(pos, 0) }
-                        addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                            override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
-                                viewModel.horizontalScrollPositions[key] = lm.findFirstVisibleItemPosition()
-                            }
-                        })
-                    }
-                },
-            VideoColumnTitleAdapter(requireContext(),R.string.new_anime_trailers).apply {
-                onMoreHanimeListener = {
-                    findNavController().navigate(R.id.action_nv_home_page_to_nv_preview)
-                }
-            },
-            newAnimeTrailerAdapter
-                .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
-                .apply {
-                    doOnWrap {
-                        val key = "newAnimeTrailer"
+                        val key = "watchingNow"
                         val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
                         val pos = viewModel.horizontalScrollPositions[key] ?: 0
                         post { lm.scrollToPositionWithOffset(pos, 0) }
@@ -283,44 +226,49 @@ class HomePageFragment : YenalyFragment<FragmentHomePageBinding>(),
                         })
                     }
                 },
-            VideoColumnTitleAdapter(requireContext(), R.string.category_instant_noodle).apply {
+            //---------泡面番、素人业余---------//
+            VideoColumnTitleAdapter(
+                requireContext(),
+                if (isAVSite) R.string.amateur_nomask else R.string.category_instant_noodle
+            ).apply {
                 onMoreHanimeListener = {
                     showSearchFragment(
                         advancedSearchMapOf(
-                            HAdvancedSearch.GENRE to "泡麵番",
+                            HAdvancedSearch.GENRE to if (isAVSite) "素人業餘" else "泡麵番",
                             HAdvancedSearch.SORT to "最新上傳"
                         )
                     )
                 }
             },
-            animeShortAdapter
+            shortEpisodeAnimeAdapter
                 .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
                 .apply {
                     doOnWrap {
-                        val key = "animeShort"
+                        val key = "shortEpisodeAnime"
                         val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
                         val pos = viewModel.horizontalScrollPositions[key] ?: 0
                         post { lm.scrollToPositionWithOffset(pos, 0) }
                         addOnScrollListener(object : RecyclerView.OnScrollListener() {
                             override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
-                                viewModel.horizontalScrollPositions[key] =
-                                    lm.findFirstVisibleItemPosition()
+                                viewModel.horizontalScrollPositions[key] = lm.findFirstVisibleItemPosition()
                             }
                         })
                     }
                 },
-            VideoColumnTitleAdapter(requireContext(),R.string.category_motion_anime).apply {
+            //---------Motion Anime、高清无码---------//
+            VideoColumnTitleAdapter(requireContext(),
+                if (isAVSite) R.string.hd_uncensored else R.string.category_motion_anime).apply {
                 onMoreHanimeListener = {
                     showSearchFragment(
                         advancedSearchMapOf(
-                            HAdvancedSearch.GENRE to "Motion Anime",
+                            HAdvancedSearch.GENRE to if (isAVSite) "高清無碼" else "Motion Anime",
                             HAdvancedSearch.SORT to "最新上傳"
                         )
                     )
                 }
             },
             motionAnimeAdapter
-                .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
+                .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)}
                 .apply {
                     doOnWrap {
                         val key = "motionAnime"
@@ -329,27 +277,82 @@ class HomePageFragment : YenalyFragment<FragmentHomePageBinding>(),
                         post { lm.scrollToPositionWithOffset(pos, 0) }
                         addOnScrollListener(object : RecyclerView.OnScrollListener() {
                             override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
-                                viewModel.horizontalScrollPositions[key] =
-                                    lm.findFirstVisibleItemPosition()
+                                viewModel.horizontalScrollPositions[key] = lm.findFirstVisibleItemPosition()
                             }
                         })
                     }
                 },
-            VideoColumnTitleAdapter(requireContext(),R.string.category_3d_animation).apply {
+            //---------3DCG、AI解码---------//
+            VideoColumnTitleAdapter(requireContext(),
+                if (isAVSite) R.string.ai_decensored else R.string.category_3d_animation).apply {
                 onMoreHanimeListener = {
                     showSearchFragment(
                         advancedSearchMapOf(
-                            HAdvancedSearch.GENRE to "3D動畫",
+                            HAdvancedSearch.GENRE to if (isAVSite) "AI解碼" else "3DCG",
                             HAdvancedSearch.SORT to "最新上傳"
                         )
                     )
                 }
             },
-            thereDWorkAdapter
+            threeDCGAdapter
                 .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
                 .apply {
                     doOnWrap {
-                        val key = "thereDWork"
+                        val key = "threeDCG"
+                        val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
+                        val pos = viewModel.horizontalScrollPositions[key] ?: 0
+                        post { lm.scrollToPositionWithOffset(pos, 0) }
+                        addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                            override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
+                                viewModel.horizontalScrollPositions[key] = lm.findFirstVisibleItemPosition()
+                            }
+                        })
+                    }
+                },
+            //--------2.5D、国产AV---------//
+            VideoColumnTitleAdapter(
+                requireContext(),
+                if (isAVSite) R.string.china_av else R.string.animation_2_5d
+            ).apply {
+                onMoreHanimeListener = {
+                    showSearchFragment(advancedSearchMapOf(
+                        HAdvancedSearch.GENRE to  if (isAVSite) "國產AV" else "2.5D",
+                        HAdvancedSearch.SORT to "最新上傳"
+                    ))
+                }
+            },
+            twoPointFiveDAdapter
+                .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
+                .apply {
+                    doOnWrap {
+                        val key = "twoPointFiveD"
+                        val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
+                        val pos = viewModel.horizontalScrollPositions[key] ?: 0
+                        post { lm.scrollToPositionWithOffset(pos, 0) }
+                        addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                            override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
+                                viewModel.horizontalScrollPositions[key] = lm.findFirstVisibleItemPosition()
+                            }
+                        })
+                    }
+                },
+            //---------2D、国产素人---------//
+            VideoColumnTitleAdapter(requireContext(),
+                if (isAVSite) R.string.chinese_amateur else R.string.animation_2d).apply {
+                onMoreHanimeListener = {
+                    showSearchFragment(
+                        advancedSearchMapOf(
+                            HAdvancedSearch.GENRE to if (isAVSite) "國產素人" else "2D動畫",
+                            HAdvancedSearch.SORT to "最新上傳"
+                        )
+                    )
+                }
+            },
+            twoDAnimeAdapter
+                .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
+                .apply {
+                    doOnWrap {
+                        val key = "twoDAnime"
                         val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
                         val pos = viewModel.horizontalScrollPositions[key] ?: 0
                         post { lm.scrollToPositionWithOffset(pos, 0) }
@@ -361,21 +364,30 @@ class HomePageFragment : YenalyFragment<FragmentHomePageBinding>(),
                         })
                     }
                 },
-            VideoColumnTitleAdapter(requireContext(),R.string.category_doujin).apply {
+            //---------AI生成、中文字幕---------//
+            VideoColumnTitleAdapter(requireContext(),
+                if (isAVSite) R.string.chinese_subtitle else R.string.ai_generated).apply {
                 onMoreHanimeListener = {
                     showSearchFragment(
-                        advancedSearchMapOf(
-                            HAdvancedSearch.GENRE to "同人作品",
-                            HAdvancedSearch.SORT to "最新上傳"
-                        )
+                        if (isAVSite){
+                            advancedSearchMapOf(
+                                HAdvancedSearch.TAGS to "中文字幕",
+                                HAdvancedSearch.SORT to "最新上傳"
+                            )
+                        }else{
+                            advancedSearchMapOf(
+                                HAdvancedSearch.GENRE to "AI生成",
+                                HAdvancedSearch.SORT to "最新上傳"
+                            )
+                        }
                     )
                 }
             },
-            douJinWorkAdapter
+            aiGeneratedAdapter
                 .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
                 .apply {
                     doOnWrap {
-                        val key = "douJinWork"
+                        val key = "aiGenerated"
                         val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
                         val pos = viewModel.horizontalScrollPositions[key] ?: 0
                         post { lm.scrollToPositionWithOffset(pos, 0) }
@@ -387,14 +399,58 @@ class HomePageFragment : YenalyFragment<FragmentHomePageBinding>(),
                         })
                     }
                 },
-            VideoColumnTitleAdapter(requireContext(),R.string.category_cosplay).apply {
+            //---------MMD、本日排行---------//
+            VideoColumnTitleAdapter(requireContext(),
+                if (isAVSite) R.string.ranking_today else R.string.mmd).apply {
                 onMoreHanimeListener = {
                     showSearchFragment(
-                        advancedSearchMapOf(
-                            HAdvancedSearch.GENRE to "Cosplay",
-                            HAdvancedSearch.SORT to "最新上傳"
-                        )
+                        if (isAVSite){
+                            advancedSearchMapOf(
+                                HAdvancedSearch.SORT to "本日排行"
+                            )
+                        }else{
+                            advancedSearchMapOf(
+                                HAdvancedSearch.GENRE to "MMD",
+                                HAdvancedSearch.SORT to "最新上傳"
+                            )
+                        }
                     )
+                }
+            },
+            mmdAdapter
+                .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
+                .apply {
+                    doOnWrap {
+                        val key = "mmd"
+                        val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
+                        val pos = viewModel.horizontalScrollPositions[key] ?: 0
+                        post { lm.scrollToPositionWithOffset(pos, 0) }
+                        addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                            override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
+                                viewModel.horizontalScrollPositions[key] =
+                                    lm.findFirstVisibleItemPosition()
+                            }
+                        })
+                    }
+                },
+            //---------Cosplay、本月排行---------//
+            VideoColumnTitleAdapter(requireContext(),
+                if (isAVSite) R.string.ranking_this_month else R.string.category_cosplay).apply {
+                onMoreHanimeListener = {
+                    if (isAVSite){
+                            showSearchFragment(
+                            advancedSearchMapOf(
+                                HAdvancedSearch.SORT to "本月排行"
+                            )
+                        )
+                    }else{
+                        showSearchFragment(
+                            advancedSearchMapOf(
+                                HAdvancedSearch.GENRE to "Cosplay",
+                                HAdvancedSearch.SORT to "最新上傳"
+                            )
+                        )
+                    }
                 }
             },
             cosplayAdapter
@@ -413,6 +469,29 @@ class HomePageFragment : YenalyFragment<FragmentHomePageBinding>(),
                         })
                     }
                 },
+            //---------新番预告---------//
+//            VideoColumnTitleAdapter(requireContext(), R.string.new_anime_trailers
+//            ).apply {
+//                onMoreHanimeListener = {
+//                    findNavController().navigate(R.id.action_nv_home_page_to_nv_preview)
+//                }
+//            },
+//            newAnimeTrailerAdapter
+//                .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
+//                .apply {
+//                    doOnWrap {
+//                        val key = "newAnimeTrailer"
+//                        val lm = layoutManager as? LinearLayoutManager ?: return@doOnWrap
+//                        val pos = viewModel.horizontalScrollPositions[key] ?: 0
+//                        post { lm.scrollToPositionWithOffset(pos, 0) }
+//                        addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//                            override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
+//                                viewModel.horizontalScrollPositions[key] =
+//                                    lm.findFirstVisibleItemPosition()
+//                            }
+//                        })
+//                    }
+//                },
         )
     }
 
@@ -510,19 +589,19 @@ class HomePageFragment : YenalyFragment<FragmentHomePageBinding>(),
                             isAfterRefreshing = true
                             binding.homePageSrl.finishRefresh()
                             initBanner(state.info)
-                            latestHanimeAdapter.submitList(state.info.latestHanime)
-                            latestUploadAdapter.submitList(state.info.latestUpload)
-                            hotHanimeMonthlyAdapter.submitList(state.info.hotHanimeMonthly)
-                            hanimeCurrentAdapter.submitList(state.info.hanimeCurrent)
-                            hanimeTheyWatchedAdapter.submitList(state.info.hanimeTheyWatched)
                             latestReleaseAdapter.submitList(state.info.latestRelease)
-                            chineseSubtitleAdapter.submitList(state.info.chineseSubtitle)
-                            newAnimeTrailerAdapter.submitList(state.info.newAnimeTrailer)
-                            animeShortAdapter.submitList(state.info.animeShort)
+                            latestHanimeAdapter.submitList(state.info.latestHanime)
+                            ecchiAnimeAdapter.submitList(state.info.ecchiAnime)
+                            shortEpisodeAnimeAdapter.submitList(state.info.shortEpisodeAnime)
                             motionAnimeAdapter.submitList(state.info.motionAnime)
-                            thereDWorkAdapter.submitList(state.info.thereDWork)
-                            douJinWorkAdapter.submitList(state.info.douJinWork)
+                            threeDCGAdapter.submitList(state.info.threeDCG)
+                            twoPointFiveDAdapter.submitList(state.info.twoPointFiveDAnime)
+                            twoDAnimeAdapter.submitList(state.info.twoDAnime)
+                            aiGeneratedAdapter.submitList(state.info.aiGenerated)
+                            mmdAdapter.submitList(state.info.mmd)
                             cosplayAdapter.submitList(state.info.cosplay)
+                            watchingNowAdapter.submitList(state.info.watchingNow)
+                            newAnimeTrailerAdapter.submitList(state.info.newAnimeTrailer)
                             binding.state.showContent()
                             initAnnouncements()
                         }
@@ -581,7 +660,7 @@ class HomePageFragment : YenalyFragment<FragmentHomePageBinding>(),
             binding.btnBanner.isEnabled = banner.videoCode != null
             binding.btnBanner.setOnClickListener {
                 banner.videoCode?.let { videoCode ->
-                    (requireActivity() as? MainActivity)?.showVideoDetailFragment(videoCode)
+                    openVideo(videoCode)
                 }
             }
         }
@@ -671,12 +750,18 @@ class HomePageFragment : YenalyFragment<FragmentHomePageBinding>(),
         this@HomePageFragment.addMenu(R.menu.menu_main_toolbar, viewLifecycleOwner) { item ->
             when (item.itemId) {
                 R.id.tb_search -> {
-                    findNavController().navigate(R.id.action_home_to_search)
+                    val currentDestination = findNavController().currentDestination?.id
+                    if (currentDestination == R.id.nv_home_page){
+                        findNavController().navigate(R.id.action_home_to_search)
+                    }
                     return@addMenu true
                 }
 
                 R.id.tb_previews -> {
-                    findNavController().navigate(R.id.nv_preview)
+                    val currentDestination = findNavController().currentDestination?.id
+                    if (currentDestination == R.id.nv_home_page){
+                        findNavController().navigate(R.id.action_nv_home_page_to_nv_preview)
+                    }
                     return@addMenu true
                 }
             }

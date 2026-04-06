@@ -26,6 +26,7 @@
     <string name="relationship">人物關係</string>
     <string name="characteristics">角色設定</string>
     <string name="appearance_and_figure">外貌身材</string>
+    <string name="story_location">情景場所</string>
     <string name="story_plot">故事劇情</string>
     <string name="sex_position">性交體位</string>
     <string name="copy_to_clipboard">已複製到剪貼簿</string>
@@ -359,13 +360,13 @@
     <string name="disable_comments_sum">啟用後，影片詳情頁將不再顯示評論區</string>
     <string name="default_video_quilty">預設解析度</string>
     <string name="my_subscribe">我的訂閱</string>
-    <string name="title_activity_qrcode_scanner">掃碼錄入Cookies</string>
-    <string name="scan_for_cookies">掃碼錄入Cookies</string>
+    <string name="title_activity_qrcode_scanner">手動錄入cookies</string>
+    <string name="scan_for_cookies">手動錄入cookies</string>
     <string name="cookies_import_desc">引導圖片</string>
     <string name="cookies_import_title">如何導入</string>
     <string name="cookies_import_dismiss">我知道了</string>
     <string name="manual_import_cookies">手動導入</string>
-    <string name="import_cookies_intro">此種導入方式也可以緩解因cloudflare引起的登入攔截\n1. 在網頁版登入之後，想辦法獲取Cookies，只要你能獲取到，手機和電腦都行。\n 2. 格式大概如圖所示，注意！頭尾不應包含雙引號，並且不應是格式化後的Cookies序列。\n 3. 使用二維碼創建工具（草料二維碼等），並掃描這個二維碼。\n 二維碼過大可能不太好掃描，或者你沒有電腦，那就使用「手動導入」按鈕的導入。\n 如果導入完成之後刷新頁面還是顯示未登入的狀態，那就檢查你的Cookies。</string>
+    <string name="import_cookies_intro">此種導入方式也可以緩解因cloudflare引起的登入攔截\n1. 在網頁版登入之後，想辦法獲取Cookies，只要你能獲取到，手機和電腦都行。\n 2. 格式大概如圖所示，注意！頭尾不應包含雙引號，並且不應是格式化後的Cookies序列。\n 使用「手動導入」按鈕的導入。\n 如果導入完成之後刷新頁面還是顯示未登入的狀態，那就檢查你的Cookies。</string>
     <string name="request_camera">請授予相機權限以掃碼</string>
     <string name="allow_pip_disc">允許返回桌面時進入畫中畫模式  （需要開啟畫中畫權限）</string>
     <string name="allow_pip_title">允許進入畫中畫模式</string>
@@ -518,4 +519,51 @@
     <string name="search_artist_ignore_video_type_summary">開啟後，點選詳細頁頭像搜尋藝術家時，不再附帶影片類型。</string>
     <string name="show_played_indicator">顯示播放狀態標記</string>
     <string name="show_played_indicator_summary">開啟後將在搜尋結果頁影片封面右上角顯示已播放標記</string>
+    <string name="video_group_error">取得影片群組錯誤：</string>
+    <string name="video_group_empty">影片群組為空</string>
+    <string name="default_group_rename_not_allowed">預設群組（%s）不允許重新命名！</string>
+    <string name="new_group_name">新群組名稱</string>
+    <string name="rename_group">重新命名群組</string>
+    <string name="current_group_name">目前群組名稱：%s</string>
+    <string name="group_name_empty">群組名稱不能為空</string>
+    <string name="group_name_unchanged">名稱未做更改</string>
+    <string name="group_renamed">群組已重新命名為 %s</string>
+    <string name="modify_video_group">修改該影片的群組：%s</string>
+    <string name="group_modify_success">修改成功！%1$s，ID:%2$s</string>
+    <string name="unknown_group_id">發生錯誤：未知群組id！</string>
+    <string name="unknown_error">未知錯誤</string>
+    <string name="ungrouped">未分組</string>
+    <string name="group_title_format" translatable="false">%1$s (%2$d)</string>
+    <string name="create_new_group">建立新群組</string>
+    <string name="create_group_success">建立成功！%s</string>
+    <string name="coming_soon">敬請期待</string>
+    <string name="disable_mobile_data_warning">關閉流量提醒</string>
+    <string name="disable_mobile_data_warning_summary">開啟後使用行動流量播放時將不再提醒</string>
+    <string name="mpv_socks5_warning">注意：MPV播放核心不支援Socks代理，可能會播放失敗</string>
+    <string name="warning">警告</string>
+    <string name="collapse_downloaded_groups">預設折疊已下載群組</string>
+    <string name="collapse_downloaded_groups_summary">開啟後，進入已下載頁面時，將預設折疊群組</string>
+    <string name="animation_2d">2D動畫</string>
+    <string name="start_from_beginning">從頭開始</string>
+    <string name="latest_av">最新AV</string>
+    <string name="amateur_nomask">素人業餘</string>
+    <string name="hd_uncensored">高清無碼</string>
+    <string name="ai_decensored">AI解碼</string>
+    <string name="china_av">國產AV</string>
+    <string name="chinese_amateur">國產素人</string>
+    <string name="view_count">觀看次數</string>
+    <string name="mpv_adv_setting_hint" translatable="false">key1,value1;key2,value2;......</string>
+    <string name="delete_group">刪除群組</string>
+    <string name="delete_group_confirm">確定要刪除群組 「%1$s」 嗎？該群組下的影片將移動到預設群組。</string>
+    <string name="animation_2_5d" translatable="false">2.5D</string>
+    <string name="ai_generated">AI生成</string>
+    <string name="mmd" translatable="false">MMD</string>
+    <string name="current_webview_version">\n\n📊 當前WebView版本: %s</string>
+    <string name="webview_version_too_low">\n⚠️ WebView版本過低，可能會驗證失敗，推薦版本為120.x.x.x以上</string>
+    <string name="webview_version_unknown">\n⚠️ 無法識別WebView版本</string>
+    <string name="version_check_failed">\n⚠️ 版本檢查失敗</string>
+    <string name="switch_site">切換站點</string>
+    <string name="current_site">當前站點：</string>
+    <string name="confirm_switch_site">確定要切換站點嗎？</string>
+    <string name="webview_exception">系統 WebView 元件異常，Cloudflare驗證頁面載入失敗！</string>
 </resources>

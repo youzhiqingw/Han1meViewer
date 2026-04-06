@@ -42,6 +42,7 @@ import com.lxj.xpopup.XPopup
 import com.yenaly.han1meviewer.ADVANCED_SEARCH_MAP
 import com.yenaly.han1meviewer.HAdvancedSearch
 import com.yenaly.han1meviewer.HCacheManager
+import com.yenaly.han1meviewer.HanimeConstants.HANIME_URL
 import com.yenaly.han1meviewer.HanimeResolution
 import com.yenaly.han1meviewer.LOCAL_DATE_FORMAT
 import com.yenaly.han1meviewer.Preferences
@@ -70,6 +71,7 @@ import com.yenaly.han1meviewer.ui.fragment.PermissionRequester
 import com.yenaly.han1meviewer.ui.fragment.PlaylistBottomSheetFragment
 import com.yenaly.han1meviewer.ui.viewmodel.VideoViewModel
 import com.yenaly.han1meviewer.util.loadAssetAs
+import com.yenaly.han1meviewer.util.openVideo
 import com.yenaly.han1meviewer.util.requestPostNotificationPermission
 import com.yenaly.han1meviewer.util.setDrawableTop
 import com.yenaly.han1meviewer.util.showAlertDialog
@@ -128,7 +130,7 @@ class VideoIntroductionFragment : YenalyFragment<FragmentVideoIntroductionBindin
 
     val viewModel: VideoViewModel by viewModels({ requireParentFragment() })
     val genres by unsafeLazy {
-        loadAssetAs<List<SearchOption>>("search_options/genre.json").orEmpty()
+        loadAssetAs<List<SearchOption>>(if (Preferences.baseUrl == HANIME_URL[3]) "search_options/genre_av.json" else "search_options/genre.json").orEmpty()
     }
 
     private var checkedQuality: String? = null
@@ -137,7 +139,7 @@ class VideoIntroductionFragment : YenalyFragment<FragmentVideoIntroductionBindin
     private val playlistTitleAdapter by lazy {
         VideoColumnTitleAdapter(requireContext(),title = R.string.series_video, notifyWhenSet = true)
     }
-    private val playlistAdapter = HanimeVideoRvAdapter(VIDEO_LAYOUT_WRAP_CONTENT)
+    private val playlistAdapter = HanimeVideoRvAdapter(VIDEO_LAYOUT_WRAP_CONTENT){item -> openVideo(item.videoCode)}
     private val playlistWrapper = playlistAdapter
         .wrappedWith { LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) }
         .apply {
@@ -152,7 +154,7 @@ class VideoIntroductionFragment : YenalyFragment<FragmentVideoIntroductionBindin
     private val relatedTitleAdapter by lazy {
         VideoColumnTitleAdapter(requireContext(),title = R.string.related_video)
     }
-    private val relatedAdapter = HanimeVideoRvAdapter(VIDEO_LAYOUT_MATCH_PARENT)
+    private val relatedAdapter = HanimeVideoRvAdapter(VIDEO_LAYOUT_MATCH_PARENT){item -> openVideo(item.videoCode)}
 
     private var multi = ConcatAdapter()
 
@@ -238,6 +240,7 @@ class VideoIntroductionFragment : YenalyFragment<FragmentVideoIntroductionBindin
                         is VideoLoadingState.Loading -> Unit
 
                         is VideoLoadingState.Success -> {
+                            if (!isAdded || isDetached || context == null) return@collect
                             val video = state.info
                             val code = viewModel.videoCode
 
@@ -274,8 +277,10 @@ class VideoIntroductionFragment : YenalyFragment<FragmentVideoIntroductionBindin
 
                                 playlistTitleAdapter.apply {
                                     onMoreHanimeListener = {
-                                        bottomSheet.show(parentFragmentManager,
-                                            PlaylistBottomSheetFragment.TAG)
+                                        if (!bottomSheet.isAdded && !bottomSheet.isRemoving){
+                                            bottomSheet.show(parentFragmentManager,
+                                                PlaylistBottomSheetFragment.TAG)
+                                        }
                                     }
                                 }
                             }

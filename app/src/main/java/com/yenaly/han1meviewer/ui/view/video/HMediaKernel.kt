@@ -38,6 +38,7 @@ import cn.jzvd.Jzvd
 import com.yenaly.han1meviewer.BuildConfig
 import com.yenaly.han1meviewer.Preferences
 import com.yenaly.han1meviewer.USER_AGENT
+import com.yenaly.han1meviewer.logic.network.HProxySelector
 import com.yenaly.han1meviewer.util.AnimeShaders
 import com.yenaly.yenaly_libs.utils.showShortToast
 import `is`.xyz.mpv.MPVLib
@@ -503,6 +504,7 @@ class MpvMediaKernel(jzvd: Jzvd) : JZMediaInterface(jzvd) {
     private var currentPfd: ParcelFileDescriptor? = null
     private var detachFd: Int? = null
     private var pfdFilePath = false
+    val defaultSpeed = Preferences.playerSpeed
     private val mpvOptions: Map<String, String>
         get() = buildMap {
             // 视频输出驱动：GPU 渲染（支持 GLSL 滤镜/Anime4K/插帧）
@@ -557,6 +559,16 @@ class MpvMediaKernel(jzvd: Jzvd) : JZMediaInterface(jzvd) {
 
             put("network-timeout", Preferences.mpvNetworkTimeout.toString())  // 请求超时
             put("tls-verify", if (Preferences.mpvTlsVerify) "no" else "yes")  // 是否证书验证 yes、no
+
+            // 单独为MPV播放器配置代理，因为它不走ProxySelector，也不支持socks代理，沟槽的非原生实现
+            val proxyIp = Preferences.proxyIp
+            val proxyPort = Preferences.proxyPort
+            if (proxyIp.isNotBlank() && proxyPort != -1) {
+                val proxyUrl = "${proxyIp}:${proxyPort}"
+                if (Preferences.proxyType == HProxySelector.TYPE_HTTP) {
+                    put("http-proxy", "http://$proxyUrl")
+                }
+            }
             put("user-agent", USER_AGENT)
         }
 
@@ -807,6 +819,7 @@ class MpvMediaKernel(jzvd: Jzvd) : JZMediaInterface(jzvd) {
                     MPVLib.mpvEventId.MPV_EVENT_FILE_LOADED -> {
                         // 文件加载成功
                         jzvd.onPrepared()
+                        MPVLib.setPropertyDouble("speed", defaultSpeed.toDouble())
                     }
                     MPVLib.mpvEventId.MPV_EVENT_PLAYBACK_RESTART -> {
                         // 播放重新开始

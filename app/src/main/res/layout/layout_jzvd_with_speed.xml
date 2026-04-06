@@ -72,7 +72,7 @@
             android:paddingBottom="5dp"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:progressDrawable="@drawable/jz_bottom_seek_progress"
+            android:progressDrawable="@drawable/bottom_seek_progress"
             android:thumb="@drawable/jz_bottom_seek_poster"
             android:background="@null" />
 
@@ -103,7 +103,7 @@
         android:layout_height="1.5dp"
         android:layout_alignParentBottom="true"
         android:max="100"
-        android:progressDrawable="@drawable/jz_bottom_progress" />
+        android:progressDrawable="@drawable/bottom_seek_progress" />
 
     <ImageView
         android:id="@+id/back_tiny"
@@ -264,21 +264,30 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/start_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical">
+        android:layout_centerVertical="true">
 
         <ImageView
             android:id="@+id/start"
             android:layout_width="@dimen/jz_start_button_w_h_normal"
             android:layout_height="@dimen/jz_start_button_w_h_normal"
+            android:layout_centerInParent="true"
             android:src="@drawable/jz_click_play_selector" />
-    </LinearLayout>
 
+        <ImageView
+            android:id="@+id/lock"
+            android:tint="@color/per80_transparent_white"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:visibility="invisible"
+            android:src="@drawable/ic_lock_selector"/>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/replay_text"
@@ -333,7 +342,7 @@
         android:background="@drawable/frosted_glass"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:text="从头开始"
+        android:text="@string/start_from_beginning"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         android:textStyle="bold"

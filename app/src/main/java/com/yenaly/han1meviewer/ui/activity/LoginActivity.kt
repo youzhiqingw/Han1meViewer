@@ -1,10 +1,8 @@
 package com.yenaly.han1meviewer.ui.activity
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
@@ -22,7 +20,6 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.core.text.parseAsHtml
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
@@ -100,13 +97,7 @@ class LoginActivity : FrameActivity() {
             }
         }
         binding.fabQr.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_GRANTED
-            ) {
-                scannerLauncher.launch(Intent(this, QRcodeScannerActivity::class.java))
-            } else {
-                cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
-            }
+            scannerLauncher.launch(Intent(this, QRcodeScannerActivity::class.java))
         }
     }
 
@@ -131,6 +122,8 @@ class LoginActivity : FrameActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView() {
         binding.wvLogin.apply {
+            CookieManager.getInstance().removeAllCookies(null)
+            CookieManager.getInstance().flush()
             // #issue-17: 谷歌登录需要开启JavaScript，但是谷歌拒絕這種登錄方式，遂放棄
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true

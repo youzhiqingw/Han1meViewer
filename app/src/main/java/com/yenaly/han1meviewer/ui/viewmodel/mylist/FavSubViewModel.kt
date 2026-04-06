@@ -1,6 +1,7 @@
 package com.yenaly.han1meviewer.ui.viewmodel.mylist
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.yenaly.han1meviewer.logic.NetworkRepo
 import com.yenaly.han1meviewer.logic.model.HanimeInfo
@@ -29,14 +30,20 @@ class FavSubViewModel(application: Application) : YenalyViewModel(application) {
     private val _favVideoFlow = MutableStateFlow(emptyList<HanimeInfo>())
     val favVideoFlow = _favVideoFlow.asStateFlow()
 
-    fun getMyFavVideoItems(page: Int) {
+    fun getMyFavVideoItems(userId: String, page: Int) {
         viewModelScope.launch {
-            NetworkRepo.getMyListItems(page, MyListType.FAV_VIDEO).collect { state ->
+            NetworkRepo.getMyListItems(userId, MyListType.FAV_VIDEO, page).collect { state ->
                 val prev = _favVideoStateFlow.getAndUpdate { state }
                 if (prev is PageLoadingState.Loading) _favVideoFlow.value = emptyList()
                 _favVideoFlow.update { prevList ->
                     when (state) {
-                        is PageLoadingState.Success -> prevList + state.info.hanimeInfo
+                        is PageLoadingState.Success ->{
+                            if (state.info.hanimeInfo.isEmpty()){
+                                _favVideoStateFlow.update { PageLoadingState.NoMoreData }
+                            }
+                            prevList + state.info.hanimeInfo
+                        }
+
                         is PageLoadingState.Loading -> emptyList()
                         else -> prevList
                     }

@@ -2,6 +2,7 @@ package com.yenaly.han1meviewer.ui.view.video
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Typeface
 import android.media.AudioFocusRequest
 import android.media.AudioManager
@@ -30,9 +31,11 @@ import android.widget.TextView
 import androidx.annotation.IntRange
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.getSystemService
+import androidx.core.graphics.toColorInt
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.core.view.size
 import androidx.core.view.updatePadding
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavOptions
@@ -45,6 +48,7 @@ import cn.jzvd.JZMediaInterface
 import cn.jzvd.JZUtils
 import cn.jzvd.JzvdStd
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.color.MaterialColors
 import com.itxca.spannablex.spannable
 import com.yenaly.han1meviewer.Preferences
 import com.yenaly.han1meviewer.R
@@ -74,7 +78,10 @@ class HJzvdStd @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
 ) : JzvdStd(context, attrs), OnLongClickListener {
-
+    interface FullscreenListener {
+        fun onFullscreenChanged(isFullscreen: Boolean)
+    }
+    var fullscreenListener: FullscreenListener? = null
     companion object {
         // 相當於重寫了
         /**
@@ -238,6 +245,8 @@ class HJzvdStd @JvmOverloads constructor(
     private lateinit var topBarContainer: LinearLayout
     private lateinit var layoutTop: View
     private lateinit var layoutBottom: View
+    private lateinit var gestureLock: ImageView
+    var gestureLocked = false
     var savedProgress: Long = 0L
     private lateinit var btnResumeProgress: MaterialButton
     private val handler = Handler(Looper.getMainLooper())
@@ -272,7 +281,7 @@ class HJzvdStd @JvmOverloads constructor(
         }
         HKeyframeRvAdapter(videoCode).apply {
             setOnItemClickListener { _, _, position ->
-                val keyframe = getItem(position) ?: return@setOnItemClickListener
+                val keyframe = getItem(position)
                 mediaInterface?.seekTo(keyframe.position)
                 startProgressTimer()
             }
@@ -356,6 +365,8 @@ class HJzvdStd @JvmOverloads constructor(
         layoutBottom = findViewById(R.id.layout_bottom)
         btnResumeProgress = findViewById(R.id.btn_resume_progress)
         topBarContainer = findViewById(R.id.top_bar_container)
+        gestureLock = findViewById(R.id.lock)
+        gestureLock.isSelected = false
         textureViewContainer.isHapticFeedbackEnabled = true
         tvSpeed.setOnClickListener(this)
         tvKeyframe.setOnClickListener(this)
@@ -380,6 +391,10 @@ class HJzvdStd @JvmOverloads constructor(
                 gotoFullscreen()
             }
         }
+        gestureLock.setOnClickListener {
+            gestureLocked = !gestureLocked
+            gestureLock.isSelected = gestureLocked
+        }
 
     }
 
@@ -402,6 +417,9 @@ class HJzvdStd @JvmOverloads constructor(
         super.setUp(jzDataSource, screen, clazz)
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
         val preferredQuality = prefs.getString("default_video_quality", null)
+        if (Preferences.disableMobileDataWarning){
+            WIFI_TIP_DIALOG_SHOWED = true
+        }
         if (!preferredQuality.isNullOrBlank()) {
             val index = jzDataSource?.urlsMap?.keys?.indexOf(preferredQuality)
             if (index != -1) {
@@ -476,10 +494,23 @@ class HJzvdStd @JvmOverloads constructor(
             }
 
             STATE_PLAYING -> {
-                if (bottomContainer.isVisible) {
+                if (gestureLocked) {
+                    post {
+                        gestureLock.isVisible = !gestureLock.isVisible
+                    }
                     changeUiToPlayingClearSafe()
                 } else {
-                    changeUiToPlayingShowSafe()
+                    if (bottomContainer.isVisible) {
+                        post {
+                            gestureLock.isVisible = false
+                        }
+                        changeUiToPlayingClearSafe()
+                    } else {
+                        post {
+                            gestureLock.isVisible = true
+                        }
+                        changeUiToPlayingShowSafe()
+                    }
                 }
             }
 
@@ -535,6 +566,7 @@ class HJzvdStd @JvmOverloads constructor(
         btnGoHome.isVisible = true
         topBarContainer.isVisible = false
         superResolution.isVisible = false
+        gestureLock.isVisible = false
 
         layoutTop.updatePadding(left = 0, right = 0)
         layoutBottom.updatePadding(left = 0, right = 0)
@@ -552,6 +584,7 @@ class HJzvdStd @JvmOverloads constructor(
         topBarContainer.isVisible = true
         clarity.isVisible = true
         superResolution.isVisible = switchPlayerKernel == HMediaKernel.Type.MpvPlayer.name
+        gestureLock.isVisible = true
         val statusBarHeight = statusBarHeight
         val navBarHeight = navBarHeight
         layoutTop.updatePadding(left = statusBarHeight, right = navBarHeight)
@@ -578,6 +611,55 @@ class HJzvdStd @JvmOverloads constructor(
                 findNavController().navigateUp()
             }
         }
+    }
+
+    override fun clickClarity() {
+        this.onCLickUiToggleToClear()
+        val colorPrimary = MaterialColors.getColor(
+            context,
+            androidx.appcompat.R.attr.colorPrimary,
+            Color.RED)
+        val inflater = this.jzvdContext.getSystemService("layout_inflater") as LayoutInflater
+        val layout = inflater.inflate(R.layout.layout_jzvd_clarity, null as ViewGroup?) as LinearLayout
+        val mQualityListener = OnClickListener { v1: View? ->
+            val index = v1!!.tag as Int
+            this.jzDataSource.currentUrlIndex = index
+            this.changeUrl(this.jzDataSource, this.currentPositionWhenPlaying)
+            this.clarity.text = this.jzDataSource.currentKey.toString()
+
+            for (j in 0..<layout.size) {
+                if (j == this.jzDataSource.currentUrlIndex) {
+                    (layout.getChildAt(j) as TextView).setTextColor(colorPrimary)
+                } else {
+                    (layout.getChildAt(j) as TextView).setTextColor("#ffffff".toColorInt())
+                }
+            }
+            if (this.clarityPopWindow != null) {
+                this.clarityPopWindow.dismiss()
+            }
+        }
+
+        for (j in 0..<this.jzDataSource.urlsMap.size) {
+            val key = this.jzDataSource.getKeyFromDataSource(j)
+            val clarityItem = inflate(
+                this.jzvdContext,
+                R.layout.layout_jzvd_clarity_item,
+                null as ViewGroup?
+            ) as TextView
+            clarityItem.text = key
+            clarityItem.tag = j
+            layout.addView(clarityItem, j)
+            clarityItem.setOnClickListener(mQualityListener)
+            if (j == this.jzDataSource.currentUrlIndex) {
+                clarityItem.setTextColor(colorPrimary)
+            }
+        }
+
+        this.clarityPopWindow =
+            PopupWindow(layout, JZUtils.dip2px(this.jzvdContext, 240.0f), -1, true)
+        this.clarityPopWindow.animationStyle = cn.jzvd.R.style.pop_animation
+        this.clarityPopWindow.contentView = layout
+        this.clarityPopWindow.showAtLocation(this.textureViewContainer, 8388613, 0, 0)
     }
 
     override fun onClick(v: View) {
@@ -642,6 +724,9 @@ class HJzvdStd @JvmOverloads constructor(
     }
 
     override fun touchActionMove(x: Float, y: Float) {
+        if (gestureLocked) {
+            return
+        }
         val deltaX = x - mDownX
         var deltaY = y - mDownY
         val absDeltaX = deltaX.absoluteValue
@@ -751,6 +836,7 @@ class HJzvdStd @JvmOverloads constructor(
 
     override fun gotoNormalScreen() {
         gobakFullscreenTime = System.currentTimeMillis() // 退出全屏时间
+        fullscreenListener?.onFullscreenChanged(false)
         Log.i(TAG,"${isAdjustBrightness}、${screenBrightnessBK}、${JZUtils.getWindow(context).attributes.screenBrightness}")
         if (isAdjustBrightness) {
             val window = JZUtils.getWindow(context)
@@ -796,6 +882,7 @@ class HJzvdStd @JvmOverloads constructor(
 
     override fun gotoFullscreen() {
         gotoFullscreenTime = System.currentTimeMillis()
+        fullscreenListener?.onFullscreenChanged(true)
         val vg = parent as? ViewGroup ?: return
         val activity = JZUtils.scanForActivity(jzvdContext)
         jzvdContext = vg.context

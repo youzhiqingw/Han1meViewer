@@ -17,6 +17,7 @@ plugins {
     alias(libs.plugins.com.google.firebase.crashlytics)
     alias(libs.plugins.com.google.firebase.firebase.pref)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.navigation.safeargs)
     id("com.mikepenz.aboutlibraries.plugin") version "12.2.4"
     id("com.github.ben-manes.versions") version "0.52.0"
 }
@@ -37,7 +38,7 @@ android {
         applicationId = "com.yenaly.han1meviewer"
         minSdk = property("min.sdk")?.toString()?.toIntOrNull()
         targetSdk = property("target.sdk")?.toString()?.toIntOrNull()
-        val (code, name) = createVersion(major = 0, minor = 20, patch = 2)
+        val (code, name) = createVersion(major = 0, minor = 23, patch = 7)
         versionCode = code
         versionName = name
 
@@ -77,7 +78,7 @@ android {
                 "proguard-rules.pro"
             )
             signingConfig = signingConfigs.getByName("release")
-            manifestPlaceholders.put("appIcon", "@mipmap/ic_launcher")
+            manifestPlaceholders.put("appIcon", "@mipmap/ic_launcher_new")
 
             applicationVariants.all variant@{
                 this@variant.outputs.all output@{
@@ -154,13 +155,6 @@ dependencies {
     implementation(libs.androidx.material.icons.core)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
-
-    //for QRCODE scanner
-    implementation(libs.androidx.camera.core)
-    implementation(libs.androidx.camera.camera2)
-    implementation(libs.androidx.camera.lifecycle)
-    implementation(libs.androidx.camera.view)
-    implementation(libs.barcode.scanning)
 
     // datetime
 

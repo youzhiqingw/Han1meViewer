@@ -5,12 +5,13 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.color.MaterialColors
+import com.yenaly.han1meviewer.Preferences
 import com.yenaly.han1meviewer.R
 import com.yenaly.han1meviewer.VideoCoverSize
 import com.yenaly.han1meviewer.databinding.FragmentPageListBinding
@@ -22,6 +23,7 @@ import com.yenaly.han1meviewer.ui.adapter.HanimeMyListVideoAdapter
 import com.yenaly.han1meviewer.ui.fragment.IToolbarFragment
 import com.yenaly.han1meviewer.ui.fragment.LoginNeededFragmentMixin
 import com.yenaly.han1meviewer.ui.viewmodel.MyListViewModel
+import com.yenaly.han1meviewer.util.openVideo
 import com.yenaly.han1meviewer.util.showAlertDialog
 import com.yenaly.yenaly_libs.base.YenalyFragment
 import com.yenaly.yenaly_libs.utils.showShortToast
@@ -37,7 +39,7 @@ import kotlinx.coroutines.launch
 class MyFavVideoFragment : YenalyFragment<FragmentPageListBinding>(),
     IToolbarFragment<MainActivity>, LoginNeededFragmentMixin, StateLayoutMixin {
 
-    val viewModel by activityViewModels<MyListViewModel>()
+    val viewModel by viewModels<MyListViewModel>()
 
     private var page: Int
         set(value) {
@@ -45,7 +47,7 @@ class MyFavVideoFragment : YenalyFragment<FragmentPageListBinding>(),
         }
         get() = viewModel.fav.favVideoPage
 
-    private val adapter by unsafeLazy { HanimeMyListVideoAdapter() }
+    private val adapter by unsafeLazy { HanimeMyListVideoAdapter(onItemClick = { item -> openVideo(item.videoCode) }) }
 
     override fun getViewBinding(
         inflater: LayoutInflater,
@@ -61,7 +63,7 @@ class MyFavVideoFragment : YenalyFragment<FragmentPageListBinding>(),
         binding.state.init()
 
         adapter.setOnItemLongClickListener { _, _, position ->
-            val item = adapter.getItem(position) ?: return@setOnItemLongClickListener true
+            val item = adapter.getItem(position)
             requireContext().showAlertDialog {
                 setTitle(R.string.delete_fav)
                 setMessage(getString(R.string.sure_to_delete_s, item.title))
@@ -74,7 +76,7 @@ class MyFavVideoFragment : YenalyFragment<FragmentPageListBinding>(),
         }
 
         binding.rvPageList.apply {
-            layoutManager = GridLayoutManager(context, VideoCoverSize.Simplified.videoInOneLine)
+            layoutManager = GridLayoutManager(context, VideoCoverSize.Normal.videoInOneLine)
             adapter = this@MyFavVideoFragment.adapter
         }
 
@@ -162,11 +164,12 @@ class MyFavVideoFragment : YenalyFragment<FragmentPageListBinding>(),
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         binding.rvPageList.layoutManager =
-            GridLayoutManager(context, VideoCoverSize.Simplified.videoInOneLine)
+            GridLayoutManager(context, VideoCoverSize.Normal.videoInOneLine)
     }
 
     private fun getMyFavVideo() {
-        viewModel.fav.getMyFavVideoItems(page)
+        val userId = Preferences.savedUserId
+        viewModel.fav.getMyFavVideoItems(userId, page)
     }
 
     private fun getNewMyFavVideo() {

@@ -90,8 +90,9 @@ val HANIME_BASE_URL = Preferences.baseUrl
  * 没想弄动态匹配，觉得古法修改挺好的。
  */
 object HanimeConstants {
-    val HANIME_HOSTNAME = arrayOf("hanime1.me","hanime1.com","hanimeone.me")
-    val HANIME_URL = arrayOf("https://hanime1.me/","https://hanime1.com/","https://hanimeone.me/")
+    val HANIME_HOSTNAME = arrayOf("hanime1.me","hanime1.com","hanimeone.me","javchu.com")
+    val HANIME_URL = arrayOf("https://hanime1.me/","https://hanime1.com/","https://hanimeone.me/","https://javchu.com/")
+    val ANIME_URL = arrayOf("https://hanime1.me/","https://hanime1.com/","https://hanimeone.me/")
 }
 
 @JvmField
@@ -112,6 +113,7 @@ const val FIREBASE_REALTIME_DATABASE = "https://han1meviewer-86e5f-default-rtdb.
 // for Shared Preference
 
 const val LOGIN_COOKIE = "cookie"
+const val SAVED_USER_ID = "saved_user_id"
 
 const val CLOUDFLARE_COOKIE = "cf_cookie"
 

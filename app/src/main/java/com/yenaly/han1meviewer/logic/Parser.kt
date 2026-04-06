@@ -3,8 +3,10 @@ package com.yenaly.han1meviewer.logic
 import android.annotation.SuppressLint
 import android.util.Log
 import com.yenaly.han1meviewer.EMPTY_STRING
+import com.yenaly.han1meviewer.HanimeConstants.HANIME_URL
 import com.yenaly.han1meviewer.HanimeResolution
 import com.yenaly.han1meviewer.LOCAL_DATE_FORMAT
+import com.yenaly.han1meviewer.Preferences
 import com.yenaly.han1meviewer.Preferences.isAlreadyLogin
 import com.yenaly.han1meviewer.logic.exception.ParseException
 import com.yenaly.han1meviewer.logic.model.HanimeInfo
@@ -50,23 +52,30 @@ object Parser {
     }
 
     fun homePageVer2(body: String): WebsiteState<HomePage> {
+        val isAVSite = Preferences.baseUrl == HANIME_URL[3]
         val parseBody = Jsoup.parse(body).body()
         val csrfToken = parseBody.selectFirst("input[name=_token]")?.attr("value") // csrf token
-
         val homePageParse = parseBody.select("div[id=home-rows-wrapper] > div")
+
+        // 用户信息
         val userInfo = parseBody.selectFirst("div[id=user-modal-dp-wrapper]")
         val avatarUrl: String? = userInfo?.selectFirst("img")?.absUrl("src")
         val username: String? = userInfo?.getElementById("user-modal-name")?.text()
+        val userHomePageLink = parseBody.getElementById("user-modal-trigger")!!.attr("href")
 
+        val userIdRegex = Regex("""/user/(\d+)""")
+        val userId: String = userIdRegex.find(userHomePageLink)?.groupValues?.get(1) ?: ""
+        Log.i("userInfo","name:$username;id:$userId")
+
+        // 头图及其描述
         val bannerCSS = parseBody.selectFirst("div[id=home-banner-wrapper]")
         val bannerImg = bannerCSS?.previousElementSibling()
         val bannerTitle = bannerImg?.selectFirst("img")?.attr("alt")
             .logIfParseNull(Parser::homePageVer2.name, "bannerTitle")
-        val bannerPic = bannerImg?.select("img")?.getOrNull(1)?.absUrl("src")
-            .logIfParseNull(Parser::homePageVer2.name, "bannerPic")
+        val bannerPic = bannerImg?.select("img")?.let { imgList ->
+            imgList.getOrNull(1)?.absUrl("src") ?: imgList.getOrNull(0)?.absUrl("src")
+        }?.logIfParseNull(Parser::homePageVer2.name, "bannerPic")
         val bannerDesc = bannerCSS?.selectFirst("h4")?.ownText()
-//        var bannerVideoCode =
-//            bannerCSS?.selectFirst("a[class~=play-btn]")?.absUrl("href")?.toVideoCode()
         val bannerVideoCodeScript = parseBody.select("script")
             .firstOrNull{ it.data().contains("watch?v=")}
             ?.data()
@@ -93,152 +102,72 @@ object Parser {
             )
         } else null
 
-        val latestHanimeClass = homePageParse.getOrNull(0)
-        val latestReleaseClass = homePageParse.getOrNull(1)
-        val latestUploadClass = homePageParse.getOrNull(2)
-        val chineseSubtitleClass = homePageParse.getOrNull(3)
-        val hotHanimeMonthlyClass = homePageParse.getOrNull(homePageParse.size - 2)
-        val hanimeCurrentClass = homePageParse.getOrNull(homePageParse.size - 3)
-        val hanimeTheyWatchedClass = homePageParse.getOrNull(4)
-        val animeShortClass = homePageParse.getOrNull(6)
-        val motionAnimeClass = homePageParse.getOrNull(7)
-        val thereDWorkClass = homePageParse.getOrNull(8)
-        val douJinWorkClass = homePageParse.getOrNull(9)
-        val cosplayClass = homePageParse.getOrNull(10)
-        val newAnimeTrailerClass = homePageParse.getOrNull(12)
-        // for latest hanime
+        // 主页模块
+        val latestReleaseClass = homePageParse.getOrNull(0) // 最新上市
+        val latestUploadClass = homePageParse.getOrNull(1)  //最新上传
+        val ecchiAnimeClass = homePageParse.getOrNull(2)  //里番
+        val shortEpisodeAnimeClass = homePageParse.getOrNull(3)  // 泡面番
+        val motionAnimeClass = homePageParse.getOrNull(5)  // Motion Anime
+        val threeDCGClass = homePageParse.getOrNull(6)  //3DCG
+        val twoPointFiveDAnimeClass = homePageParse.getOrNull(7)  // 2.5D
+        val twoDAnimeClass = homePageParse.getOrNull(8)  // 2D
+        val aiGeneratedClass = homePageParse.getOrNull(10)  // AI生成
+        val mmdClass = homePageParse.getOrNull(11)  //  MMD
+        val cosplayClass = homePageParse.getOrNull(12)  // Cosplay
+        val watchingNowClass = homePageParse.getOrNull(13)  // 他们在看
+
+        val newAnimeTrailerClass = homePageParse.getOrNull(if (isAVSite) 13 else 12)
+
+        val latestReleaseList = latestReleaseClass.extractHanimeInfo()
         val latestHanimeList = mutableListOf<HanimeInfo>()
-        val latestHanimeItems = latestHanimeClass?.select("div[class=home-rows-videos-div]")
-        latestHanimeItems?.forEach { latestHanimeItem ->
-            val coverUrl = latestHanimeItem.selectFirst("img")?.absUrl("src")
-                .throwIfParseNull(Parser::homePageVer2.name, "coverUrl")
-            val title = latestHanimeItem.selectFirst("div[class$=title]")?.text()
-                .throwIfParseNull(Parser::homePageVer2.name, "title")
-            val videoCode = latestHanimeItem.parent()?.absUrl("href")?.toVideoCode()
-                .throwIfParseNull(Parser::homePageVer2.name, "videoCode")
-            latestHanimeList.add(
-                HanimeInfo(
-                    coverUrl = coverUrl,
-                    title = title,
-                    videoCode = videoCode,
-                    itemType = HanimeInfo.SIMPLIFIED
-                )
-            )
+        if (isAVSite){
+            latestHanimeList.addAll(latestUploadClass.extractHanimeInfo())
+        } else {
+            latestHanimeList.addAll(latestUploadClass.extractHanimeInfo())
+        }
+        val ecchiAnimeList = ecchiAnimeClass.extractHanimeInfo()
+        val shortEpisodeAnimeList = shortEpisodeAnimeClass.extractHanimeInfo()
+        val motionAnimeList = motionAnimeClass.extractHanimeInfo()
+        val threeDCGList = threeDCGClass.extractHanimeInfo()
+        val twoPointFiveDAnimeList = twoPointFiveDAnimeClass.extractHanimeInfo()
+        val twoDAnimeList = mutableListOf<HanimeInfo>()
+        if (isAVSite){
+            twoDAnimeList.addAll(twoDAnimeClass.extractHanimeInfo())
+        } else {
+            twoDAnimeList.addAll(twoDAnimeClass.extractHanimeInfo())
         }
 
-        // for latest release
-        val latestReleaseList = mutableListOf<HanimeInfo>()
-        val latestReleaseItems = latestReleaseClass?.select("div[class^=card-mobile-panel]")
-        latestReleaseItems?.forEachStep2 { latestReleaseItem ->
-            hanimeNormalItemVer2(latestReleaseItem)?.let(latestReleaseList::add)
-        }
+        val aiGeneratedList = aiGeneratedClass.extractHanimeInfo()
+        val mmdList = mmdClass.extractHanimeInfo()
+        val cosplayList = cosplayClass.extractHanimeInfo()
+        val watchingNowList = watchingNowClass.extractHanimeInfo()
 
-        // for latest upload
-        val latestUploadList = mutableListOf<HanimeInfo>()
-        val latestUploadItems = latestUploadClass?.select("div[class^=card-mobile-panel]")
-        latestUploadItems?.forEachStep2 { latestUploadItem ->
-            hanimeNormalItemVer2(latestUploadItem)?.let(latestUploadList::add)
-        }
-
-        // for chinese subtitle
-        val chineseSubtitleList = mutableListOf<HanimeInfo>()
-        val chineseSubtitleItems = chineseSubtitleClass?.select("div[class^=card-mobile-panel]")
-        chineseSubtitleItems?.forEachStep2 { chineseSubtitleItem ->
-            hanimeNormalItemVer2(chineseSubtitleItem)?.let(chineseSubtitleList::add)
-        }
-
-        // for hanime they watched
-        val hanimeTheyWatchedList = mutableListOf<HanimeInfo>()
-        val hanimeTheyWatchedItems =
-            hanimeTheyWatchedClass?.select("div[class^=card-mobile-panel]")
-        hanimeTheyWatchedItems?.forEachStep2 { hanimeTheyWatchedItem ->
-            hanimeNormalItemVer2(hanimeTheyWatchedItem)?.let(hanimeTheyWatchedList::add)
-        }
-
-        // for hanime current
-        val hanimeCurrentList = mutableListOf<HanimeInfo>()
-        val hanimeCurrentItems =
-            hanimeCurrentClass?.select("div[class^=card-mobile-panel]")
-        hanimeCurrentItems?.forEachStep2 { hanimeCurrentItem ->
-            hanimeNormalItemVer2(hanimeCurrentItem)?.let(hanimeCurrentList::add)
-        }
-
-        // for hot hanime monthly
-        val hotHanimeMonthlyList = mutableListOf<HanimeInfo>()
-        val hotHanimeMonthlyItems =
-            hotHanimeMonthlyClass?.select("div[class^=card-mobile-panel]")
-        hotHanimeMonthlyItems?.forEachStep2 { hotHanimeMonthlyItem ->
-            hanimeNormalItemVer2(hotHanimeMonthlyItem)?.let(hotHanimeMonthlyList::add)
-        }
-
-        val animeShortList = mutableListOf<HanimeInfo>()
-        val animeShortItems = animeShortClass?.select("div[class=home-rows-videos-div]")
-        animeShortItems?.forEach { animeShortItem ->
-            val coverUrl = animeShortItem.selectFirst("img")?.absUrl("src")
-                .throwIfParseNull(Parser::homePageVer2.name, "coverUrl")
-            val title = animeShortItem.selectFirst("div[class$=title]")?.text()
-                .throwIfParseNull(Parser::homePageVer2.name, "title")
-            val videoCode = animeShortItem.parent()?.absUrl("href")?.toVideoCode()
-                .throwIfParseNull(Parser::homePageVer2.name, "videoCode")
-            animeShortList.add(
-                HanimeInfo(
-                    coverUrl = coverUrl,
-                    title = title,
-                    videoCode = videoCode,
-                    itemType = HanimeInfo.SIMPLIFIED
-                )
-            )
-        }
-
-        val motionAnimeList = mutableListOf<HanimeInfo>()
-        val motionAnimeItems =
-            motionAnimeClass?.select("div[class^=card-mobile-panel]")
-        motionAnimeItems?.forEachStep2 { motionAnimeItem ->
-            hanimeNormalItemVer2(motionAnimeItem)?.let(motionAnimeList::add)
-        }
-
-        val thereDWorkList = mutableListOf<HanimeInfo>()
-        val thereDWorkItems =
-            thereDWorkClass?.select("div[class^=card-mobile-panel]")
-        thereDWorkItems?.forEachStep2 { thereDWorkListItem ->
-            hanimeNormalItemVer2(thereDWorkListItem)?.let(thereDWorkList::add)
-        }
-
-        val douJinWorkList = mutableListOf<HanimeInfo>()
-        val douJinWorkItems =
-            douJinWorkClass?.select("div[class^=card-mobile-panel]")
-        douJinWorkItems?.forEachStep2 { douJinWorkItem ->
-            hanimeNormalItemVer2(douJinWorkItem)?.let(douJinWorkList::add)
-        }
-
-        val cosplayList = mutableListOf<HanimeInfo>()
-        val cosplayItems =
-            cosplayClass?.select("div[class^=card-mobile-panel]")
-        cosplayItems?.forEachStep2 { cosplayItem ->
-            hanimeNormalItemVer2(cosplayItem)?.let(cosplayList::add)
-        }
         val newAnimeTrailerList = mutableListOf<HanimeInfo>()
-        val newAnimeTrailerItems =
-            newAnimeTrailerClass?.select("a")
-        newAnimeTrailerItems?.forEach { newAnimeTrailerItem ->
-            val videoCode = newAnimeTrailerItem.attr("href").toVideoCode()
+        if (isAVSite){
+            newAnimeTrailerList.addAll(newAnimeTrailerClass.extractHanimeInfo())
+        } else {
+            val newAnimeTrailerItems =
+                newAnimeTrailerClass?.select("a")
+            newAnimeTrailerItems?.forEach { newAnimeTrailerItem ->
+                val videoCode = newAnimeTrailerItem.attr("href").toVideoCode()
 
-            val coverUrl = newAnimeTrailerItem.selectFirst("img")?.attr("src")
-            val title = newAnimeTrailerItem.selectFirst("div.home-rows-videos-title")?.text()
-            if (title == null || coverUrl == null || videoCode == null) return@forEach
-            newAnimeTrailerList.add(
-                HanimeInfo(
-                    title = title,
-                    coverUrl = coverUrl,
-                    videoCode = videoCode,
-                    duration = "",
-                    artist = null,
-                    views = null,
-                    uploadTime = null,
-                    genre = null,
-                    itemType = HanimeInfo.SIMPLIFIED
+                val coverUrl = newAnimeTrailerItem.selectFirst("img")?.attr("src")
+                val title = newAnimeTrailerItem.selectFirst("div.home-rows-videos-title")?.text()
+                if (title == null || coverUrl == null || videoCode == null) return@forEach
+                newAnimeTrailerList.add(
+                    HanimeInfo(
+                        title = title,
+                        coverUrl = coverUrl,
+                        videoCode = videoCode,
+                        duration = "",
+                        currentArtist = null,
+                        views = null,
+                        uploadTime = null,
+                        genre = null,
+                        itemType = HanimeInfo.SIMPLIFIED
+                    )
                 )
-            )
+            }
         }
 
         // emit!
@@ -248,19 +177,29 @@ object Parser {
                 avatarUrl, username, banner = banner,
                 latestHanime = latestHanimeList,
                 latestRelease = latestReleaseList,
-                latestUpload = latestUploadList,
-                chineseSubtitle = chineseSubtitleList,
-                hanimeTheyWatched = hanimeTheyWatchedList,
-                hanimeCurrent = hanimeCurrentList,
-                hotHanimeMonthly = hotHanimeMonthlyList,
-                animeShort = animeShortList,
+                ecchiAnime = ecchiAnimeList,
+                shortEpisodeAnime = shortEpisodeAnimeList,
+                twoPointFiveDAnime = twoPointFiveDAnimeList,
+                threeDCG = threeDCGList,
                 motionAnime = motionAnimeList,
-                thereDWork = thereDWorkList,
-                douJinWork = douJinWorkList,
+                twoDAnime = twoDAnimeList,
+                aiGenerated = aiGeneratedList,
+                mmd = mmdList,
                 cosplay = cosplayList,
+                watchingNow = watchingNowList,
                 newAnimeTrailer = newAnimeTrailerList,
+                userId = userId
             )
         )
+    }
+    fun Element?.extractHanimeInfo(selector: String = "div[class^=horizontal-card]"): MutableList<HanimeInfo> {
+        val resultList = mutableListOf<HanimeInfo>()
+        this?.select(selector)?.forEach { item ->
+            hanimeNormalItemVer2(item)?.let { hanimeInfo ->
+                resultList.add(hanimeInfo)
+            }
+        }
+        return resultList
     }
 
     fun hanimeSearch(body: String): PageLoadingState<MutableList<HanimeInfo>> {
@@ -279,33 +218,42 @@ object Parser {
         return PageLoadingState.Success(mutableListOf())
     }
 
-    // 每一个正常视频单元
-    // #issue-38: 解析錯誤，原來是加廣告了！所以遇到無法處理的直接返回null。
     private fun hanimeNormalItemVer2(hanimeSearchItem: Element): HanimeInfo? {
         val title =
-            hanimeSearchItem.selectFirst("div[class=card-mobile-title]")?.text()
-                .logIfParseNull(Parser::hanimeNormalItemVer2.name, "title") // title
+            hanimeSearchItem.selectFirst("div.title, h4.video-title")?.text()?.trim()
+                .logIfParseNull(Parser::hanimeNormalItemVer2.name, "title")
         val coverUrl =
-            hanimeSearchItem.select("img").getOrNull(1)?.absUrl("src")
-                .logIfParseNull(Parser::hanimeNormalItemVer2.name, "coverUrl") // coverUrl
+            hanimeSearchItem.select("img").getOrNull(0)?.absUrl("src")
+                .logIfParseNull(Parser::hanimeNormalItemVer2.name, "coverUrl")
         val videoCode =
-            hanimeSearchItem.previousElementSibling()?.absUrl("href")?.toVideoCode()
-                .logIfParseNull(Parser::hanimeNormalItemVer2.name, "videoCode") // videoCode
+            hanimeSearchItem.select("a").getOrNull(0)?.absUrl("href")?.toVideoCode()
+                .logIfParseNull(Parser::hanimeNormalItemVer2.name, "videoCode")
         if (title == null || coverUrl == null || videoCode == null) return null
-        val durationAndViews = hanimeSearchItem.select("div[class^=card-mobile-duration]")
-        val mDuration = durationAndViews.getOrNull(0)?.text() // 改了
-        val views = durationAndViews.getOrNull(2)?.text() // 改了
-        val artist = hanimeSearchItem.selectFirst("a.card-mobile-user")?.text()
+        val durationAndViews = hanimeSearchItem.select("div[class^=thumb-container]")
+        val duration = durationAndViews.select("div[class^=duration]").text()
+        val views = durationAndViews.select("div[class^=stat-item]").getOrNull(1)?.text()
+        val artistAndUploadTime = hanimeSearchItem.selectFirst("div.subtitle a, div.video-meta-data a")!!.text().trim()
+        var artist = ""
+        var uploadTime = ""
+        if (artistAndUploadTime.contains("•")) {
+            val parts = artistAndUploadTime.split("•").map { it.trim() }
+            artist = parts[0].trim()
+            uploadTime = parts[1].trim()
+        }
+        val infoBoxes = hanimeSearchItem.selectFirst(".stats-container .stat-item")
+        val fullText = infoBoxes?.text() ?: ""
+        val reviews = fullText.replace("thumb_up", "").trim()
         return HanimeInfo(
             title = title,
             coverUrl = coverUrl,
             videoCode = videoCode,
-            duration = mDuration.logIfParseNull(Parser::hanimeNormalItemVer2.name, "duration"),
-            artist = artist,
+            duration = duration.logIfParseNull(Parser::hanimeNormalItemVer2.name, "duration"),
+            currentArtist = artist,
             views = views.logIfParseNull(Parser::hanimeNormalItemVer2.name, "views"),
-            uploadTime = null,
+            uploadTime = uploadTime,
             genre = null,
-            itemType = HanimeInfo.NORMAL
+            itemType = HanimeInfo.NORMAL,
+            reviews = reviews
         )
     }
 
@@ -332,11 +280,11 @@ object Parser {
     ): PageLoadingState<MutableList<HanimeInfo>> {
         val hanimeSearchList = mutableListOf<HanimeInfo>()
         val hanimeSearchItems =
-            allContentsClass.select("div[class^=card-mobile-panel]")
+            allContentsClass.select("div[class^=horizontal-card]")
         if (hanimeSearchItems.isEmpty()) {
             return PageLoadingState.NoMoreData
         } else {
-            hanimeSearchItems.forEachStep2 { hanimeSearchItem ->
+            hanimeSearchItems.forEach { hanimeSearchItem ->
                 hanimeNormalItemVer2(hanimeSearchItem)?.let(hanimeSearchList::add)
             }
         }
@@ -501,10 +449,13 @@ object Parser {
                     }
                 }
             } else {
-                children?.forEachStep2 { each ->
-                    val item = each.select("div[class^=card-mobile-panel]")[0]
-                    hanimeNormalItemVer2(item)?.let(relatedAnimeList::add)
-                }
+                relatedAnimeList.addAll(relatedTabContent.extractHanimeInfo())
+//                children?.forEachStep2 { each ->
+//                    Log.i("children",each.toString())
+//                    relatedAnimeList.addAll(each.extractHanimeInfo())
+////                    val item = each.select("div[class^=video-item-container]")[0]
+////                    hanimeNormalItemVer2(item)?.let(relatedAnimeList::add)
+//                }
             }
         }
         Log.d("related_anime_list", relatedAnimeList.toString())
@@ -693,35 +644,8 @@ object Parser {
         val parseBody = Jsoup.parse(body).body()
         val csrfToken = parseBody.selectFirst("input[name=_token]")?.attr("value")
         val desc = parseBody.getElementById("playlist-show-description")?.ownText()
-
-        val myListHanimeList = mutableListOf<HanimeInfo>()
-        val allHanimeClass = parseBody.getElementsByClass("home-rows-videos-wrapper").firstOrNull()
-        allHanimeClass?.let {
-            if (allHanimeClass.childrenSize() == 0) {
-                return PageLoadingState.NoMoreData
-            }
-            allHanimeClass.children().forEach { videoElement ->
-                val title =
-                    videoElement.getElementsByClass("home-rows-videos-title")
-                        .firstOrNull()?.text()
-                        .throwIfParseNull(Parser::myListItems.name, "title")
-                val coverUrl =
-                    videoElement.select("img").let {
-                        it.getOrNull(1) ?: it.firstOrNull()
-                    }?.absUrl("src")
-                        .throwIfParseNull(Parser::myListItems.name, "coverUrl")
-                val videoCode =
-                    videoElement.getElementsByClass("playlist-show-links")
-                        .firstOrNull()?.absUrl("href")?.toVideoCode()
-                        .throwIfParseNull(Parser::myListItems.name, "videoCode")
-                myListHanimeList.add(
-                    HanimeInfo(
-                        title = title, coverUrl = coverUrl,
-                        videoCode = videoCode, itemType = HanimeInfo.SIMPLIFIED
-                    )
-                )
-            }
-        }.logIfParseNull(Parser::myListItems.name, "allHanimeClass_CSS")
+        val allHanimeClass = parseBody.getElementsByClass("horizontal-row").firstOrNull()
+        val myListHanimeList = allHanimeClass.extractHanimeInfo("div[class^=user-tab-item-wrapper]")
 
         return PageLoadingState.Success(
             MyListItems(
@@ -732,19 +656,36 @@ object Parser {
         )
     }
 
+    fun myPlayListItems(body: String): PageLoadingState<MyListItems<HanimeInfo>> {
+        val parseBody = Jsoup.parse(body).body()
+        val csrfToken = parseBody.selectFirst("input[name=_token]")?.attr("value")
+        val desc = parseBody.select("p.playlist-description").first()?.text()
+        val allHanimeClass = parseBody.getElementsByClass("playlist-video-list").firstOrNull()
+        val myListHanimeList = allHanimeClass.extractHanimeInfo("div[class^=user-tab-item-wrapper]")
+
+        return PageLoadingState.Success(
+            MyListItems(
+                myListHanimeList,
+                desc = desc,
+                csrfToken = csrfToken
+            )
+        )
+    }
+
+
     fun playlists(body: String): WebsiteState<Playlists> {
         val parseBody = Jsoup.parse(body).body()
         val csrfToken = parseBody.selectFirst("input[name=_token]")?.attr("value")
-        val lists = parseBody.select("div[class~=col-xs-12][class~=search-doujin-videos]")
+        val lists = parseBody.getElementsByClass("user-tab-item-wrapper")
         val playlists = mutableListOf<Playlists.Playlist>()
         lists.forEach {
-            val listCode = it.childOrNull(0)?.absUrl("href")?.substringAfter('=')
+            val listCode = it.selectFirst("a[class=video-link]")?.absUrl("href")?.substringAfter('=')
                 .throwIfParseNull(Parser::playlists.name, "listCode")
-            val listTitle = it.selectFirst("div[class=card-mobile-title]")?.ownText()
+            val listTitle = it.selectFirst("div[class=title]")?.ownText()
                 .throwIfParseNull(Parser::playlists.name, "listTitle")
-            val listTotal = it.selectFirst("div[class=card-mobile-duration]")?.text()
+            val listTotal = it.selectFirst("div[class=stat-item]")?.text()
             val formatedTotal = listTotal?.filter { char -> char.isDigit() }?.toIntOrNull() ?: -1
-            val coverUrl = it.select("div > div > img[style*='position: absolute']").first()?.attr("src")
+            val coverUrl = it.select("img[class=main-thumb]").first()?.attr("src")
             playlists += Playlists.Playlist(
                 listCode = listCode, title = listTitle, total = formatedTotal, coverUrl = coverUrl
             )
@@ -961,24 +902,29 @@ object Parser {
         }
 
         // 解析订阅视频
-        val videos = subscriptionsVideosRoot.select("div.col-xs-12.search-doujin-videos")
+        val videos = subscriptionsVideosRoot.select("div[class^=video-item-container]")
             .mapNotNull { videoCard ->
                 try {
                     val link =
-                        videoCard.selectFirst("a.overlay")?.absUrl("href") ?: return@mapNotNull null
+                        videoCard.selectFirst("a[class^=video-link]")?.absUrl("href") ?: return@mapNotNull null
                     val videoCode = Regex("""watch\?v=(\d+)""").find(link)?.groupValues?.get(1)
                         ?: return@mapNotNull null
-                    val coverHtml = videoCard.select("img")
-                    val coverUrl = coverHtml.getOrNull(1)?.absUrl("src") ?: return@mapNotNull null
-                    val title = videoCard.selectFirst("div.card-mobile-title")?.text()?.trim()
-                        ?: return@mapNotNull null
-                    val duration = videoCard.selectFirst("div.card-mobile-duration")?.text()?.trim()
-                    val infoBoxes = videoCard.select("div.card-mobile-duration")
-                        .map { it.text().trim() }
-                    val currentArtist = videoCard.select("a.card-mobile-user").firstOrNull()
-                        ?.text()?: ""
-                    val reviews = infoBoxes.find { it.contains("%") }?.substringAfter(" ")
-                    val views = infoBoxes.find { it.contains("次") }
+                    val coverUrl = videoCard.select("img[class^=main-thumb]").getOrNull(0)?.absUrl("src") ?: return@mapNotNull null
+                    val title = videoCard.attr("title").trim()
+                    val durationAndViews = videoCard.select("div[class^=thumb-container]")
+                    val duration = durationAndViews.select("div[class^=duration]").text()
+                    val views = durationAndViews.select("div[class^=stat-item]").getOrNull(1)?.text()
+                    val artistAndUploadTime = videoCard.select("div.subtitle a").text().trim()
+                    var artist = ""
+                    var uploadTime = ""
+                    if (artistAndUploadTime.contains("•")) {
+                        val parts = artistAndUploadTime.split("•").map { it.trim() }
+                        artist = parts[0].trim()
+                        uploadTime = parts[1].trim()
+                    }
+                    val infoBoxes = videoCard.selectFirst(".stats-container .stat-item")
+                    val fullText = infoBoxes?.text() ?: ""
+                    val reviews = fullText.replace("thumb_up", "").trim()
 
                     SubscriptionVideosItem(
                         title = title,
@@ -987,7 +933,8 @@ object Parser {
                         duration = duration,
                         views = views,
                         reviews = reviews,
-                        currentArtist = currentArtist
+                        currentArtist = artist,
+                        uploadTime = uploadTime
                     )
                 } catch (_: Exception) {
                     null
