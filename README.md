@@ -1,6 +1,6 @@
 # 🚫 请不要在任何公开平台宣传本软件
 
-本软件不接受任何形式的公开宣传。若出现公开宣传、搬运或引流，仓库维护者可能随时归档或隐藏仓库，并删除已编译的发行版。
+本项目来自[misaka10032w/Han1meViewer: hanime1的三方客户端，提高了一些播放体验](https://github.com/misaka10032w/Han1meViewer)分支，仅供个人部分功能性修改使用。请下载以上分支安装包使用。
 
 # 🌸 Han1meViewer
 
@@ -59,7 +59,7 @@ Han1meViewer 是一个使用 Kotlin 开发的 Android 客户端，用于浏览�
 
 ## 💬 参与讨论
 
-Telegram 群组：[https://t.me/Han1meViewer](https://t.me/Han1meViewer)
+Telegram 群组：[https://t.me/Han1meViewer](https://t.me/Han1meViewer) （非本人创建）
 
 ## ✨ 功能概览
 
@@ -225,11 +225,8 @@ DownloadScreen -> DownloadViewModel -> HanimeDownloadManagerV2 -> WorkManager Wo
    ```bash
    git clone https://github.com/misaka10032w/Han1meViewer.git
    ```
-
 2. 使用 Android Studio 打开项目根目录。
-
 3. 等待 Gradle Sync 完成。
-
 4. 选择 `debug` 变体运行到设备或模拟器。
 
 💻 常用命令：
