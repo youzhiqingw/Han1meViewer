@@ -15,6 +15,9 @@ abstract class WatchHistoryDao {
     @Query("SELECT * FROM WatchHistoryEntity ORDER BY watchDate DESC")
     abstract fun loadAll(): Flow<MutableList<WatchHistoryEntity>>
 
+    @Query("SELECT * FROM WatchHistoryEntity ORDER BY watchDate DESC")
+    abstract suspend fun getAll(): List<WatchHistoryEntity>
+
     @Delete
     abstract suspend fun delete(history: WatchHistoryEntity)
 
@@ -24,14 +27,23 @@ abstract class WatchHistoryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun insert(history: WatchHistoryEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract suspend fun insertAll(histories: List<WatchHistoryEntity>)
+
     @Update(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun update(history: WatchHistoryEntity)
 
     @Query("SELECT * FROM WatchHistoryEntity WHERE (`videoCode` = :videoCode) LIMIT 1")
     abstract suspend fun findBy(videoCode: String): WatchHistoryEntity?
 
+    @Query("SELECT * FROM WatchHistoryEntity WHERE videoCode IN (:videoCodes)")
+    abstract suspend fun findByVideoCodes(videoCodes: List<String>): List<WatchHistoryEntity>
+
     @Query("SELECT videoCode FROM WatchHistoryEntity WHERE videoCode IN (:codes)")
     abstract suspend fun getWatchedCodes(codes: List<String>): List<String>
+
+    @Query("SELECT * FROM WatchHistoryEntity ORDER BY watchDate DESC LIMIT :limit")
+    abstract suspend fun getRecentWatches(limit: Int): List<WatchHistoryEntity>
 
     @Query("UPDATE WatchHistoryEntity SET progress = :progress WHERE videoCode = :videoCode")
     abstract suspend fun updateProgress(videoCode: String, progress: Long)

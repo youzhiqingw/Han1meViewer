@@ -11,7 +11,9 @@ import com.yenaly.han1meviewer.FIREBASE_REALTIME_DATABASE
 import com.yenaly.han1meviewer.Preferences
 import com.yenaly.han1meviewer.R
 import com.yenaly.han1meviewer.SAVED_USER_ID
+import com.yenaly.han1meviewer.logout
 import com.yenaly.han1meviewer.logic.DatabaseRepo
+import com.yenaly.han1meviewer.logic.exception.LoginStateExpiredException
 import com.yenaly.han1meviewer.logic.NetworkRepo
 import com.yenaly.han1meviewer.logic.entity.HKeyframeEntity
 import com.yenaly.han1meviewer.logic.entity.WatchHistoryEntity
@@ -21,6 +23,7 @@ import com.yenaly.han1meviewer.logic.state.WebsiteState
 import com.yenaly.han1meviewer.ui.viewmodel.AppViewModel.csrfToken
 import com.yenaly.yenaly_libs.base.YenalyViewModel
 import com.yenaly.yenaly_libs.utils.getSpValue
+import com.yenaly.yenaly_libs.utils.putSpValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -43,6 +46,8 @@ class MainViewModel(application: Application) : YenalyViewModel(application) {
     private val _announcements = MutableLiveData<List<Announcement>>()
     val announcements: LiveData<List<Announcement>> = _announcements
     private val database = FirebaseDatabase.getInstance(FIREBASE_REALTIME_DATABASE)
+    private val _sessionExpiredMessage = MutableSharedFlow<String>()
+    val sessionExpiredMessage = _sessionExpiredMessage
 
     init {
         viewModelScope.launch {
@@ -53,6 +58,12 @@ class MainViewModel(application: Application) : YenalyViewModel(application) {
     fun getHomePage() {
         viewModelScope.launch {
             NetworkRepo.getHomePage().collect { homePage ->
+                if (homePage is WebsiteState.Error && homePage.throwable is LoginStateExpiredException) {
+                    logout()
+                    _sessionExpiredMessage.emit(
+                        homePage.throwable.message ?: application.getString(R.string.login_state_expired)
+                    )
+                }
                 if (homePage is WebsiteState.Success) {
                     csrfToken = homePage.info.csrfToken
                     homePage.info.userId.takeIf { it.isNotEmpty() }?.let { userId ->
@@ -116,7 +127,10 @@ class MainViewModel(application: Application) : YenalyViewModel(application) {
     fun loadAnnouncements(forceRefresh: Boolean = false) {
         val lastDismissTime = getSpValue("last_dismiss_time",0L,"setting_pref")
         val shouldShowAnno = System.currentTimeMillis() - lastDismissTime > 24*60*60*1000L
-        if (!shouldShowAnno) return
+        if (!shouldShowAnno) {
+            _announcements.value = emptyList()
+            return
+        }
         if (_announcements.value != null && !forceRefresh) return
 
         val announcementsRef = database.getReference("announcements")
@@ -139,5 +153,14 @@ class MainViewModel(application: Application) : YenalyViewModel(application) {
             Log.e("Announcement", "读取失败: ${e.message}")
             _announcements.postValue(emptyList())
         }
+    }
+
+    fun dismissAnnouncements() {
+        putSpValue(
+            "last_dismiss_time",
+            System.currentTimeMillis(),
+            "setting_pref"
+        )
+        _announcements.value = emptyList()
     }
 }

@@ -12,15 +12,24 @@ import com.yenaly.han1meviewer.logic.model.MyListItems
 import com.yenaly.han1meviewer.logic.model.Playlists
 import com.yenaly.han1meviewer.logic.state.PageLoadingState
 import com.yenaly.han1meviewer.logic.state.WebsiteState
+import com.yenaly.han1meviewer.ui.screen.home.myplaylist.PlaylistUiState
 import com.yenaly.han1meviewer.ui.viewmodel.AppViewModel.csrfToken
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+
+data class PlaylistSheetScrollState(
+    val firstVisibleItemIndex: Int = 0,
+    val firstVisibleItemScrollOffset: Int = 0,
+)
 
 class MyPlayListViewModelV2 : ViewModel() {
 
@@ -28,7 +37,6 @@ class MyPlayListViewModelV2 : ViewModel() {
     val myPlaylistsFlow: StateFlow<WebsiteState<Playlists>> = _myPlaylistsFlow.asStateFlow()
 
     private val _cachedMyPlayList = MutableStateFlow<List<Playlists.Playlist>>(emptyList())
-    val cachedMyPlayList: StateFlow<List<Playlists.Playlist>> = _cachedMyPlayList.asStateFlow()
 
     private val _playlistStateFlow =
         MutableStateFlow<PageLoadingState<MyListItems<HanimeInfo>>>(PageLoadingState.Loading)
@@ -40,16 +48,40 @@ class MyPlayListViewModelV2 : ViewModel() {
     val playlistFlow = _playlistFlow.asStateFlow()
     private val _currentListInfo = MutableStateFlow<Pair<String, String>?>(null)
     val currentListInfo = _currentListInfo.asStateFlow()
+    private val _playlistSheetScrollStates = MutableStateFlow<Map<String, PlaylistSheetScrollState>>(emptyMap())
 
 
     private val _refreshCompleted = MutableSharedFlow<Unit>()
     val refreshCompleted: SharedFlow<Unit> = _refreshCompleted
 
     private val _showSheet = MutableStateFlow(false)
-    val showSheet: StateFlow<Boolean> = _showSheet.asStateFlow()
     var currentPage = 1
     var isLoadingMore = false
         private set
+
+    var playlistPage = 1
+    private val _isLoadingMorePlaylists = MutableStateFlow(false)
+    private val _noMorePlaylists = MutableStateFlow(false)
+
+    /** 对外暴露的唯一主页面 UI 状态流。 */
+    val mainUiState: StateFlow<PlaylistUiState> = combine(
+        _cachedMyPlayList,
+        _showSheet,
+        _currentListInfo,
+        _isLoadingMorePlaylists,
+        _noMorePlaylists,
+    ) { array ->
+        @Suppress("UNCHECKED_CAST")
+        PlaylistUiState(
+            playlists = array[0] as List<Playlists.Playlist>,
+            showSheet = array[1] as Boolean,
+            selectedListCode = (array[2] as Pair<String, String>?)?.first ?: "",
+            selectedListTitle = (array[2] as Pair<String, String>?)?.second ?: "",
+            isLoadingMore = array[3] as Boolean,
+            noMorePlaylists = array[4] as Boolean,
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), PlaylistUiState())
+
     fun setShowSheet(value: Boolean) {
         _showSheet.value = value
     }
@@ -57,15 +89,66 @@ class MyPlayListViewModelV2 : ViewModel() {
         _currentListInfo.value = code to title
     }
 
+    fun updatePlaylistSheetScrollState(
+        listCode: String,
+        firstVisibleItemIndex: Int,
+        firstVisibleItemScrollOffset: Int,
+    ) {
+        if (listCode.isBlank()) return
+        _playlistSheetScrollStates.update { prev ->
+            prev + (
+                listCode to PlaylistSheetScrollState(
+                    firstVisibleItemIndex = firstVisibleItemIndex,
+                    firstVisibleItemScrollOffset = firstVisibleItemScrollOffset,
+                )
+            )
+        }
+    }
+
+    fun getPlaylistSheetScrollState(listCode: String): PlaylistSheetScrollState {
+        return _playlistSheetScrollStates.value[listCode] ?: PlaylistSheetScrollState()
+    }
+
     // 加载所有playlist
     fun loadMyPlayList(page: Int = 1, forceReload: Boolean = false) {
+        Log.i("current_page",page.toString())
+        if (page > 1 && (_isLoadingMorePlaylists.value || _noMorePlaylists.value)) return
+        if (page == 1 || forceReload) {
+            playlistPage = 1
+            _noMorePlaylists.value = false
+        }
+        if (page > 1) {
+            _isLoadingMorePlaylists.value = true
+        }
         val userId = Preferences.savedUserId
         viewModelScope.launch {
             NetworkRepo.getPlaylists(page, userId).collect { state ->
-                _myPlaylistsFlow.value = state
-                if (state is WebsiteState.Success) {
-                    _cachedMyPlayList.value = state.info.playlists
-                    _refreshCompleted.emit(Unit)
+                when (state) {
+                    is WebsiteState.Loading -> {
+                        if (page == 1 || forceReload) {
+                            _myPlaylistsFlow.value = state
+                        }
+                    }
+                    is WebsiteState.Error -> {
+                        _myPlaylistsFlow.value = state
+                        _isLoadingMorePlaylists.value = false
+                    }
+                    is WebsiteState.Success -> {
+                        val newList = state.info.playlists
+                        if (page == 1 || forceReload) {
+                            _cachedMyPlayList.value = newList
+                        } else {
+                            _cachedMyPlayList.value = (_cachedMyPlayList.value + newList)
+                                .distinctBy(Playlists.Playlist::listCode)
+                            playlistPage = page
+                        }
+                        if (newList.isEmpty()) {
+                            _noMorePlaylists.value = true
+                        }
+                        _myPlaylistsFlow.value = state
+                        _isLoadingMorePlaylists.value = false
+                        _refreshCompleted.emit(Unit)
+                    }
                 }
             }
         }
@@ -98,7 +181,8 @@ class MyPlayListViewModelV2 : ViewModel() {
                             _playlistStateFlow.value = PageLoadingState.NoMoreData
                         } else {
                             _playlistFlow.update { prevList ->
-                                if (page == 1 || refresh) newList else prevList + newList
+                                val baseList = if (page == 1 || refresh) emptyList() else prevList
+                                (baseList + newList).distinctBy(HanimeInfo::videoCode)
                             }
                             _playlistStateFlow.value = PageLoadingState.Success(state.info)
                         }

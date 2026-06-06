@@ -14,6 +14,7 @@ import com.yenaly.yenaly_libs.utils.unsafeLazy
 import okhttp3.Cache
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import okhttp3.Protocol
 import retrofit2.Retrofit
 import java.io.File
 import java.util.concurrent.TimeUnit
@@ -33,6 +34,8 @@ object ServiceCreator {
     private val downloadSpeedLimitInterceptor by unsafeLazy {
         SpeedLimitInterceptor(maxSpeed = Preferences.downloadSpeedLimit)
     }
+
+    private val dns = HDns()
 
     inline fun <reified T> create(baseUrl: String): T = Retrofit.Builder()
         .baseUrl(baseUrl)
@@ -69,8 +72,10 @@ object ServiceCreator {
     private fun buildDownloadClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(5, TimeUnit.SECONDS)
+            .protocols(listOf(Protocol.HTTP_1_1))
             .addInterceptor(UserAgentInterceptor)
             .addInterceptor(downloadSpeedLimitInterceptor)
+            .dns(dns)
             .build()
     }
 
@@ -86,7 +91,7 @@ object ServiceCreator {
             .cache(cache)
             .cookieJar(HCookieJar())
             .proxySelector(HProxySelector())
-            .dns(HDns())
+            .dns(dns)
             .build()
     }
 

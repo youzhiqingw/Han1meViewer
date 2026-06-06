@@ -1,8 +1,10 @@
 package com.yenaly.han1meviewer.ui.viewmodel
 
 import android.app.Application
-import android.os.Parcelable
 import android.util.Log
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,7 +23,9 @@ import com.yenaly.han1meviewer.logic.model.HanimeVideo
 import com.yenaly.han1meviewer.logic.state.VideoLoadingState
 import com.yenaly.han1meviewer.logic.state.WebsiteState
 import com.yenaly.han1meviewer.ui.viewmodel.AppViewModel.csrfToken
+import com.yenaly.han1meviewer.util.TagLocalizer
 import com.yenaly.yenaly_libs.base.YenalyViewModel
+import com.yenaly.yenaly_libs.utils.dp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -44,22 +48,46 @@ import kotlin.math.abs
  */
 class VideoViewModel(application: Application) : YenalyViewModel(application) {
 
+    data class IntroScrollState(
+        val firstVisibleItemIndex: Int = 0,
+        val firstVisibleItemScrollOffset: Int = 0,
+    )
+
+    data class VideoHostUiState(
+        val selectedTabIndex: Int = 0,
+        val isAppBarExpanded: Boolean = true,
+        val appBarBottomInsetPx: Int = 0,
+        val commentBadgeCount: Int = 0,
+        val isScrollDisabled: Boolean = false,
+        val isInPipMode: Boolean = false,
+        val playerHeightDp: Int = 250.dp,
+    )
+
+    private data class VideoIntroUiState(
+        val playlistFirstVisibleIndex: Int? = null,
+        val cachedVideo: HanimeVideo? = null,
+        val introRestored: Boolean = false,
+        val scrollState: IntroScrollState = IntroScrollState(),
+        val selectedTabIndex: Int = 0,
+        val isAppBarExpanded: Boolean = true,
+    )
+
     companion object {
         /**
          * 最小的 HKeyframe 保存間隔，暫定 5s
          */
         const val MIN_H_KEYFRAME_SAVE_INTERVAL = 5_000 // ms
     }
-    val horizontalScrollPositions = mutableMapOf<String, Int>()
+    private val videoIntroUiStateMap = mutableMapOf<String, VideoIntroUiState>()
     var videoCode: String = EMPTY_STRING
         set(value) {
             field = value
-            // 在這裏初始化所有需要videoCode的方法
-            getHanimeVideo(value)
         }
 
     var fromDownload = false
 
+    // 平板横屏模式下，左栏不显示相关视频（右栏已显示）
+    var hideRelatedInIntro by mutableStateOf(false)
     var hKeyframes: HKeyframeEntity? = null
     private val _videoList = MutableLiveData<List<HanimeInfo>>()
     val videoList: LiveData<List<HanimeInfo>> = _videoList
@@ -69,15 +97,108 @@ class VideoViewModel(application: Application) : YenalyViewModel(application) {
 
     private val _hanimeVideoFlow = MutableStateFlow<HanimeVideo?>(null)
     val hanimeVideoFlow = _hanimeVideoFlow.asStateFlow()
+    private val _videoHostUiStateFlow = MutableStateFlow(VideoHostUiState())
+    val videoHostUiStateFlow = _videoHostUiStateFlow.asStateFlow()
 
-    // 保存当前 videoCode及请求数据以及对应的滚动位置
-    val scrollPositionMap = mutableMapOf<String, Parcelable?>()
-    val videoIntroDataMap = mutableMapOf<String, HanimeVideo?>()
-    // 表示已经还原过的数据
-    val videoIntroRestoredSet = mutableSetOf<String>()
     fun setVideoList(list: List<HanimeInfo>) {
         _videoList.value = list
     }
+
+    fun getPlaylistFirstVisibleIndex(videoCode: String): Int? {
+        return videoIntroUiStateMap[videoCode]?.playlistFirstVisibleIndex
+    }
+
+    fun setPlaylistFirstVisibleIndex(videoCode: String, index: Int) {
+        updateVideoIntroUiState(videoCode) { copy(playlistFirstVisibleIndex = index) }
+    }
+
+    fun setVideoIntroCachedData(videoCode: String, video: HanimeVideo?) {
+        updateVideoIntroUiState(videoCode) {
+            copy(
+                cachedVideo = video,
+                introRestored = video != null,
+            )
+        }
+    }
+
+    fun clearVideoIntroRestoredFlag(videoCode: String) {
+        updateVideoIntroUiState(videoCode) { copy(introRestored = false) }
+    }
+
+    fun getIntroScrollState(videoCode: String): IntroScrollState {
+        return videoIntroUiStateMap[videoCode]?.scrollState ?: IntroScrollState()
+    }
+
+    fun getSelectedTabIndex(videoCode: String): Int {
+        return _videoHostUiStateFlow.value.selectedTabIndex
+    }
+
+    fun setSelectedTabIndex(videoCode: String, selectedTabIndex: Int) {
+        _videoHostUiStateFlow.update { it.copy(selectedTabIndex = selectedTabIndex) }
+        updateVideoIntroUiState(videoCode) { copy(selectedTabIndex = selectedTabIndex) }
+    }
+
+    fun isAppBarExpanded(videoCode: String): Boolean {
+        return _videoHostUiStateFlow.value.isAppBarExpanded
+    }
+
+    fun setAppBarExpanded(videoCode: String, isExpanded: Boolean) {
+        _videoHostUiStateFlow.update { it.copy(isAppBarExpanded = isExpanded) }
+        updateVideoIntroUiState(videoCode) { copy(isAppBarExpanded = isExpanded) }
+    }
+
+    fun setAppBarBottomInsetPx(appBarBottomInsetPx: Int) {
+        _videoHostUiStateFlow.update { it.copy(appBarBottomInsetPx = appBarBottomInsetPx) }
+    }
+
+    fun setCommentBadgeCount(commentBadgeCount: Int) {
+        _videoHostUiStateFlow.update { it.copy(commentBadgeCount = commentBadgeCount) }
+    }
+
+    fun setScrollDisabled(isScrollDisabled: Boolean) {
+        _videoHostUiStateFlow.update { it.copy(isScrollDisabled = isScrollDisabled) }
+    }
+
+    fun setPipMode(isInPipMode: Boolean) {
+        _videoHostUiStateFlow.update { it.copy(isInPipMode = isInPipMode) }
+    }
+
+    fun setPlayerHeightDp(playerHeightDp: Int) {
+        _videoHostUiStateFlow.update { it.copy(playerHeightDp = playerHeightDp) }
+    }
+
+    fun setIntroScrollState(
+        videoCode: String,
+        firstVisibleItemIndex: Int,
+        firstVisibleItemScrollOffset: Int,
+    ) {
+        updateVideoIntroUiState(videoCode) {
+            copy(
+                scrollState = IntroScrollState(
+                    firstVisibleItemIndex = firstVisibleItemIndex,
+                    firstVisibleItemScrollOffset = firstVisibleItemScrollOffset,
+                )
+            )
+        }
+    }
+
+    private inline fun updateVideoIntroUiState(
+        videoCode: String,
+        transform: VideoIntroUiState.() -> VideoIntroUiState,
+    ) {
+        val current = videoIntroUiStateMap[videoCode] ?: VideoIntroUiState()
+        videoIntroUiStateMap[videoCode] = current.transform()
+    }
+
+    fun resolveTagSearchKey(tag: String): String = TagLocalizer.resolveSearchKey(tag)
+
+    private fun HanimeVideo.withLocalizedLabels(): HanimeVideo {
+        return copy(
+            tags = TagLocalizer.localizeTags(tags),
+            artist = artist?.copy(genre = TagLocalizer.localizeTag(artist.genre)),
+        )
+    }
+
     fun buildLocalPlayInfo(localPath: String? = null): HanimeVideo {
         val resolution = HanimeResolution()
         resolution.parseResolution(
@@ -98,13 +219,12 @@ class VideoViewModel(application: Application) : YenalyViewModel(application) {
     }
     fun getHanimeVideo(videoCode: String,localUri: String? = null) {
         if (videoCode == "-1"){
-            _hanimeVideoStateFlow.value = VideoLoadingState.Success(
-                buildLocalPlayInfo(localUri)
-            )
-            _hanimeVideoFlow.value = buildLocalPlayInfo(localUri)
+            val localPlayInfo = buildLocalPlayInfo(localUri)
+            _hanimeVideoStateFlow.value = VideoLoadingState.Success(localPlayInfo)
+            _hanimeVideoFlow.value = localPlayInfo
             return
         }
-        if (videoIntroRestoredSet.contains(videoCode)) return
+        if (videoIntroUiStateMap[videoCode]?.introRestored == true) return
         viewModelScope.launch {
             val flow = if (fromDownload) {
                 HCacheManager.loadHanimeVideoInfo(application,videoCode).map { hv ->
@@ -118,18 +238,38 @@ class VideoViewModel(application: Application) : YenalyViewModel(application) {
                 NetworkRepo.getHanimeVideo(videoCode)
             }
             flow.collect { state ->
-                _hanimeVideoStateFlow.value = state
-                if (state is VideoLoadingState.Success) {
-                    _hanimeVideoFlow.update { state.info }
-                    csrfToken = state.info.csrfToken
+                val emitState = when {
+                    localUri != null && state is VideoLoadingState.Success -> {
+                        val resolution = HanimeResolution()
+                        resolution.parseResolution(
+                            HanimeResolution.RES_1080P,
+                            resLink = localUri,
+                            type = "video/mp4"
+                        )
+                        VideoLoadingState.Success(
+                            state.info.copy(videoUrls = resolution.toResolutionLinkMap())
+                                .withLocalizedLabels()
+                        )
+                    }
+
+                    state is VideoLoadingState.Success -> {
+                        VideoLoadingState.Success(state.info.withLocalizedLabels())
+                    }
+
+                    else -> state
+                }
+                _hanimeVideoStateFlow.value = emitState
+                if (emitState is VideoLoadingState.Success) {
+                    _hanimeVideoFlow.update { emitState.info }
+                    csrfToken = emitState.info.csrfToken
                 }
             }
         }
     }
 
     fun restoreFromCacheIfExists(code: String): Boolean {
-        val cached = videoIntroDataMap[code] ?: return false
-        videoIntroRestoredSet.add(code) //
+        val cached = videoIntroUiStateMap[code]?.cachedVideo?.withLocalizedLabels() ?: return false
+        updateVideoIntroUiState(code) { copy(introRestored = true) }
         _hanimeVideoFlow.value = cached
         _hanimeVideoStateFlow.value = VideoLoadingState.Success(cached)
         return true
@@ -164,11 +304,29 @@ class VideoViewModel(application: Application) : YenalyViewModel(application) {
             ).collect { state ->
                 _addToFavVideoFlow.emit(state)
                 if (likeStatus) {
-                    // 代表移除喜爱
-                    _hanimeVideoFlow.update { it?.decFavTime() }
+                    _hanimeVideoFlow.update { it?.rateVideo(isPositive = true) }
                 } else {
-                    // 代表添加喜爱
-                    _hanimeVideoFlow.update { it?.incFavTime() }
+                    _hanimeVideoFlow.update { it?.rateVideo(isPositive = true) }
+                }
+            }
+        }
+    }
+
+    fun rateVideo(video: HanimeVideo, isPositive: Boolean) {
+        viewModelScope.launch {
+            NetworkRepo.rateVideo(
+                videoCode = videoCode,
+                isPositive = isPositive,
+                likeStatus = video.isFav,
+                unlikeStatus = video.isUnlike,
+                likesCount = video.favTimes ?: 0,
+                unlikesCount = video.unlikesCount ?: 0,
+                currentUserId = video.currentUserId,
+                token = csrfToken,
+            ).collect { state ->
+                _addToFavVideoFlow.emit(state)
+                if (state is WebsiteState.Success) {
+                    _hanimeVideoFlow.update { it?.rateVideo(isPositive) }
                 }
             }
         }
