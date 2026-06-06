@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.component
+package com.wuwei.han1meviewer.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 
 /**
  * 底部抽屉拖拽手柄。

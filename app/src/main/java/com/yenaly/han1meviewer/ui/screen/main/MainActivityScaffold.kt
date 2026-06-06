@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.main
+package com.wuwei.han1meviewer.ui.screen.main
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.animateFloatAsState
@@ -33,9 +33,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.navigation.main.MainDrawerDestination
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.navigation.main.MainDrawerDestination
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 import kotlinx.coroutines.launch
 
 @Composable

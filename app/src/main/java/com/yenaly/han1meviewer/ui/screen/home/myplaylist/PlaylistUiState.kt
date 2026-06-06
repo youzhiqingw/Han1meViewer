@@ -1,8 +1,8 @@
-package com.yenaly.han1meviewer.ui.screen.home.myplaylist
+package com.wuwei.han1meviewer.ui.screen.home.myplaylist
 
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.logic.model.Playlists
-import com.yenaly.han1meviewer.logic.state.PageLoadingState
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.model.Playlists
+import com.wuwei.han1meviewer.logic.state.PageLoadingState
 
 /**
  * 播放列表页面 UI 状态。

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.videogrid
+package com.wuwei.han1meviewer.ui.screen.home.videogrid
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,12 +9,12 @@ import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.ui.component.LoadMoreFooter
-import com.yenaly.han1meviewer.ui.component.VideoCardItem
-import com.yenaly.han1meviewer.ui.component.lazy.LazyVerticalGrid
-import com.yenaly.han1meviewer.ui.screen.rememberVideoGridColumns
-import com.yenaly.han1meviewer.ui.theme.SpacingNormal
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.ui.component.LoadMoreFooter
+import com.wuwei.han1meviewer.ui.component.VideoCardItem
+import com.wuwei.han1meviewer.ui.component.lazy.LazyVerticalGrid
+import com.wuwei.han1meviewer.ui.screen.rememberVideoGridColumns
+import com.wuwei.han1meviewer.ui.theme.SpacingNormal
 
 /**
  * 视频网格 Content 层。纯 UI，不持有 ViewModel。

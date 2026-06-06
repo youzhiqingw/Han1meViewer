@@ -1,9 +1,9 @@
-package com.yenaly.han1meviewer.logic.model
+package com.wuwei.han1meviewer.logic.model
 
 import android.os.Parcelable
 import android.util.SparseArray
 import androidx.core.util.valueIterator
-import com.yenaly.han1meviewer.R
+import com.wuwei.han1meviewer.R
 import com.yenaly.yenaly_libs.utils.LanguageHelper
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName

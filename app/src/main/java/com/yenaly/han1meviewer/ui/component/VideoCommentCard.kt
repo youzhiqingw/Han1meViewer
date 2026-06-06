@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.component
+package com.wuwei.han1meviewer.ui.component
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
@@ -29,10 +29,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.VideoComments
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.util.DisplayTextLocalizer
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.VideoComments
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.util.DisplayTextLocalizer
 
 /**
  * 视频评论卡片组件。

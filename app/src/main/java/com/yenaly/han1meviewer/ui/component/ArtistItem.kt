@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.component
+package com.wuwei.han1meviewer.ui.component
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
@@ -18,11 +18,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.SubscriptionItem
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.preview.fakeArtists
-import com.yenaly.han1meviewer.ui.screen.RetryableImage
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.SubscriptionItem
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.fakeArtists
+import com.wuwei.han1meviewer.ui.screen.RetryableImage
 
 
 /**

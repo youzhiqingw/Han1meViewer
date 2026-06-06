@@ -1,7 +1,7 @@
-package com.yenaly.han1meviewer.ui.view.video
+package com.wuwei.han1meviewer.ui.view.video
 
 import cn.jzvd.JZDataSource
-import com.yenaly.han1meviewer.ResolutionLinkMap
+import com.wuwei.han1meviewer.ResolutionLinkMap
 
 class HanimeDataSource : JZDataSource {
 

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.entity
+package com.wuwei.han1meviewer.logic.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

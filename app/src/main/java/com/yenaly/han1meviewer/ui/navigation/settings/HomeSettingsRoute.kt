@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.navigation.settings
+package com.wuwei.han1meviewer.ui.navigation.settings
 
 import android.content.Context
 import android.os.Build
@@ -43,28 +43,28 @@ import androidx.core.text.parseAsHtml
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.firebase.Firebase
 import com.google.firebase.analytics.analytics
-import com.yenaly.han1meviewer.BuildConfig
-import com.yenaly.han1meviewer.HanimeConstants
-import com.yenaly.han1meviewer.HA1_GITHUB_FORUM_URL
-import com.yenaly.han1meviewer.HA1_GITHUB_ISSUE_URL
-import com.yenaly.han1meviewer.HanimeApplication
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.BackupManager
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.ui.activity.MainActivity
-import com.yenaly.han1meviewer.ui.component.ConfirmDialog
-import com.yenaly.han1meviewer.ui.screen.settings.HomeSettingsScreen
-import com.yenaly.han1meviewer.ui.screen.settings.dialog.LicenseDialog
-import com.yenaly.han1meviewer.ui.screen.settings.model.HomeSettingsUiState
-import com.yenaly.han1meviewer.ui.screen.home.homepage.defaultHomeCategoryPreferenceItems
-import com.yenaly.han1meviewer.ui.screen.home.homepage.hiddenHomeCategoryKeys
-import com.yenaly.han1meviewer.ui.screen.home.homepage.homeCategoryOrder
-import com.yenaly.han1meviewer.ui.screen.home.homepage.saveHomeCategoryPreferences
-import com.yenaly.han1meviewer.ui.theme.ThemeColorPreset
-import com.yenaly.han1meviewer.ui.viewmodel.AppViewModel
-import com.yenaly.han1meviewer.util.ThemeUtils
-import com.yenaly.han1meviewer.util.showToast
+import com.wuwei.han1meviewer.BuildConfig
+import com.wuwei.han1meviewer.HanimeConstants
+import com.wuwei.han1meviewer.HA1_GITHUB_FORUM_URL
+import com.wuwei.han1meviewer.HA1_GITHUB_ISSUE_URL
+import com.wuwei.han1meviewer.HanimeApplication
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.BackupManager
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.ui.activity.MainActivity
+import com.wuwei.han1meviewer.ui.component.ConfirmDialog
+import com.wuwei.han1meviewer.ui.screen.settings.HomeSettingsScreen
+import com.wuwei.han1meviewer.ui.screen.settings.dialog.LicenseDialog
+import com.wuwei.han1meviewer.ui.screen.settings.model.HomeSettingsUiState
+import com.wuwei.han1meviewer.ui.screen.home.homepage.defaultHomeCategoryPreferenceItems
+import com.wuwei.han1meviewer.ui.screen.home.homepage.hiddenHomeCategoryKeys
+import com.wuwei.han1meviewer.ui.screen.home.homepage.homeCategoryOrder
+import com.wuwei.han1meviewer.ui.screen.home.homepage.saveHomeCategoryPreferences
+import com.wuwei.han1meviewer.ui.theme.ThemeColorPreset
+import com.wuwei.han1meviewer.ui.viewmodel.AppViewModel
+import com.wuwei.han1meviewer.util.ThemeUtils
+import com.wuwei.han1meviewer.util.showToast
 import com.yenaly.yenaly_libs.ActivityManager
 import com.yenaly.yenaly_libs.utils.applicationContext
 import com.yenaly.yenaly_libs.utils.browse
@@ -149,22 +149,22 @@ fun HomeSettingsRouteScreen(
             LauncherItem(
                 name = hanimeAppName,
                 iconRes = R.drawable.ic_launcher_new,
-                alias = "com.yenaly.han1meviewer.LauncherAliasDefault",
+                alias = "com.wuwei.han1meviewer.LauncherAliasDefault",
             ),
             LauncherItem(
                 name = fakeNameCalc,
                 iconRes = R.drawable.ic_launcher_calc,
-                alias = "com.yenaly.han1meviewer.LauncherFakeCalc",
+                alias = "com.wuwei.han1meviewer.LauncherFakeCalc",
             ),
             LauncherItem(
                 name = fakeNameCornhub,
                 iconRes = R.drawable.ic_launcher_cornhub,
-                alias = "com.yenaly.han1meviewer.LauncherFakeCornhub",
+                alias = "com.wuwei.han1meviewer.LauncherFakeCornhub",
             ),
             LauncherItem(
                 name = fakeNameXXT,
                 iconRes = R.drawable.ic_launcher_xxt,
-                alias = "com.yenaly.han1meviewer.LauncherFakeXxt",
+                alias = "com.wuwei.han1meviewer.LauncherFakeXxt",
             ),
         )
     }

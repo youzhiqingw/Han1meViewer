@@ -1,11 +1,11 @@
-package com.yenaly.han1meviewer.logic.network
+package com.wuwei.han1meviewer.logic.network
 
-import com.yenaly.han1meviewer.HANIME_BASE_URL
-import com.yenaly.han1meviewer.logic.network.service.HGitHubService
-import com.yenaly.han1meviewer.logic.network.service.HanimeBaseService
-import com.yenaly.han1meviewer.logic.network.service.HanimeCommentService
-import com.yenaly.han1meviewer.logic.network.service.HanimeMyListService
-import com.yenaly.han1meviewer.logic.network.service.HanimeSubscriptionService
+import com.wuwei.han1meviewer.HANIME_BASE_URL
+import com.wuwei.han1meviewer.logic.network.service.HGitHubService
+import com.wuwei.han1meviewer.logic.network.service.HanimeBaseService
+import com.wuwei.han1meviewer.logic.network.service.HanimeCommentService
+import com.wuwei.han1meviewer.logic.network.service.HanimeMyListService
+import com.wuwei.han1meviewer.logic.network.service.HanimeSubscriptionService
 
 /**
  * @project Hanime1

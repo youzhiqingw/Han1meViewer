@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.dailycheckin
+package com.wuwei.han1meviewer.ui.screen.home.dailycheckin
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -55,10 +55,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import coil3.compose.AsyncImage
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.entity.CheckInRecordEntity
-import com.yenaly.han1meviewer.logic.entity.CheckInType
-import com.yenaly.han1meviewer.logic.entity.WatchHistoryEntity
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.entity.CheckInRecordEntity
+import com.wuwei.han1meviewer.logic.entity.CheckInType
+import com.wuwei.han1meviewer.logic.entity.WatchHistoryEntity
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter

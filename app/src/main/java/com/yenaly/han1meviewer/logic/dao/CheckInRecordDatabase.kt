@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.dao
+package com.wuwei.han1meviewer.logic.dao
 
 import android.content.Context
 import androidx.room.Database
@@ -6,8 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.yenaly.han1meviewer.logic.entity.CheckInRecordEntity
-import com.yenaly.han1meviewer.logic.entity.SideDishEntity
+import com.wuwei.han1meviewer.logic.entity.CheckInRecordEntity
+import com.wuwei.han1meviewer.logic.entity.SideDishEntity
 
 @Database(
     entities = [CheckInRecordEntity::class, SideDishEntity::class],

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.search
+package com.wuwei.han1meviewer.ui.screen.search
 
 import android.util.SparseArray
 import androidx.compose.foundation.layout.Arrangement
@@ -46,21 +46,21 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.util.isNotEmpty
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.SEARCH_YEAR_RANGE_END
-import com.yenaly.han1meviewer.SEARCH_YEAR_RANGE_START
-import com.yenaly.han1meviewer.logic.DatabaseRepo
-import com.yenaly.han1meviewer.logic.entity.HanimeAdvancedSearchHistoryEntity
-import com.yenaly.han1meviewer.logic.model.SearchOption
-import com.yenaly.han1meviewer.logic.model.SearchOption.Companion.flatten
-import com.yenaly.han1meviewer.logic.model.SearchOption.Companion.get
-import com.yenaly.han1meviewer.ui.component.SelectableTag
-import com.yenaly.han1meviewer.ui.component.SettingChoiceItem
-import com.yenaly.han1meviewer.ui.component.lazy.LazyColumn
-import com.yenaly.han1meviewer.ui.component.lazy.LazyVerticalGrid
-import com.yenaly.han1meviewer.ui.model.AdvancedSearchDialogState
-import com.yenaly.han1meviewer.ui.model.SearchScopeSection
-import com.yenaly.han1meviewer.ui.viewmodel.SearchViewModel
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.SEARCH_YEAR_RANGE_END
+import com.wuwei.han1meviewer.SEARCH_YEAR_RANGE_START
+import com.wuwei.han1meviewer.logic.DatabaseRepo
+import com.wuwei.han1meviewer.logic.entity.HanimeAdvancedSearchHistoryEntity
+import com.wuwei.han1meviewer.logic.model.SearchOption
+import com.wuwei.han1meviewer.logic.model.SearchOption.Companion.flatten
+import com.wuwei.han1meviewer.logic.model.SearchOption.Companion.get
+import com.wuwei.han1meviewer.ui.component.SelectableTag
+import com.wuwei.han1meviewer.ui.component.SettingChoiceItem
+import com.wuwei.han1meviewer.ui.component.lazy.LazyColumn
+import com.wuwei.han1meviewer.ui.component.lazy.LazyVerticalGrid
+import com.wuwei.han1meviewer.ui.model.AdvancedSearchDialogState
+import com.wuwei.han1meviewer.ui.model.SearchScopeSection
+import com.wuwei.han1meviewer.ui.viewmodel.SearchViewModel
 import kotlinx.coroutines.launch
 
 private val advancedSearchTagScopeResIds = listOf(

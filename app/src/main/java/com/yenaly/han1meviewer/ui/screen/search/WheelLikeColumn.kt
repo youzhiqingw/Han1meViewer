@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.search
+package com.wuwei.han1meviewer.ui.screen.search
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,8 +24,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.ui.component.lazy.LazyColumn
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.component.lazy.LazyColumn
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 
 @Composable
 fun <T> WheelLikeColumn(

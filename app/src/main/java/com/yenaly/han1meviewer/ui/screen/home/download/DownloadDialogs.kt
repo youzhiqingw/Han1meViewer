@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.download
+package com.wuwei.han1meviewer.ui.screen.home.download
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -42,13 +42,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.entity.download.DownloadGroupEntity
-import com.yenaly.han1meviewer.logic.entity.download.VideoWithCategories
-import com.yenaly.han1meviewer.logic.model.DownloadHeaderNode
-import com.yenaly.han1meviewer.ui.component.ConfirmDialog
-import com.yenaly.han1meviewer.ui.component.lazy.LazyColumn
-import com.yenaly.han1meviewer.ui.component.verticalScrollbar
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.entity.download.DownloadGroupEntity
+import com.wuwei.han1meviewer.logic.entity.download.VideoWithCategories
+import com.wuwei.han1meviewer.logic.model.DownloadHeaderNode
+import com.wuwei.han1meviewer.ui.component.ConfirmDialog
+import com.wuwei.han1meviewer.ui.component.lazy.LazyColumn
+import com.wuwei.han1meviewer.ui.component.verticalScrollbar
 
 /**
  * 新建/管理分组对话框。

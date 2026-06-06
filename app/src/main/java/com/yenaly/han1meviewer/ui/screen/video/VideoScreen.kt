@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.video
+package com.wuwei.han1meviewer.ui.screen.video
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,11 +9,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.tooling.preview.Preview
-import com.yenaly.han1meviewer.logic.state.VideoLoadingState
-import com.yenaly.han1meviewer.ui.component.content.EmptyContent
-import com.yenaly.han1meviewer.ui.component.content.ErrorContent
-import com.yenaly.han1meviewer.ui.component.content.LoadingContent
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.logic.state.VideoLoadingState
+import com.wuwei.han1meviewer.ui.component.content.EmptyContent
+import com.wuwei.han1meviewer.ui.component.content.ErrorContent
+import com.wuwei.han1meviewer.ui.component.content.LoadingContent
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 
 @Composable
 fun VideoScreen(

@@ -1,9 +1,9 @@
-package com.yenaly.han1meviewer.ui.navigation.main
+package com.wuwei.han1meviewer.ui.navigation.main
 
 import android.content.Intent
 import androidx.navigation.NavHostController
-import com.yenaly.han1meviewer.ui.navigation.navigateSafely
-import com.yenaly.han1meviewer.ui.navigation.settings.HomeSettingsRoute
+import com.wuwei.han1meviewer.ui.navigation.navigateSafely
+import com.wuwei.han1meviewer.ui.navigation.settings.HomeSettingsRoute
 import kotlinx.serialization.json.Json
 
 private val loginRequiredDrawerItems = setOf(

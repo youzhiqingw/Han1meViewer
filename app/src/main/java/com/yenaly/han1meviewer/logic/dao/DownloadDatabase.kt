@@ -1,17 +1,17 @@
-package com.yenaly.han1meviewer.logic.dao
+package com.wuwei.han1meviewer.logic.dao
 
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.yenaly.han1meviewer.logic.dao.download.DownloadCategoryDao
-import com.yenaly.han1meviewer.logic.dao.download.HanimeDownloadDao
-import com.yenaly.han1meviewer.logic.entity.download.DownloadCategoryEntity
-import com.yenaly.han1meviewer.logic.entity.download.DownloadGroupEntity
-import com.yenaly.han1meviewer.logic.entity.download.HanimeCategoryCrossRef
-import com.yenaly.han1meviewer.logic.entity.download.HanimeDownloadEntity
-import com.yenaly.han1meviewer.logic.state.DownloadState
+import com.wuwei.han1meviewer.logic.dao.download.DownloadCategoryDao
+import com.wuwei.han1meviewer.logic.dao.download.HanimeDownloadDao
+import com.wuwei.han1meviewer.logic.entity.download.DownloadCategoryEntity
+import com.wuwei.han1meviewer.logic.entity.download.DownloadGroupEntity
+import com.wuwei.han1meviewer.logic.entity.download.HanimeCategoryCrossRef
+import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
+import com.wuwei.han1meviewer.logic.state.DownloadState
 import com.yenaly.yenaly_libs.utils.applicationContext
 
 /**

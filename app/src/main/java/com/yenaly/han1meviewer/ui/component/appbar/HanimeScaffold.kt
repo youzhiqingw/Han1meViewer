@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.component.appbar
+package com.wuwei.han1meviewer.ui.component.appbar
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,9 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.component.content.EmptyContent
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.component.content.EmptyContent
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.model
+package com.wuwei.han1meviewer.ui.model
 
 data class DialogState(
     val visible: Boolean = false,

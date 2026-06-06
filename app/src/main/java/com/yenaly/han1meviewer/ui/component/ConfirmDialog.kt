@@ -1,11 +1,11 @@
-package com.yenaly.han1meviewer.ui.component
+package com.wuwei.han1meviewer.ui.component
 
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 
 /**
  * 确认对话框组件。

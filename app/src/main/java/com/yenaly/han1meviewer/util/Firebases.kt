@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.util
+package com.wuwei.han1meviewer.util
 
 import android.app.Activity
 import android.util.Log

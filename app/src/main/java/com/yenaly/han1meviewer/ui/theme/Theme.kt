@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.theme
+package com.wuwei.han1meviewer.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -6,7 +6,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
-import com.yenaly.han1meviewer.Preferences
+import com.wuwei.han1meviewer.Preferences
 
 @Composable
 fun HanimeTheme(

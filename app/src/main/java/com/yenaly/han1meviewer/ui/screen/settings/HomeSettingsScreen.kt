@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.settings
+package com.wuwei.han1meviewer.ui.screen.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,21 +18,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.HorizontalCardCountConfig
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.SearchGridColumnsConfig
-import com.yenaly.han1meviewer.ui.component.ChoiceDialog
-import com.yenaly.han1meviewer.ui.component.SettingInfoItem
-import com.yenaly.han1meviewer.ui.component.SettingNavigationItem
-import com.yenaly.han1meviewer.ui.component.SettingSliderItem
-import com.yenaly.han1meviewer.ui.component.SettingSwitchItem
-import com.yenaly.han1meviewer.ui.component.lazy.LazyColumn
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.screen.settings.dialog.HomeCategoryLayoutDialog
-import com.yenaly.han1meviewer.ui.screen.settings.dialog.HorizontalCardCountDialog
-import com.yenaly.han1meviewer.ui.screen.settings.dialog.SearchGridColumnsDialog
-import com.yenaly.han1meviewer.ui.screen.settings.model.HomeSettingsUiState
-import com.yenaly.han1meviewer.ui.theme.ThemeColorPreset
+import com.wuwei.han1meviewer.HorizontalCardCountConfig
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.SearchGridColumnsConfig
+import com.wuwei.han1meviewer.ui.component.ChoiceDialog
+import com.wuwei.han1meviewer.ui.component.SettingInfoItem
+import com.wuwei.han1meviewer.ui.component.SettingNavigationItem
+import com.wuwei.han1meviewer.ui.component.SettingSliderItem
+import com.wuwei.han1meviewer.ui.component.SettingSwitchItem
+import com.wuwei.han1meviewer.ui.component.lazy.LazyColumn
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.screen.settings.dialog.HomeCategoryLayoutDialog
+import com.wuwei.han1meviewer.ui.screen.settings.dialog.HorizontalCardCountDialog
+import com.wuwei.han1meviewer.ui.screen.settings.dialog.SearchGridColumnsDialog
+import com.wuwei.han1meviewer.ui.screen.settings.model.HomeSettingsUiState
+import com.wuwei.han1meviewer.ui.theme.ThemeColorPreset
 
 private enum class HomeSettingsChoiceDialog {
     VideoLanguage,

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.worker
+package com.wuwei.han1meviewer.worker
 
 import android.annotation.SuppressLint
 import android.app.Notification
@@ -21,18 +21,18 @@ import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
-import com.yenaly.han1meviewer.DOWNLOAD_NOTIFICATION_CHANNEL
-import com.yenaly.han1meviewer.EMPTY_STRING
-import com.yenaly.han1meviewer.HFileManager
-import com.yenaly.han1meviewer.HFileManager.createVideoName
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.DatabaseRepo
-import com.yenaly.han1meviewer.logic.entity.download.HanimeDownloadEntity
-import com.yenaly.han1meviewer.logic.network.ServiceCreator
-import com.yenaly.han1meviewer.logic.state.DownloadState
-import com.yenaly.han1meviewer.util.HImageMeower
-import com.yenaly.han1meviewer.util.SafFileManager
-import com.yenaly.han1meviewer.util.await
+import com.wuwei.han1meviewer.DOWNLOAD_NOTIFICATION_CHANNEL
+import com.wuwei.han1meviewer.EMPTY_STRING
+import com.wuwei.han1meviewer.HFileManager
+import com.wuwei.han1meviewer.HFileManager.createVideoName
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.DatabaseRepo
+import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
+import com.wuwei.han1meviewer.logic.network.ServiceCreator
+import com.wuwei.han1meviewer.logic.state.DownloadState
+import com.wuwei.han1meviewer.util.HImageMeower
+import com.wuwei.han1meviewer.util.SafFileManager
+import com.wuwei.han1meviewer.util.await
 import com.yenaly.yenaly_libs.utils.createFileIfNotExists
 import com.yenaly.yenaly_libs.utils.saveTo
 import com.yenaly.yenaly_libs.utils.showShortToast

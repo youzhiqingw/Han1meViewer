@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.video
+package com.wuwei.han1meviewer.ui.screen.video
 
 import android.content.res.Configuration
 import android.view.View
@@ -36,7 +36,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
 
 @Composable
 fun VideoShellContent(

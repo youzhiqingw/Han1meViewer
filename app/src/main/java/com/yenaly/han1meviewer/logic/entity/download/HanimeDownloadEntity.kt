@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.entity.download
+package com.wuwei.han1meviewer.logic.entity.download
 
 import androidx.annotation.IntRange
 import androidx.room.Entity
@@ -7,8 +7,8 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
-import com.yenaly.han1meviewer.HFileManager
-import com.yenaly.han1meviewer.logic.state.DownloadState
+import com.wuwei.han1meviewer.HFileManager
+import com.wuwei.han1meviewer.logic.state.DownloadState
 import kotlinx.serialization.Serializable
 
 /**

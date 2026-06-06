@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.settings
+package com.wuwei.han1meviewer.ui.screen.settings
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -16,13 +16,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.entity.HKeyframeEntity
-import com.yenaly.han1meviewer.logic.entity.HKeyframeHeader
-import com.yenaly.han1meviewer.logic.entity.HKeyframeType
-import com.yenaly.han1meviewer.ui.component.content.EmptyContent
-import com.yenaly.han1meviewer.ui.component.lazy.LazyColumn
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.entity.HKeyframeEntity
+import com.wuwei.han1meviewer.logic.entity.HKeyframeHeader
+import com.wuwei.han1meviewer.logic.entity.HKeyframeType
+import com.wuwei.han1meviewer.ui.component.content.EmptyContent
+import com.wuwei.han1meviewer.ui.component.lazy.LazyColumn
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 
 @Composable
 fun SharedHKeyframesScreen(

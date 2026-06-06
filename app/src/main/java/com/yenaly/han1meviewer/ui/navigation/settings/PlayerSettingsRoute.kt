@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.navigation.settings
+package com.wuwei.han1meviewer.ui.navigation.settings
 
 import android.content.Context
 import androidx.compose.runtime.Composable
@@ -9,12 +9,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.edit
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.screen.settings.PlayerSettingsScreen
-import com.yenaly.han1meviewer.ui.screen.settings.PlayerSettingsUiState
-import com.yenaly.han1meviewer.ui.view.video.HJzvdStd
-import com.yenaly.han1meviewer.ui.view.video.HMediaKernel
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.screen.settings.PlayerSettingsScreen
+import com.wuwei.han1meviewer.ui.screen.settings.PlayerSettingsUiState
+import com.wuwei.han1meviewer.ui.view.video.HJzvdStd
+import com.wuwei.han1meviewer.ui.view.video.HMediaKernel
 
 private const val PLAYER_SWITCH_PLAYER_KERNEL = "switch_player_kernel"
 private const val PLAYER_SHOW_BOTTOM_PROGRESS = "show_bottom_progress"

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.util
+package com.wuwei.han1meviewer.util
 
 import android.content.Context
 import android.content.Intent
@@ -8,16 +8,16 @@ import android.util.Log
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.documentfile.provider.DocumentFile
-import com.yenaly.han1meviewer.APP_NAME
-import com.yenaly.han1meviewer.HFileManager.DEF_VIDEO_COVER_TYPE
-import com.yenaly.han1meviewer.HFileManager.HANIME_DOWNLOAD_FOLDER
-import com.yenaly.han1meviewer.HFileManager.createVideoCoverName
-import com.yenaly.han1meviewer.HFileManager.getAppDownloadFolder
-import com.yenaly.han1meviewer.HFileManager.getDownloadVideoCoverFile
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.logic.dao.download.HanimeDownloadDao
-import com.yenaly.han1meviewer.logic.entity.download.HanimeDownloadEntity
-import com.yenaly.han1meviewer.logic.state.DownloadState
+import com.wuwei.han1meviewer.APP_NAME
+import com.wuwei.han1meviewer.HFileManager.DEF_VIDEO_COVER_TYPE
+import com.wuwei.han1meviewer.HFileManager.HANIME_DOWNLOAD_FOLDER
+import com.wuwei.han1meviewer.HFileManager.createVideoCoverName
+import com.wuwei.han1meviewer.HFileManager.getAppDownloadFolder
+import com.wuwei.han1meviewer.HFileManager.getDownloadVideoCoverFile
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.logic.dao.download.HanimeDownloadDao
+import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
+import com.wuwei.han1meviewer.logic.state.DownloadState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

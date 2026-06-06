@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.activity
+package com.wuwei.han1meviewer.ui.activity
 
 import android.content.Context
 import android.content.Intent
@@ -10,8 +10,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.preference.PreferenceManager
-import com.yenaly.han1meviewer.ui.screen.login.ManualInputCookiesScreen
-import com.yenaly.han1meviewer.ui.theme.HanimeTheme
+import com.wuwei.han1meviewer.ui.screen.login.ManualInputCookiesScreen
+import com.wuwei.han1meviewer.ui.theme.HanimeTheme
 import java.util.Locale
 
 class ManualInputCookiesActivity : ComponentActivity() {

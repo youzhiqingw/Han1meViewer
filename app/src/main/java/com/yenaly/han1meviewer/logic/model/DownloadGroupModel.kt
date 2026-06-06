@@ -1,6 +1,6 @@
-package com.yenaly.han1meviewer.logic.model
+package com.wuwei.han1meviewer.logic.model
 
-import com.yenaly.han1meviewer.logic.entity.download.VideoWithCategories
+import com.wuwei.han1meviewer.logic.entity.download.VideoWithCategories
 
 /**
  * 已下载分组的Model

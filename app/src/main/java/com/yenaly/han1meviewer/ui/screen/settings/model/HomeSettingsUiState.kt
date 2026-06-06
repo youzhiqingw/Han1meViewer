@@ -1,8 +1,8 @@
-package com.yenaly.han1meviewer.ui.screen.settings.model
+package com.wuwei.han1meviewer.ui.screen.settings.model
 
-import com.yenaly.han1meviewer.HorizontalCardCountConfig
-import com.yenaly.han1meviewer.SearchGridColumnsConfig
-import com.yenaly.han1meviewer.ui.screen.home.homepage.HomeCategoryPreferenceItem
+import com.wuwei.han1meviewer.HorizontalCardCountConfig
+import com.wuwei.han1meviewer.SearchGridColumnsConfig
+import com.wuwei.han1meviewer.ui.screen.home.homepage.HomeCategoryPreferenceItem
 
 data class HomeSettingsUiState(
     val videoLanguage: String,

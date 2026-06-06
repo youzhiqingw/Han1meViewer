@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.video
+package com.wuwei.han1meviewer.ui.screen.video
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -9,12 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.preference.PreferenceManager
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.logic.state.VideoLoadingState
-import com.yenaly.han1meviewer.ui.bridge.VideoPageHost
-import com.yenaly.han1meviewer.ui.viewmodel.CommentViewModel
-import com.yenaly.han1meviewer.ui.viewmodel.VideoViewModel
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.state.VideoLoadingState
+import com.wuwei.han1meviewer.ui.bridge.VideoPageHost
+import com.wuwei.han1meviewer.ui.viewmodel.CommentViewModel
+import com.wuwei.han1meviewer.ui.viewmodel.VideoViewModel
 import com.yenaly.yenaly_libs.utils.application
 
 @Composable
@@ -28,15 +28,15 @@ fun VideoRouteContent(
     onPendingDownloadPromptChange: (DownloadPromptState?) -> Unit,
     onRetry: () -> Unit,
     onOpenVideo: (HanimeInfo) -> Unit,
-    onOpenArtist: (com.yenaly.han1meviewer.logic.model.HanimeVideo.Artist) -> Unit,
+    onOpenArtist: (com.wuwei.han1meviewer.logic.model.HanimeVideo.Artist) -> Unit,
     onNavigateToSearch: (String) -> Unit,
-    onToggleSubscribe: (com.yenaly.han1meviewer.logic.model.HanimeVideo.Artist) -> Unit,
-    onToggleFavorite: (com.yenaly.han1meviewer.logic.model.HanimeVideo) -> Unit,
-    onRateVideo: (com.yenaly.han1meviewer.logic.model.HanimeVideo, Boolean) -> Unit,
-    onManageMyList: (com.yenaly.han1meviewer.logic.model.HanimeVideo.MyList?, List<Boolean>) -> Unit,
-    onQuickCheckIn: (com.yenaly.han1meviewer.logic.entity.CheckInRecordEntity) -> Unit,
-    onPrepareDownload: (String, com.yenaly.han1meviewer.logic.model.HanimeVideo?) -> Unit,
-    onConfirmDownloadPrompt: (com.yenaly.han1meviewer.logic.model.HanimeVideo?) -> Unit,
+    onToggleSubscribe: (com.wuwei.han1meviewer.logic.model.HanimeVideo.Artist) -> Unit,
+    onToggleFavorite: (com.wuwei.han1meviewer.logic.model.HanimeVideo) -> Unit,
+    onRateVideo: (com.wuwei.han1meviewer.logic.model.HanimeVideo, Boolean) -> Unit,
+    onManageMyList: (com.wuwei.han1meviewer.logic.model.HanimeVideo.MyList?, List<Boolean>) -> Unit,
+    onQuickCheckIn: (com.wuwei.han1meviewer.logic.entity.CheckInRecordEntity) -> Unit,
+    onPrepareDownload: (String, com.wuwei.han1meviewer.logic.model.HanimeVideo?) -> Unit,
+    onConfirmDownloadPrompt: (com.wuwei.han1meviewer.logic.model.HanimeVideo?) -> Unit,
     onRequestOpenOfficialDownloadPage: () -> Unit,
     onRequestOpenDownloadPermissionSettings: () -> Unit,
     onOpenWebPage: () -> Unit,

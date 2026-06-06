@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home
+package com.wuwei.han1meviewer.ui.screen.home
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
@@ -33,16 +33,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.Observer
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.yenaly.han1meviewer.logic.model.Announcement
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.ui.component.PullRefreshOverlay
-import com.yenaly.han1meviewer.ui.component.content.ErrorContent
-import com.yenaly.han1meviewer.ui.screen.home.homepage.HomePageContent
-import com.yenaly.han1meviewer.ui.screen.home.homepage.HomePageTopBar
-import com.yenaly.han1meviewer.ui.screen.home.homepage.buildCategoryList
-import com.yenaly.han1meviewer.ui.screen.home.homepage.toAdvancedSearchParams
-import com.yenaly.han1meviewer.ui.screen.home.homepage.toHomePageErrorMessageRes
-import com.yenaly.han1meviewer.ui.viewmodel.MainViewModel
+import com.wuwei.han1meviewer.logic.model.Announcement
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.ui.component.PullRefreshOverlay
+import com.wuwei.han1meviewer.ui.component.content.ErrorContent
+import com.wuwei.han1meviewer.ui.screen.home.homepage.HomePageContent
+import com.wuwei.han1meviewer.ui.screen.home.homepage.HomePageTopBar
+import com.wuwei.han1meviewer.ui.screen.home.homepage.buildCategoryList
+import com.wuwei.han1meviewer.ui.screen.home.homepage.toAdvancedSearchParams
+import com.wuwei.han1meviewer.ui.screen.home.homepage.toHomePageErrorMessageRes
+import com.wuwei.han1meviewer.ui.viewmodel.MainViewModel
 
 /**
  * 首页容器屏幕，负责连接 ViewModel 状态与导航回调。

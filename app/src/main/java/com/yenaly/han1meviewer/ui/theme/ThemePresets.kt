@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.theme
+package com.wuwei.han1meviewer.ui.theme
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -10,7 +10,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import com.yenaly.han1meviewer.R
+import com.wuwei.han1meviewer.R
 
 enum class ThemeColorPreset(
     val displayNameRes: Int,

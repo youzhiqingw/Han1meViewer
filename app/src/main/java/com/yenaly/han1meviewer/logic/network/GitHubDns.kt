@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.network
+package com.wuwei.han1meviewer.logic.network
 
 import okhttp3.Dns
 import java.net.InetAddress

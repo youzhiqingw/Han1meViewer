@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer
+package com.wuwei.han1meviewer
 
 data class HorizontalCardCountConfig(
     val narrowCount: Float = DEFAULT_NARROW_COUNT,

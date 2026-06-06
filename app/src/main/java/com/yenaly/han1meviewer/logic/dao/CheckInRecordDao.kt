@@ -1,10 +1,10 @@
-package com.yenaly.han1meviewer.logic.dao
+package com.wuwei.han1meviewer.logic.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.yenaly.han1meviewer.logic.entity.CheckInRecordEntity
+import com.wuwei.han1meviewer.logic.entity.CheckInRecordEntity
 
 @Dao
 interface CheckInRecordDao {

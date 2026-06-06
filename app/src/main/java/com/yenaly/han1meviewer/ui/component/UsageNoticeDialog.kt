@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.component
+package com.wuwei.han1meviewer.ui.component
 
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 import kotlinx.coroutines.delay
 
 @Composable

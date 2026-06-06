@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.settings.dialog
+package com.wuwei.han1meviewer.ui.screen.settings.dialog
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -39,9 +39,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.screen.settings.model.GridRangeOption
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.screen.settings.model.GridRangeOption
 
 @Composable
 fun BaseGridConfigDialog(

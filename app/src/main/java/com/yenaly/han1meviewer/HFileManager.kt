@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer
+package com.wuwei.han1meviewer
 import android.content.Context
 import android.os.Environment
 import android.util.Log
@@ -14,7 +14,7 @@ object HFileManager {
 
     /**
      * 获取 App 的下载主目录，如写入失败则切换为私有目录，
-     * 使用 [com.yenaly.han1meviewer.util.SafFileManager] 可自定义目录
+     * 使用 [com.wuwei.han1meviewer.util.SafFileManager] 可自定义目录
      */
     fun getAppDownloadFolder(context: Context): File {
         return if (Preferences.isUsePrivateStorage) {

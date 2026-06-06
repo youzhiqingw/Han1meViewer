@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.video
+package com.wuwei.han1meviewer.ui.screen.video
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.ExperimentalFoundationApi

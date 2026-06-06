@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.component.lazy
+package com.wuwei.han1meviewer.ui.component.lazy
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween

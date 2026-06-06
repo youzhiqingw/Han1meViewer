@@ -1,10 +1,10 @@
-package com.yenaly.han1meviewer.logic.network.service
+package com.wuwei.han1meviewer.logic.network.service
 
-import com.yenaly.han1meviewer.logic.model.github.Artifacts
-import com.yenaly.han1meviewer.logic.model.github.CommitComparison
-import com.yenaly.han1meviewer.logic.model.github.Release
-import com.yenaly.han1meviewer.logic.model.github.WorkflowRuns
-import com.yenaly.han1meviewer.logic.network.HUpdater
+import com.wuwei.han1meviewer.logic.model.github.Artifacts
+import com.wuwei.han1meviewer.logic.model.github.CommitComparison
+import com.wuwei.han1meviewer.logic.model.github.Release
+import com.wuwei.han1meviewer.logic.model.github.WorkflowRuns
+import com.wuwei.han1meviewer.logic.network.HUpdater
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.GET

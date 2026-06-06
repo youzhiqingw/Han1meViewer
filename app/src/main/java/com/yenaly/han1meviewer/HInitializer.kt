@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer
+package com.wuwei.han1meviewer
 
 import android.content.Context
 import com.yenaly.yenaly_libs.base.YenalyInitializer

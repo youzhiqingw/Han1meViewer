@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.navigation.settings
+package com.wuwei.han1meviewer.ui.navigation.settings
 
 object SettingsPreferenceKeys {
     const val VIDEO_LANGUAGE = "video_language"

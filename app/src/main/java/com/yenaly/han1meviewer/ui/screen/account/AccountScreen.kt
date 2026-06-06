@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.account
+package com.wuwei.han1meviewer.ui.screen.account
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -62,17 +62,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.UserAccount
-import com.yenaly.han1meviewer.logic.model.UserAccountAction
-import com.yenaly.han1meviewer.logic.model.UserAccountSubmittingState
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.ui.component.PageContent
-import com.yenaly.han1meviewer.ui.component.appbar.HanimeScaffold
-import com.yenaly.han1meviewer.ui.component.content.ErrorContent
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.viewmodel.UserAccountViewModel
-import com.yenaly.han1meviewer.util.pickVisualMedia
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.UserAccount
+import com.wuwei.han1meviewer.logic.model.UserAccountAction
+import com.wuwei.han1meviewer.logic.model.UserAccountSubmittingState
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.ui.component.PageContent
+import com.wuwei.han1meviewer.ui.component.appbar.HanimeScaffold
+import com.wuwei.han1meviewer.ui.component.content.ErrorContent
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.viewmodel.UserAccountViewModel
+import com.wuwei.han1meviewer.util.pickVisualMedia
 import com.yenaly.yenaly_libs.utils.browse
 import com.yenaly.yenaly_libs.utils.showShortToast
 import kotlinx.coroutines.launch
@@ -445,7 +445,7 @@ private fun AccountContent(
                 )
 
                 TextButton(
-                    onClick = { context.browse("${com.yenaly.han1meviewer.HANIME_BASE_URL}password/reset") },
+                    onClick = { context.browse("${com.wuwei.han1meviewer.HANIME_BASE_URL}password/reset") },
                     modifier = Modifier.align(Alignment.Start),
                     contentPadding = PaddingValues(horizontal = 0.dp)
                 ) {

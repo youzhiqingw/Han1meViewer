@@ -1,14 +1,14 @@
-package com.yenaly.han1meviewer.util
+package com.wuwei.han1meviewer.util
 
 import android.util.Log
-import com.yenaly.han1meviewer.Preferences
+import com.wuwei.han1meviewer.Preferences
 import okhttp3.Cookie
 
 @JvmInline
 value class CookieString(val cookie: String)
 
 /**
- * 主要用於 [HCookieJar][com.yenaly.han1meviewer.logic.network.HCookieJar]，最好不要用到其他地方。
+ * 主要用於 [HCookieJar][com.wuwei.han1meviewer.logic.network.HCookieJar]，最好不要用到其他地方。
  */
 fun CookieString.toLoginCookieList(domain: String): List<Cookie> {
     val cookieList = mutableListOf<Cookie>().also {

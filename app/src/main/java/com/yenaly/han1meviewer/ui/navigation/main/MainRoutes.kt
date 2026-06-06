@@ -1,15 +1,15 @@
-package com.yenaly.han1meviewer.ui.navigation.main
+package com.wuwei.han1meviewer.ui.navigation.main
 
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
-import com.yenaly.han1meviewer.ui.navigation.settings.DownloadSettingsRoute
-import com.yenaly.han1meviewer.ui.navigation.settings.HKeyframeSettingsRoute
-import com.yenaly.han1meviewer.ui.navigation.settings.HKeyframesRoute
-import com.yenaly.han1meviewer.ui.navigation.settings.HomeSettingsRoute
-import com.yenaly.han1meviewer.ui.navigation.settings.MpvPlayerSettingsRoute
-import com.yenaly.han1meviewer.ui.navigation.settings.NetworkSettingsRoute
-import com.yenaly.han1meviewer.ui.navigation.settings.PlayerSettingsRoute
-import com.yenaly.han1meviewer.ui.navigation.settings.SharedHKeyframesRoute
+import com.wuwei.han1meviewer.ui.navigation.settings.DownloadSettingsRoute
+import com.wuwei.han1meviewer.ui.navigation.settings.HKeyframeSettingsRoute
+import com.wuwei.han1meviewer.ui.navigation.settings.HKeyframesRoute
+import com.wuwei.han1meviewer.ui.navigation.settings.HomeSettingsRoute
+import com.wuwei.han1meviewer.ui.navigation.settings.MpvPlayerSettingsRoute
+import com.wuwei.han1meviewer.ui.navigation.settings.NetworkSettingsRoute
+import com.wuwei.han1meviewer.ui.navigation.settings.PlayerSettingsRoute
+import com.wuwei.han1meviewer.ui.navigation.settings.SharedHKeyframesRoute
 import kotlinx.serialization.Serializable
 import kotlin.reflect.KClass
 

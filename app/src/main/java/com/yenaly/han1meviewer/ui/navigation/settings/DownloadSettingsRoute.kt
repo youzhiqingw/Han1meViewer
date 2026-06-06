@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.navigation.settings
+package com.wuwei.han1meviewer.ui.navigation.settings
 
 import android.Manifest
 import android.app.Activity
@@ -23,19 +23,19 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.documentfile.provider.DocumentFile
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.dao.DownloadDatabase
-import com.yenaly.han1meviewer.logic.network.interceptor.SpeedLimitInterceptor
-import com.yenaly.han1meviewer.ui.activity.MainActivity
-import com.yenaly.han1meviewer.ui.component.ConfirmDialog
-import com.yenaly.han1meviewer.ui.component.TripleButtonDialog
-import com.yenaly.han1meviewer.ui.screen.settings.DownloadSettingsScreen
-import com.yenaly.han1meviewer.ui.screen.settings.DownloadSettingsUiState
-import com.yenaly.han1meviewer.util.SafFileManager
-import com.yenaly.han1meviewer.util.SafFileManager.KEY_TREE_URI
-import com.yenaly.han1meviewer.util.showToast
-import com.yenaly.han1meviewer.worker.HanimeDownloadManagerV2
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.dao.DownloadDatabase
+import com.wuwei.han1meviewer.logic.network.interceptor.SpeedLimitInterceptor
+import com.wuwei.han1meviewer.ui.activity.MainActivity
+import com.wuwei.han1meviewer.ui.component.ConfirmDialog
+import com.wuwei.han1meviewer.ui.component.TripleButtonDialog
+import com.wuwei.han1meviewer.ui.screen.settings.DownloadSettingsScreen
+import com.wuwei.han1meviewer.ui.screen.settings.DownloadSettingsUiState
+import com.wuwei.han1meviewer.util.SafFileManager
+import com.wuwei.han1meviewer.util.SafFileManager.KEY_TREE_URI
+import com.wuwei.han1meviewer.util.showToast
+import com.wuwei.han1meviewer.worker.HanimeDownloadManagerV2
 
 private const val DOWNLOAD_COUNT_LIMIT = "download_count_limit"
 private const val DOWNLOAD_SPEED_LIMIT = "download_speed_limit"

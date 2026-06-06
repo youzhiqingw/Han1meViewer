@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer
+package com.wuwei.han1meviewer
 
 import android.content.ComponentName
 import android.content.pm.PackageManager
@@ -13,10 +13,10 @@ import com.google.firebase.crashlytics.setCustomKeys
 import com.google.firebase.database.database
 import com.google.firebase.remoteconfig.remoteConfig
 import com.google.firebase.remoteconfig.remoteConfigSettings
-import com.yenaly.han1meviewer.logic.network.HProxySelector
-import com.yenaly.han1meviewer.ui.viewmodel.AppViewModel
-import com.yenaly.han1meviewer.util.AnimeShaders
-import com.yenaly.han1meviewer.util.ThemeUtils
+import com.wuwei.han1meviewer.logic.network.HProxySelector
+import com.wuwei.han1meviewer.ui.viewmodel.AppViewModel
+import com.wuwei.han1meviewer.util.AnimeShaders
+import com.wuwei.han1meviewer.util.ThemeUtils
 import com.yenaly.yenaly_libs.base.YenalyApplication
 import com.yenaly.yenaly_libs.utils.LanguageHelper
 import `is`.xyz.mpv.MPVLib
@@ -111,10 +111,10 @@ class HanimeApplication : YenalyApplication() {
         val pm = packageManager
 
         val allAliases = listOf(
-            "com.yenaly.han1meviewer.LauncherAliasDefault",
-            "com.yenaly.han1meviewer.LauncherFakeCalc",
-            "com.yenaly.han1meviewer.LauncherFakeCornhub",
-            "com.yenaly.han1meviewer.LauncherFakeXxt"
+            "com.wuwei.han1meviewer.LauncherAliasDefault",
+            "com.wuwei.han1meviewer.LauncherFakeCalc",
+            "com.wuwei.han1meviewer.LauncherFakeCornhub",
+            "com.wuwei.han1meviewer.LauncherFakeXxt"
         )
 
         allAliases.forEach { a ->

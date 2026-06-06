@@ -1,11 +1,11 @@
-package com.yenaly.han1meviewer.ui.viewmodel
+package com.wuwei.han1meviewer.ui.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.viewModelScope
-import com.yenaly.han1meviewer.logic.NetworkRepo
-import com.yenaly.han1meviewer.logic.model.HanimePreview
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.util.TagLocalizer
+import com.wuwei.han1meviewer.logic.NetworkRepo
+import com.wuwei.han1meviewer.logic.model.HanimePreview
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.util.TagLocalizer
 import com.yenaly.yenaly_libs.base.YenalyViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.navigation
+package com.wuwei.han1meviewer.ui.navigation
 
 import android.util.Log
 import androidx.lifecycle.Lifecycle

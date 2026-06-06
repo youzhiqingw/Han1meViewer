@@ -1,6 +1,6 @@
-package com.yenaly.han1meviewer.ui.model
+package com.wuwei.han1meviewer.ui.model
 
-import com.yenaly.han1meviewer.logic.model.SearchOption
+import com.wuwei.han1meviewer.logic.model.SearchOption
 
 data class SearchScopeSection(
     val titleRes: Int,

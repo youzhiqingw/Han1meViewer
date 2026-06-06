@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home
+package com.wuwei.han1meviewer.ui.screen.home
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -25,20 +25,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.logic.state.PageLoadingState
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.ui.component.ConfirmDialog
-import com.yenaly.han1meviewer.ui.component.PageContent
-import com.yenaly.han1meviewer.ui.component.appbar.HanimeScaffold
-import com.yenaly.han1meviewer.ui.component.content.EmptyContent
-import com.yenaly.han1meviewer.ui.component.content.ErrorContent
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.preview.fakeHomePageVideos
-import com.yenaly.han1meviewer.ui.screen.home.videogrid.VideoGridContent
-import com.yenaly.han1meviewer.ui.screen.home.videogrid.VideoGridUiState
-import com.yenaly.han1meviewer.ui.screen.home.videogrid.canLoadMore
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.state.PageLoadingState
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.ui.component.ConfirmDialog
+import com.wuwei.han1meviewer.ui.component.PageContent
+import com.wuwei.han1meviewer.ui.component.appbar.HanimeScaffold
+import com.wuwei.han1meviewer.ui.component.content.EmptyContent
+import com.wuwei.han1meviewer.ui.component.content.ErrorContent
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.fakeHomePageVideos
+import com.wuwei.han1meviewer.ui.screen.home.videogrid.VideoGridContent
+import com.wuwei.han1meviewer.ui.screen.home.videogrid.VideoGridUiState
+import com.wuwei.han1meviewer.ui.screen.home.videogrid.canLoadMore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 

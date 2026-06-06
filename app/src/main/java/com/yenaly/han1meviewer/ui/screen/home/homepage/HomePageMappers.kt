@@ -1,9 +1,9 @@
-package com.yenaly.han1meviewer.ui.screen.home.homepage
+package com.wuwei.han1meviewer.ui.screen.home.homepage
 
-import com.yenaly.han1meviewer.HanimeConstants
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.HomePage
+import com.wuwei.han1meviewer.HanimeConstants
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.HomePage
 
 /**
  * 将首页原始数据转换为 UI 可直接展示的分类行数据。

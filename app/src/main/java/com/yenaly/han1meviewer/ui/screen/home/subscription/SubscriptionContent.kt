@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.subscription
+package com.wuwei.han1meviewer.ui.screen.home.subscription
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
@@ -46,18 +46,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.SubscriptionItem
-import com.yenaly.han1meviewer.logic.state.PageLoadingState
-import com.yenaly.han1meviewer.ui.component.ArtistItem
-import com.yenaly.han1meviewer.ui.component.LoadMoreFooter
-import com.yenaly.han1meviewer.ui.component.VideoCardItem
-import com.yenaly.han1meviewer.ui.component.lazy.LazyVerticalGrid
-import com.yenaly.han1meviewer.ui.preview.fakeArtists
-import com.yenaly.han1meviewer.ui.preview.fakeVideos
-import com.yenaly.han1meviewer.ui.screen.rememberVideoGridColumns
-import com.yenaly.han1meviewer.ui.theme.ArtistIconSize
-import com.yenaly.han1meviewer.ui.theme.SpacingNormal
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.SubscriptionItem
+import com.wuwei.han1meviewer.logic.state.PageLoadingState
+import com.wuwei.han1meviewer.ui.component.ArtistItem
+import com.wuwei.han1meviewer.ui.component.LoadMoreFooter
+import com.wuwei.han1meviewer.ui.component.VideoCardItem
+import com.wuwei.han1meviewer.ui.component.lazy.LazyVerticalGrid
+import com.wuwei.han1meviewer.ui.preview.fakeArtists
+import com.wuwei.han1meviewer.ui.preview.fakeVideos
+import com.wuwei.han1meviewer.ui.screen.rememberVideoGridColumns
+import com.wuwei.han1meviewer.ui.theme.ArtistIconSize
+import com.wuwei.han1meviewer.ui.theme.SpacingNormal
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.activity
+package com.wuwei.han1meviewer.ui.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -33,21 +33,21 @@ import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavHostController
 import androidx.preference.PreferenceManager
 import com.google.android.material.snackbar.Snackbar
-import com.yenaly.han1meviewer.HanimeConstants.ANIME_URL
-import com.yenaly.han1meviewer.HanimeConstants.HANIME_URL
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logout
-import com.yenaly.han1meviewer.ui.bridge.VideoPageHost
-import com.yenaly.han1meviewer.PermissionRequester
-import com.yenaly.han1meviewer.ui.navigation.navigateSafely
-import com.yenaly.han1meviewer.ui.navigation.main.AccountRoute
-import com.yenaly.han1meviewer.ui.navigation.main.VideoRoute
-import com.yenaly.han1meviewer.ui.navigation.settings.SettingsPreferenceKeys
-import com.yenaly.han1meviewer.ui.screen.main.MainActivityContent
-import com.yenaly.han1meviewer.ui.viewmodel.MainViewModel
-import com.yenaly.han1meviewer.util.showAlertDialog
-import com.yenaly.han1meviewer.videoUrlRegex
+import com.wuwei.han1meviewer.HanimeConstants.ANIME_URL
+import com.wuwei.han1meviewer.HanimeConstants.HANIME_URL
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logout
+import com.wuwei.han1meviewer.ui.bridge.VideoPageHost
+import com.wuwei.han1meviewer.PermissionRequester
+import com.wuwei.han1meviewer.ui.navigation.navigateSafely
+import com.wuwei.han1meviewer.ui.navigation.main.AccountRoute
+import com.wuwei.han1meviewer.ui.navigation.main.VideoRoute
+import com.wuwei.han1meviewer.ui.navigation.settings.SettingsPreferenceKeys
+import com.wuwei.han1meviewer.ui.screen.main.MainActivityContent
+import com.wuwei.han1meviewer.ui.viewmodel.MainViewModel
+import com.wuwei.han1meviewer.util.showAlertDialog
+import com.wuwei.han1meviewer.videoUrlRegex
 import com.yenaly.yenaly_libs.ActivityManager
 import com.yenaly.yenaly_libs.base.frame.FrameActivity
 import com.yenaly.yenaly_libs.utils.showSnackBar
@@ -71,7 +71,7 @@ class MainActivity : FrameActivity(), PermissionRequester {
 
     companion object {
         private const val REQUEST_WRITE_EXTERNAL_STORAGE = 1234
-        const val ACTION_TOGGLE_PLAY = "com.yenaly.han1meviewer.ACTION_TOGGLE_PLAY"
+        const val ACTION_TOGGLE_PLAY = "com.wuwei.han1meviewer.ACTION_TOGGLE_PLAY"
     }
 
     // 登錄完了後讓activity刷新主頁

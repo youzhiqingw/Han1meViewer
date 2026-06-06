@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.util
+package com.wuwei.han1meviewer.util
 
 import android.util.Log
 import android.widget.ImageView
@@ -8,7 +8,7 @@ import coil.request.ErrorResult
 import coil.request.ImageRequest
 import coil.request.ImageResult
 import com.yenaly.yenaly_libs.utils.applicationContext
-import com.yenaly.han1meviewer.logic.network.HDns
+import com.wuwei.han1meviewer.logic.network.HDns
 import okhttp3.OkHttpClient
 import java.lang.ref.WeakReference
 import java.util.concurrent.TimeUnit

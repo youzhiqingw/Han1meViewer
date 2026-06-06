@@ -1,14 +1,14 @@
-package com.yenaly.han1meviewer.ui.viewmodel
+package com.wuwei.han1meviewer.ui.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.viewModelScope
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.logic.NetworkRepo
-import com.yenaly.han1meviewer.logic.model.UserAccount
-import com.yenaly.han1meviewer.logic.model.UserAccountAction
-import com.yenaly.han1meviewer.logic.model.UserAccountActionEvent
-import com.yenaly.han1meviewer.logic.model.UserAccountSubmittingState
-import com.yenaly.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.logic.NetworkRepo
+import com.wuwei.han1meviewer.logic.model.UserAccount
+import com.wuwei.han1meviewer.logic.model.UserAccountAction
+import com.wuwei.han1meviewer.logic.model.UserAccountActionEvent
+import com.wuwei.han1meviewer.logic.model.UserAccountSubmittingState
+import com.wuwei.han1meviewer.logic.state.WebsiteState
 import com.yenaly.yenaly_libs.base.YenalyViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,7 +33,7 @@ class UserAccountViewModel(application: Application) : YenalyViewModel(applicati
         val userId = Preferences.savedUserId
         if (userId.isBlank()) {
             _accountState.value = WebsiteState.Error(
-                IllegalStateException(application.getString(com.yenaly.han1meviewer.R.string.not_logged_in_currently))
+                IllegalStateException(application.getString(com.wuwei.han1meviewer.R.string.not_logged_in_currently))
             )
             return
         }

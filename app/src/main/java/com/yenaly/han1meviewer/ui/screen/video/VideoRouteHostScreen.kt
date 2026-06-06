@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.video
+package com.wuwei.han1meviewer.ui.screen.video
 
 import android.app.PendingIntent
 import android.app.PictureInPictureParams
@@ -48,31 +48,31 @@ import com.google.firebase.Firebase
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
 import com.google.firebase.analytics.logEvent
-import com.yenaly.han1meviewer.FirebaseConstants
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.getHanimeVideoLink
-import com.yenaly.han1meviewer.logic.DatabaseRepo
-import com.yenaly.han1meviewer.logic.dao.CheckInRecordDatabase
-import com.yenaly.han1meviewer.logic.entity.HKeyframeEntity
-import com.yenaly.han1meviewer.logic.entity.WatchHistoryEntity
-import com.yenaly.han1meviewer.logic.exception.ParseException
-import com.yenaly.han1meviewer.logic.model.SearchOption
-import com.yenaly.han1meviewer.logic.state.VideoLoadingState
-import com.yenaly.han1meviewer.ui.activity.MainActivity
-import com.yenaly.han1meviewer.ui.bridge.VideoPageHost
-import com.yenaly.han1meviewer.ui.component.ConfirmDialog
-import com.yenaly.han1meviewer.PermissionRequester
-import com.yenaly.han1meviewer.ui.navigation.main.VideoRoute
-import com.yenaly.han1meviewer.ui.view.video.ExoMediaKernel
-import com.yenaly.han1meviewer.ui.view.video.HJzvdStd
-import com.yenaly.han1meviewer.ui.view.video.HMediaKernel
-import com.yenaly.han1meviewer.ui.view.video.HanimeDataSource
-import com.yenaly.han1meviewer.ui.view.video.VideoPlayerAppBarBehavior
-import com.yenaly.han1meviewer.ui.viewmodel.CommentViewModel
-import com.yenaly.han1meviewer.ui.viewmodel.VideoViewModel
-import com.yenaly.han1meviewer.util.checkBadGuy
-import com.yenaly.han1meviewer.util.loadAssetAs
+import com.wuwei.han1meviewer.FirebaseConstants
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.getHanimeVideoLink
+import com.wuwei.han1meviewer.logic.DatabaseRepo
+import com.wuwei.han1meviewer.logic.dao.CheckInRecordDatabase
+import com.wuwei.han1meviewer.logic.entity.HKeyframeEntity
+import com.wuwei.han1meviewer.logic.entity.WatchHistoryEntity
+import com.wuwei.han1meviewer.logic.exception.ParseException
+import com.wuwei.han1meviewer.logic.model.SearchOption
+import com.wuwei.han1meviewer.logic.state.VideoLoadingState
+import com.wuwei.han1meviewer.ui.activity.MainActivity
+import com.wuwei.han1meviewer.ui.bridge.VideoPageHost
+import com.wuwei.han1meviewer.ui.component.ConfirmDialog
+import com.wuwei.han1meviewer.PermissionRequester
+import com.wuwei.han1meviewer.ui.navigation.main.VideoRoute
+import com.wuwei.han1meviewer.ui.view.video.ExoMediaKernel
+import com.wuwei.han1meviewer.ui.view.video.HJzvdStd
+import com.wuwei.han1meviewer.ui.view.video.HMediaKernel
+import com.wuwei.han1meviewer.ui.view.video.HanimeDataSource
+import com.wuwei.han1meviewer.ui.view.video.VideoPlayerAppBarBehavior
+import com.wuwei.han1meviewer.ui.viewmodel.CommentViewModel
+import com.wuwei.han1meviewer.ui.viewmodel.VideoViewModel
+import com.wuwei.han1meviewer.util.checkBadGuy
+import com.wuwei.han1meviewer.util.loadAssetAs
 import com.yenaly.yenaly_libs.utils.OrientationManager
 import com.yenaly.yenaly_libs.utils.browse
 import com.yenaly.yenaly_libs.utils.copyToClipboard
@@ -98,7 +98,7 @@ fun VideoRouteHostScreen(
     val kernel = remember { HMediaKernel.Type.fromString(Preferences.switchPlayerKernel) }
     val genres = remember(Preferences.baseUrl) {
         loadAssetAs<List<SearchOption>>(
-            if (Preferences.baseUrl == com.yenaly.han1meviewer.HanimeConstants.HANIME_URL[3]) {
+            if (Preferences.baseUrl == com.wuwei.han1meviewer.HanimeConstants.HANIME_URL[3]) {
                 "search_options/genre_av.json"
             } else {
                 "search_options/genre.json"

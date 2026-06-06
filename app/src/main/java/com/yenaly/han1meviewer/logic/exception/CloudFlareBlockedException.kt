@@ -1,6 +1,6 @@
-package com.yenaly.han1meviewer.logic.exception
+package com.wuwei.han1meviewer.logic.exception
 
-import com.yenaly.han1meviewer.R
+import com.wuwei.han1meviewer.R
 
 /**
  * 检测到爬虫被封鎖

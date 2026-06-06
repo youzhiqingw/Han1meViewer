@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.model.github
+package com.wuwei.han1meviewer.logic.model.github
 
 /**
  * @project Han1meViewer

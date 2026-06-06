@@ -1,13 +1,13 @@
-package com.yenaly.han1meviewer.ui.viewmodel.mylist
+package com.wuwei.han1meviewer.ui.viewmodel.mylist
 
 import android.app.Application
 import androidx.lifecycle.viewModelScope
-import com.yenaly.han1meviewer.logic.NetworkRepo
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.logic.model.MyListItems
-import com.yenaly.han1meviewer.logic.model.MyListType
-import com.yenaly.han1meviewer.logic.state.PageLoadingState
-import com.yenaly.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.logic.NetworkRepo
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.model.MyListItems
+import com.wuwei.han1meviewer.logic.model.MyListType
+import com.wuwei.han1meviewer.logic.state.PageLoadingState
+import com.wuwei.han1meviewer.logic.state.WebsiteState
 import com.yenaly.yenaly_libs.base.YenalyViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

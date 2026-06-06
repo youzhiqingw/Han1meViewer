@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.network.service
+package com.wuwei.han1meviewer.logic.network.service
 
 import androidx.annotation.IntRange
 import okhttp3.MultipartBody

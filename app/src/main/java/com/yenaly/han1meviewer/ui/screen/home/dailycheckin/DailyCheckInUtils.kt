@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.dailycheckin
+package com.wuwei.han1meviewer.ui.screen.home.dailycheckin
 
 import android.app.Activity
 import android.content.Context
@@ -10,8 +10,8 @@ import android.view.View
 import android.view.WindowInsetsController
 import android.widget.Toast
 import androidx.compose.ui.graphics.Color
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.entity.CheckInType
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.entity.CheckInType
 import java.time.LocalDate
 import java.time.YearMonth
 

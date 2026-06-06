@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.login
+package com.wuwei.han1meviewer.ui.screen.login
 
 import android.webkit.WebView
 import androidx.compose.foundation.layout.Column
@@ -31,9 +31,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.component.appbar.HanimeScaffold
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.component.appbar.HanimeScaffold
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable

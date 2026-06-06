@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.model
+package com.wuwei.han1meviewer.logic.model
 
 enum class OnlineWatchHistorySort(val value: String) {
     Latest("latest"),

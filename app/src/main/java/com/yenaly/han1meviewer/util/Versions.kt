@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.util
+package com.wuwei.han1meviewer.util
 
 import android.content.Context
 import android.content.Intent
@@ -9,12 +9,12 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
 import com.itxca.spannablex.spannable
-import com.yenaly.han1meviewer.BuildConfig
-import com.yenaly.han1meviewer.FILE_PROVIDER_AUTHORITY
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.github.Latest
-import com.yenaly.han1meviewer.worker.HUpdateWorker
+import com.wuwei.han1meviewer.BuildConfig
+import com.wuwei.han1meviewer.FILE_PROVIDER_AUTHORITY
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.github.Latest
+import com.wuwei.han1meviewer.worker.HUpdateWorker
 import com.yenaly.yenaly_libs.utils.dp
 import com.yenaly.yenaly_libs.utils.showShortToast
 import java.io.File

@@ -1,17 +1,17 @@
-package com.yenaly.han1meviewer
+package com.wuwei.han1meviewer
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
-import com.yenaly.han1meviewer.HanimeConstants.HANIME_URL
-import com.yenaly.han1meviewer.logic.network.HProxySelector
-import com.yenaly.han1meviewer.logic.network.interceptor.SpeedLimitInterceptor
-import com.yenaly.han1meviewer.ui.navigation.settings.SettingsPreferenceKeys
-import com.yenaly.han1meviewer.ui.view.video.HJzvdStd
-import com.yenaly.han1meviewer.ui.view.video.HMediaKernel
-import com.yenaly.han1meviewer.util.CookieString
-import com.yenaly.han1meviewer.util.SafFileManager
-import com.yenaly.han1meviewer.worker.HanimeDownloadManagerV2
+import com.wuwei.han1meviewer.HanimeConstants.HANIME_URL
+import com.wuwei.han1meviewer.logic.network.HProxySelector
+import com.wuwei.han1meviewer.logic.network.interceptor.SpeedLimitInterceptor
+import com.wuwei.han1meviewer.ui.navigation.settings.SettingsPreferenceKeys
+import com.wuwei.han1meviewer.ui.view.video.HJzvdStd
+import com.wuwei.han1meviewer.ui.view.video.HMediaKernel
+import com.wuwei.han1meviewer.util.CookieString
+import com.wuwei.han1meviewer.util.SafFileManager
+import com.wuwei.han1meviewer.worker.HanimeDownloadManagerV2
 import com.yenaly.yenaly_libs.utils.applicationContext
 import com.yenaly.yenaly_libs.utils.getSpValue
 import com.yenaly.yenaly_libs.utils.putSpValue
@@ -183,7 +183,7 @@ object Preferences {
     val fakeLauncherIcon: String
         get() = preferenceSp.getString(
             SettingsPreferenceKeys.FAKE_LAUNCHER_ICON,
-            "com.yenaly.han1meviewer.LauncherAliasDefault") ?: "com.yenaly.han1meviewer.LauncherAliasDefault"
+            "com.wuwei.han1meviewer.LauncherAliasDefault") ?: "com.wuwei.han1meviewer.LauncherAliasDefault"
 
     val baseUrl: String
         get() = preferenceSp.getString(SettingsPreferenceKeys.DOMAIN_NAME, HANIME_URL[0])

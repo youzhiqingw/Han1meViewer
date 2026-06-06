@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.dao
+package com.wuwei.han1meviewer.logic.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
-import com.yenaly.han1meviewer.logic.entity.download.DownloadGroupEntity
+import com.wuwei.han1meviewer.logic.entity.download.DownloadGroupEntity
 import kotlinx.coroutines.flow.Flow
 
 /**

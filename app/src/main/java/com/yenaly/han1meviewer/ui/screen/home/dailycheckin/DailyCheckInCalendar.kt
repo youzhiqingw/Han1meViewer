@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.dailycheckin
+package com.wuwei.han1meviewer.ui.screen.home.dailycheckin
 
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.updateTransition
@@ -30,7 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.yenaly.han1meviewer.R
+import com.wuwei.han1meviewer.R
 import java.time.LocalDate
 import java.time.YearMonth
 

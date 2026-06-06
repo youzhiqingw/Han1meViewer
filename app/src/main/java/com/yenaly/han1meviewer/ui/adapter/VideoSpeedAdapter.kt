@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.adapter
+package com.wuwei.han1meviewer.ui.adapter
 
 import android.content.Context
 import android.graphics.Color
@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.google.android.material.color.MaterialColors
-import com.yenaly.han1meviewer.ui.view.video.HJzvdStd
+import com.wuwei.han1meviewer.ui.view.video.HJzvdStd
 import androidx.core.graphics.toColorInt
 
 /**

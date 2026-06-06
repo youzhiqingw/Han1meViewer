@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.component
+package com.wuwei.han1meviewer.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
@@ -32,12 +32,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.VideoItemType
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.preview.fakeVideosItem
-import com.yenaly.han1meviewer.ui.screen.RetryableImage
-import com.yenaly.han1meviewer.util.DisplayTextLocalizer
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.VideoItemType
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.fakeVideosItem
+import com.wuwei.han1meviewer.ui.screen.RetryableImage
+import com.wuwei.han1meviewer.util.DisplayTextLocalizer
 
 
 /**

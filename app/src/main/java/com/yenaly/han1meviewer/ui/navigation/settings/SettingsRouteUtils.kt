@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.yenaly.han1meviewer.ui.navigation.settings
+package com.wuwei.han1meviewer.ui.navigation.settings
 
 import android.app.Activity
 import android.app.AppOpsManager
@@ -19,15 +19,15 @@ import androidx.core.text.parseAsHtml
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.textview.MaterialTextView
-import com.yenaly.han1meviewer.HanimeConstants.HANIME_HOSTNAME
-import com.yenaly.han1meviewer.HanimeConstants.HANIME_URL
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.dao.download.HanimeDownloadDao
-import com.yenaly.han1meviewer.ui.view.video.HJzvdStd
-import com.yenaly.han1meviewer.util.SafFileManager.checkSafPermissions
-import com.yenaly.han1meviewer.util.SafFileManager.migratePrivateToSaf
-import com.yenaly.han1meviewer.util.showAlertDialog
+import com.wuwei.han1meviewer.HanimeConstants.HANIME_HOSTNAME
+import com.wuwei.han1meviewer.HanimeConstants.HANIME_URL
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.dao.download.HanimeDownloadDao
+import com.wuwei.han1meviewer.ui.view.video.HJzvdStd
+import com.wuwei.han1meviewer.util.SafFileManager.checkSafPermissions
+import com.wuwei.han1meviewer.util.SafFileManager.migratePrivateToSaf
+import com.wuwei.han1meviewer.util.showAlertDialog
 import com.yenaly.yenaly_libs.utils.formatBytesPerSecond
 import com.yenaly.yenaly_libs.utils.formatFileSizeV2
 import com.yenaly.yenaly_libs.utils.showLongToast

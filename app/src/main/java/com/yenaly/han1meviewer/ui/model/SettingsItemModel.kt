@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.model
+package com.wuwei.han1meviewer.ui.model
 
 sealed interface SettingsItemModel {
     data class Switch(

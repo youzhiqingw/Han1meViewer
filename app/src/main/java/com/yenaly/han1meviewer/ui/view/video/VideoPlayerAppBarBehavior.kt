@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.view.video
+package com.wuwei.han1meviewer.ui.view.video
 
 import android.content.Context
 import android.util.AttributeSet

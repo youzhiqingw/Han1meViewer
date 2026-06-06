@@ -1,7 +1,7 @@
-package com.yenaly.han1meviewer.ui.screen.home.subscription
+package com.wuwei.han1meviewer.ui.screen.home.subscription
 
-import com.yenaly.han1meviewer.logic.model.SubscriptionItem
-import com.yenaly.han1meviewer.logic.model.SubscriptionVideosItem
+import com.wuwei.han1meviewer.logic.model.SubscriptionItem
+import com.wuwei.han1meviewer.logic.model.SubscriptionVideosItem
 
 /**
  * 订阅页面 UI 状态。

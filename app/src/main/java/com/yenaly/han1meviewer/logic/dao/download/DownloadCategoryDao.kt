@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.dao.download
+package com.wuwei.han1meviewer.logic.dao.download
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -6,9 +6,9 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.RewriteQueriesToDropUnusedColumns
 import androidx.room.Transaction
-import com.yenaly.han1meviewer.logic.entity.download.DownloadCategoryEntity
-import com.yenaly.han1meviewer.logic.entity.download.HanimeCategoryCrossRef
-import com.yenaly.han1meviewer.logic.entity.download.HanimeDownloadEntity
+import com.wuwei.han1meviewer.logic.entity.download.DownloadCategoryEntity
+import com.wuwei.han1meviewer.logic.entity.download.HanimeCategoryCrossRef
+import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

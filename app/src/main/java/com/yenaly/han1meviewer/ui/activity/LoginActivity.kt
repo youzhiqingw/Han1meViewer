@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.activity
+package com.wuwei.han1meviewer.ui.activity
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -23,16 +23,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.ComposeView
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
-import com.yenaly.han1meviewer.HANIME_LOGIN_URL
-import com.yenaly.han1meviewer.HanimeConstants.HANIME_URL
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.USER_AGENT
-import com.yenaly.han1meviewer.logic.NetworkRepo
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.login
-import com.yenaly.han1meviewer.ui.screen.login.LoginDialog
-import com.yenaly.han1meviewer.ui.screen.login.LoginScreen
-import com.yenaly.han1meviewer.ui.theme.HanimeTheme
+import com.wuwei.han1meviewer.HANIME_LOGIN_URL
+import com.wuwei.han1meviewer.HanimeConstants.HANIME_URL
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.USER_AGENT
+import com.wuwei.han1meviewer.logic.NetworkRepo
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.login
+import com.wuwei.han1meviewer.ui.screen.login.LoginDialog
+import com.wuwei.han1meviewer.ui.screen.login.LoginScreen
+import com.wuwei.han1meviewer.ui.theme.HanimeTheme
 import com.yenaly.yenaly_libs.base.frame.FrameActivity
 import com.yenaly.yenaly_libs.utils.showShortToast
 import kotlinx.coroutines.launch

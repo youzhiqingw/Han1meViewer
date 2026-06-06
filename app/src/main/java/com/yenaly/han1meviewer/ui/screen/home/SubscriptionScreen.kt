@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home
+package com.wuwei.han1meviewer.ui.screen.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -23,17 +23,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.SubscriptionItem
-import com.yenaly.han1meviewer.logic.model.SubscriptionVideosItem
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.ui.component.PullRefreshOverlay
-import com.yenaly.han1meviewer.ui.component.appbar.HanimeScaffold
-import com.yenaly.han1meviewer.ui.component.content.EmptyContent
-import com.yenaly.han1meviewer.ui.screen.home.subscription.SubscriptionContent
-import com.yenaly.han1meviewer.ui.screen.home.subscription.SubscriptionEvent
-import com.yenaly.han1meviewer.ui.screen.home.subscription.SubscriptionUiState
-import com.yenaly.han1meviewer.ui.viewmodel.MySubscriptionsViewModel
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.SubscriptionItem
+import com.wuwei.han1meviewer.logic.model.SubscriptionVideosItem
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.ui.component.PullRefreshOverlay
+import com.wuwei.han1meviewer.ui.component.appbar.HanimeScaffold
+import com.wuwei.han1meviewer.ui.component.content.EmptyContent
+import com.wuwei.han1meviewer.ui.screen.home.subscription.SubscriptionContent
+import com.wuwei.han1meviewer.ui.screen.home.subscription.SubscriptionEvent
+import com.wuwei.han1meviewer.ui.screen.home.subscription.SubscriptionUiState
+import com.wuwei.han1meviewer.ui.viewmodel.MySubscriptionsViewModel
 
 /**
  * 订阅页面 Screen 层。

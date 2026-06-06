@@ -1,6 +1,6 @@
-package com.yenaly.han1meviewer.ui.screen.home.homepage
+package com.wuwei.han1meviewer.ui.screen.home.homepage
 
-import com.yenaly.han1meviewer.R
+import com.wuwei.han1meviewer.R
 import java.net.ConnectException
 import java.net.SocketException
 import java.net.SocketTimeoutException

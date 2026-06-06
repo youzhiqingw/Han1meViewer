@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.preview
+package com.wuwei.han1meviewer.ui.screen.home.preview
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -43,7 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import coil3.compose.AsyncImage
-import com.yenaly.han1meviewer.R
+import com.wuwei.han1meviewer.R
 
 /**
  * 预览图片查看器弹窗。支持翻页浏览、双击/双指缩放。

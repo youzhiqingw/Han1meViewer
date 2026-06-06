@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.model
+package com.wuwei.han1meviewer.logic.model
 
 data class UserAccount(
     val csrfToken: String?,
@@ -26,5 +26,5 @@ enum class UserAccountSubmittingState {
 
 data class UserAccountActionEvent(
     val action: UserAccountAction,
-    val state: com.yenaly.han1meviewer.logic.state.WebsiteState<Unit>,
+    val state: com.wuwei.han1meviewer.logic.state.WebsiteState<Unit>,
 )

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home
+package com.wuwei.han1meviewer.ui.screen.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,17 +21,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.CreatorTab
-import com.yenaly.han1meviewer.logic.model.CreatorUploadingItem
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.logic.state.PageLoadingState
-import com.yenaly.han1meviewer.ui.component.ConfirmDialog
-import com.yenaly.han1meviewer.ui.component.appbar.HanimeScaffold
-import com.yenaly.han1meviewer.ui.screen.home.creatorcenter.CreatorCenterEvent
-import com.yenaly.han1meviewer.ui.screen.home.creatorcenter.CreatorUploadedPage
-import com.yenaly.han1meviewer.ui.screen.home.creatorcenter.CreatorUploadingPage
-import com.yenaly.han1meviewer.ui.viewmodel.CreatorCenterViewModel
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.CreatorTab
+import com.wuwei.han1meviewer.logic.model.CreatorUploadingItem
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.state.PageLoadingState
+import com.wuwei.han1meviewer.ui.component.ConfirmDialog
+import com.wuwei.han1meviewer.ui.component.appbar.HanimeScaffold
+import com.wuwei.han1meviewer.ui.screen.home.creatorcenter.CreatorCenterEvent
+import com.wuwei.han1meviewer.ui.screen.home.creatorcenter.CreatorUploadedPage
+import com.wuwei.han1meviewer.ui.screen.home.creatorcenter.CreatorUploadingPage
+import com.wuwei.han1meviewer.ui.viewmodel.CreatorCenterViewModel
 import kotlinx.coroutines.launch
 
 /**

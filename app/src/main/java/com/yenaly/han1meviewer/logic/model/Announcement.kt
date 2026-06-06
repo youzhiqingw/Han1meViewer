@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.model
+package com.wuwei.han1meviewer.logic.model
 
 import androidx.annotation.Keep
 import androidx.compose.material3.MaterialTheme
@@ -11,7 +11,7 @@ import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
-import com.yenaly.han1meviewer.LOCAL_DATE_TIME_FORMAT
+import com.wuwei.han1meviewer.LOCAL_DATE_TIME_FORMAT
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format
 import kotlinx.datetime.toLocalDateTime

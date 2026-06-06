@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.navigation.main
+package com.wuwei.han1meviewer.ui.navigation.main
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -7,11 +7,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.getHanimeShareText
-import com.yenaly.han1meviewer.ui.screen.search.AdvancedSearchSheet
-import com.yenaly.han1meviewer.ui.screen.search.SearchScreen
-import com.yenaly.han1meviewer.ui.viewmodel.SearchViewModel
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.getHanimeShareText
+import com.wuwei.han1meviewer.ui.screen.search.AdvancedSearchSheet
+import com.wuwei.han1meviewer.ui.screen.search.SearchScreen
+import com.wuwei.han1meviewer.ui.viewmodel.SearchViewModel
 import com.yenaly.yenaly_libs.utils.copyTextToClipboard
 import com.yenaly.yenaly_libs.utils.showShortToast
 import kotlinx.serialization.json.Json

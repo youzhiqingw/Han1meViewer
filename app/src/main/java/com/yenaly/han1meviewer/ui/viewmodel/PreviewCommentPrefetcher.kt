@@ -1,8 +1,8 @@
-package com.yenaly.han1meviewer.ui.viewmodel
+package com.wuwei.han1meviewer.ui.viewmodel
 
 import android.util.Log
 import androidx.annotation.IntDef
-import com.yenaly.han1meviewer.logic.model.VideoComments
+import com.wuwei.han1meviewer.logic.model.VideoComments
 
 /**
  * 连通预览页与预览评论页的评论预取器。

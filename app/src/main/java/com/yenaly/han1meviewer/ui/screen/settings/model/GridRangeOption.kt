@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.settings.model
+package com.wuwei.han1meviewer.ui.screen.settings.model
 
 data class GridRangeOption(
     val label: String,

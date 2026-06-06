@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.settings.dialog
+package com.wuwei.han1meviewer.ui.screen.settings.dialog
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -9,10 +9,10 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.SearchGridColumnsConfig
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.screen.settings.model.GridRangeOption
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.SearchGridColumnsConfig
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.screen.settings.model.GridRangeOption
 import kotlin.math.max
 import kotlin.math.min
 

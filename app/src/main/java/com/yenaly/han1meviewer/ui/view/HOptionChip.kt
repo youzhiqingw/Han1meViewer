@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.view
+package com.wuwei.han1meviewer.ui.view
 
 import android.animation.ValueAnimator
 import android.content.Context

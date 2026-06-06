@@ -1,8 +1,8 @@
-package com.yenaly.han1meviewer.ui.navigation.main
+package com.wuwei.han1meviewer.ui.navigation.main
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import com.yenaly.han1meviewer.R
+import com.wuwei.han1meviewer.R
 
 enum class MainDrawerDestination(
     @param:DrawableRes val iconRes: Int,

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.account
+package com.wuwei.han1meviewer.ui.screen.account
 
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
@@ -36,8 +36,8 @@ import androidx.core.net.toUri
 import cn.mucute.compose.avatar.cropper.AvatarCropper
 import cn.mucute.compose.avatar.cropper.CropShape
 import cn.mucute.compose.avatar.cropper.rememberCropState
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.component.appbar.HanimeScaffold
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.component.appbar.HanimeScaffold
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.preview
+package com.wuwei.han1meviewer.ui.screen.home.preview
 
 import androidx.compose.foundation.lazy.LazyListState
 

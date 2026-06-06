@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.viewmodel
+package com.wuwei.han1meviewer.ui.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
@@ -6,14 +6,14 @@ import androidx.work.WorkManager
 import com.google.firebase.Firebase
 import com.google.firebase.crashlytics.crashlytics
 import com.google.firebase.crashlytics.setCustomKeys
-import com.yenaly.han1meviewer.FirebaseConstants
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.logic.NetworkRepo
-import com.yenaly.han1meviewer.logic.model.github.Latest
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.worker.HUpdateWorker
-import com.yenaly.han1meviewer.worker.HanimeDownloadManagerV2
-import com.yenaly.han1meviewer.worker.HanimeDownloadWorker
+import com.wuwei.han1meviewer.FirebaseConstants
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.logic.NetworkRepo
+import com.wuwei.han1meviewer.logic.model.github.Latest
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.worker.HUpdateWorker
+import com.wuwei.han1meviewer.worker.HanimeDownloadManagerV2
+import com.wuwei.han1meviewer.worker.HanimeDownloadWorker
 import com.yenaly.yenaly_libs.base.YenalyViewModel
 import com.yenaly.yenaly_libs.utils.application
 import kotlinx.coroutines.Dispatchers

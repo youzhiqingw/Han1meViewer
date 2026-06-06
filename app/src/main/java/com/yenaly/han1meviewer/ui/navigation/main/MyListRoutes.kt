@@ -1,12 +1,12 @@
-package com.yenaly.han1meviewer.ui.navigation.main
+package com.wuwei.han1meviewer.ui.navigation.main
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.screen.home.VideoGridScreen
-import com.yenaly.han1meviewer.ui.viewmodel.MyListViewModel
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.screen.home.VideoGridScreen
+import com.wuwei.han1meviewer.ui.viewmodel.MyListViewModel
 
 @Composable
 fun FavVideoRouteScreen(

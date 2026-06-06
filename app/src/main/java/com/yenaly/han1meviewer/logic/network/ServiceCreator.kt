@@ -1,14 +1,14 @@
-package com.yenaly.han1meviewer.logic.network
+package com.wuwei.han1meviewer.logic.network
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.yenaly.han1meviewer.BuildConfig
-import com.yenaly.han1meviewer.HA1_GITHUB_API_URL
-import com.yenaly.han1meviewer.HJson
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.logic.network.interceptor.CloudflareInterceptor
-import com.yenaly.han1meviewer.logic.network.interceptor.SpeedLimitInterceptor
-import com.yenaly.han1meviewer.logic.network.interceptor.UrlLoggingInterceptor
-import com.yenaly.han1meviewer.logic.network.interceptor.UserAgentInterceptor
+import com.wuwei.han1meviewer.BuildConfig
+import com.wuwei.han1meviewer.HA1_GITHUB_API_URL
+import com.wuwei.han1meviewer.HJson
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.logic.network.interceptor.CloudflareInterceptor
+import com.wuwei.han1meviewer.logic.network.interceptor.SpeedLimitInterceptor
+import com.wuwei.han1meviewer.logic.network.interceptor.UrlLoggingInterceptor
+import com.wuwei.han1meviewer.logic.network.interceptor.UserAgentInterceptor
 import com.yenaly.yenaly_libs.utils.applicationContext
 import com.yenaly.yenaly_libs.utils.unsafeLazy
 import okhttp3.Cache

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.util
+package com.wuwei.han1meviewer.util
 
 import com.yenaly.yenaly_libs.utils.LanguageHelper
 import java.math.BigDecimal

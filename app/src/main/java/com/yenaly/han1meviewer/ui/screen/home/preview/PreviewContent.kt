@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.preview
+package com.wuwei.han1meviewer.ui.screen.home.preview
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateContentSize
@@ -45,15 +45,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.exception.HanimeNotFoundException
-import com.yenaly.han1meviewer.logic.model.HanimePreview
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.pienization
-import com.yenaly.han1meviewer.ui.component.content.EmptyContent
-import com.yenaly.han1meviewer.ui.component.content.ErrorContent
-import com.yenaly.han1meviewer.ui.component.content.LoadingContent
-import com.yenaly.han1meviewer.ui.component.lazy.LazyColumn
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.exception.HanimeNotFoundException
+import com.wuwei.han1meviewer.logic.model.HanimePreview
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.pienization
+import com.wuwei.han1meviewer.ui.component.content.EmptyContent
+import com.wuwei.han1meviewer.ui.component.content.ErrorContent
+import com.wuwei.han1meviewer.ui.component.content.LoadingContent
+import com.wuwei.han1meviewer.ui.component.lazy.LazyColumn
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.myplaylist
+package com.wuwei.han1meviewer.ui.screen.home.myplaylist
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -51,20 +51,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.logic.state.PageLoadingState
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.ui.component.BottomSheetHandler
-import com.yenaly.han1meviewer.ui.component.ConfirmDialog
-import com.yenaly.han1meviewer.ui.component.VideoCardItem
-import com.yenaly.han1meviewer.ui.component.content.EmptyContent
-import com.yenaly.han1meviewer.ui.component.lazy.LazyVerticalGrid
-import com.yenaly.han1meviewer.ui.screen.RetryableImage
-import com.yenaly.han1meviewer.ui.theme.SpacingNormal
-import com.yenaly.han1meviewer.ui.theme.VideoNormalCardMinWidth
-import com.yenaly.han1meviewer.ui.viewmodel.MyPlayListViewModelV2
-import com.yenaly.han1meviewer.util.showAlertDialog
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.state.PageLoadingState
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.ui.component.BottomSheetHandler
+import com.wuwei.han1meviewer.ui.component.ConfirmDialog
+import com.wuwei.han1meviewer.ui.component.VideoCardItem
+import com.wuwei.han1meviewer.ui.component.content.EmptyContent
+import com.wuwei.han1meviewer.ui.component.lazy.LazyVerticalGrid
+import com.wuwei.han1meviewer.ui.screen.RetryableImage
+import com.wuwei.han1meviewer.ui.theme.SpacingNormal
+import com.wuwei.han1meviewer.ui.theme.VideoNormalCardMinWidth
+import com.wuwei.han1meviewer.ui.viewmodel.MyPlayListViewModelV2
+import com.wuwei.han1meviewer.util.showAlertDialog
 import com.yenaly.yenaly_libs.utils.showShortToast
 
 /**

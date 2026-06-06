@@ -1,14 +1,14 @@
-package com.yenaly.han1meviewer.ui.screen.home.download
+package com.wuwei.han1meviewer.ui.screen.home.download
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.entity.download.DownloadGroupEntity
-import com.yenaly.han1meviewer.logic.entity.download.VideoWithCategories
-import com.yenaly.han1meviewer.logic.model.DownloadHeaderNode
-import com.yenaly.han1meviewer.logic.model.DownloadItemNode
-import com.yenaly.han1meviewer.logic.model.DownloadedNode
-import com.yenaly.han1meviewer.logic.state.DownloadState
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.entity.download.DownloadGroupEntity
+import com.wuwei.han1meviewer.logic.entity.download.VideoWithCategories
+import com.wuwei.han1meviewer.logic.model.DownloadHeaderNode
+import com.wuwei.han1meviewer.logic.model.DownloadItemNode
+import com.wuwei.han1meviewer.logic.model.DownloadedNode
+import com.wuwei.han1meviewer.logic.state.DownloadState
 
 /**
  * 将已下载视频列表按分组 ID 转换为 [DownloadHeaderNode] 列表。

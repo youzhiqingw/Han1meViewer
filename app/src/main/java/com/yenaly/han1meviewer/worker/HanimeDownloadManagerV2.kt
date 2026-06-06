@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.worker
+package com.wuwei.han1meviewer.worker
 
 import android.util.Log
 import androidx.lifecycle.Observer
@@ -7,12 +7,12 @@ import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.await
 import androidx.work.workDataOf
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.logic.DatabaseRepo
-import com.yenaly.han1meviewer.logic.dao.DownloadDatabase
-import com.yenaly.han1meviewer.logic.entity.download.HanimeDownloadEntity
-import com.yenaly.han1meviewer.logic.state.DownloadState
-import com.yenaly.han1meviewer.util.runSuspendCatching
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.logic.DatabaseRepo
+import com.wuwei.han1meviewer.logic.dao.DownloadDatabase
+import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
+import com.wuwei.han1meviewer.logic.state.DownloadState
+import com.wuwei.han1meviewer.util.runSuspendCatching
 import com.yenaly.yenaly_libs.utils.applicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

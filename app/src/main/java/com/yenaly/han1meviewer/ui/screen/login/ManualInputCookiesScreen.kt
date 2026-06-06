@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.login
+package com.wuwei.han1meviewer.ui.screen.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -30,8 +30,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.component.appbar.HanimeScaffold
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.component.appbar.HanimeScaffold
 
 @Composable
 fun ManualInputCookiesScreen(

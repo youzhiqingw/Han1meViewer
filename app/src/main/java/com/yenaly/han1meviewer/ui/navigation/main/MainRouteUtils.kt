@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.navigation.main
+package com.wuwei.han1meviewer.ui.navigation.main
 
 internal fun shiftMonthCodeForPreview(code: String, delta: Int): String {
     var year = code.substring(0, 4).toInt()

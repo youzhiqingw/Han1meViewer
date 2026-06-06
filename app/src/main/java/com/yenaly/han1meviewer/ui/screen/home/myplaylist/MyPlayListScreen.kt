@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.myplaylist
+package com.wuwei.han1meviewer.ui.screen.home.myplaylist
 
 import android.view.View
 import android.widget.EditText
@@ -34,13 +34,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.ui.component.PullRefreshOverlay
-import com.yenaly.han1meviewer.ui.component.appbar.HanimeScaffold
-import com.yenaly.han1meviewer.ui.component.content.EmptyContent
-import com.yenaly.han1meviewer.ui.viewmodel.MyPlayListViewModelV2
-import com.yenaly.han1meviewer.util.showAlertDialog
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.ui.component.PullRefreshOverlay
+import com.wuwei.han1meviewer.ui.component.appbar.HanimeScaffold
+import com.wuwei.han1meviewer.ui.component.content.EmptyContent
+import com.wuwei.han1meviewer.ui.viewmodel.MyPlayListViewModelV2
+import com.wuwei.han1meviewer.util.showAlertDialog
 import com.yenaly.yenaly_libs.utils.showShortToast
 
 /**

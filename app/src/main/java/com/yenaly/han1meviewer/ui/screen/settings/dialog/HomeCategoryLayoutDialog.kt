@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.settings.dialog
+package com.wuwei.han1meviewer.ui.screen.settings.dialog
 
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
@@ -38,9 +38,9 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.component.verticalScrollbar
-import com.yenaly.han1meviewer.ui.screen.settings.model.HomeSettingsUiState
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.component.verticalScrollbar
+import com.wuwei.han1meviewer.ui.screen.settings.model.HomeSettingsUiState
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.lazy.LazyColumn as ComposeLazyColumn
 

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home
+package com.wuwei.han1meviewer.ui.screen.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.lazy.LazyListState
@@ -27,22 +27,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.entity.download.DownloadGroupEntity
-import com.yenaly.han1meviewer.logic.entity.download.HanimeDownloadEntity
-import com.yenaly.han1meviewer.logic.entity.download.VideoWithCategories
-import com.yenaly.han1meviewer.logic.model.DownloadHeaderNode
-import com.yenaly.han1meviewer.ui.component.appbar.HanimeScaffold
-import com.yenaly.han1meviewer.ui.component.ConfirmDialog
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.screen.home.download.DownloadEvent
-import com.yenaly.han1meviewer.ui.screen.home.download.DownloadUiState
-import com.yenaly.han1meviewer.ui.screen.home.download.DownloadedScreen
-import com.yenaly.han1meviewer.ui.screen.home.download.DownloadingScreen
-import com.yenaly.han1meviewer.ui.screen.home.download.MoveGroupDialog
-import com.yenaly.han1meviewer.ui.screen.home.download.toDisplayGroups
-import com.yenaly.han1meviewer.ui.screen.home.download.toFlatNodeList
-import com.yenaly.han1meviewer.ui.screen.home.download.toNodeList
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.entity.download.DownloadGroupEntity
+import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
+import com.wuwei.han1meviewer.logic.entity.download.VideoWithCategories
+import com.wuwei.han1meviewer.logic.model.DownloadHeaderNode
+import com.wuwei.han1meviewer.ui.component.appbar.HanimeScaffold
+import com.wuwei.han1meviewer.ui.component.ConfirmDialog
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.screen.home.download.DownloadEvent
+import com.wuwei.han1meviewer.ui.screen.home.download.DownloadUiState
+import com.wuwei.han1meviewer.ui.screen.home.download.DownloadedScreen
+import com.wuwei.han1meviewer.ui.screen.home.download.DownloadingScreen
+import com.wuwei.han1meviewer.ui.screen.home.download.MoveGroupDialog
+import com.wuwei.han1meviewer.ui.screen.home.download.toDisplayGroups
+import com.wuwei.han1meviewer.ui.screen.home.download.toFlatNodeList
+import com.wuwei.han1meviewer.ui.screen.home.download.toNodeList
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -156,7 +156,7 @@ fun DownloadScreen(
                 }
             }
             is DownloadEvent.OnSelectAllCurrentGroup -> {
-                val groupVideos = downloadedNodes.filterIsInstance<com.yenaly.han1meviewer.logic.model.DownloadItemNode>()
+                val groupVideos = downloadedNodes.filterIsInstance<com.wuwei.han1meviewer.logic.model.DownloadItemNode>()
                     .filter { it.parentKey == event.groupKey }
                 selectedVideoIds = if (event.select) {
                     selectedVideoIds + groupVideos.map { it.data.video.id }.toSet()
@@ -269,7 +269,7 @@ fun DownloadScreen(
 
     if (pendingBatchMove) {
         val selectedVideos = downloadedNodes
-            .filterIsInstance<com.yenaly.han1meviewer.logic.model.DownloadItemNode>()
+            .filterIsInstance<com.wuwei.han1meviewer.logic.model.DownloadItemNode>()
             .filter { it.data.video.id in selectedVideoIds }
             .map { it.data }
         if (selectedVideos.isNotEmpty()) {

@@ -1,10 +1,10 @@
-package com.yenaly.han1meviewer.ui.screen.home.creatorcenter
+package com.wuwei.han1meviewer.ui.screen.home.creatorcenter
 
-import com.yenaly.han1meviewer.logic.model.CreatorSort
-import com.yenaly.han1meviewer.logic.model.CreatorTab
-import com.yenaly.han1meviewer.logic.model.CreatorUploadingItem
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.logic.state.PageLoadingState
+import com.wuwei.han1meviewer.logic.model.CreatorSort
+import com.wuwei.han1meviewer.logic.model.CreatorTab
+import com.wuwei.han1meviewer.logic.model.CreatorUploadingItem
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.state.PageLoadingState
 
 /**
  * 创作者中心页面 UI 状态。

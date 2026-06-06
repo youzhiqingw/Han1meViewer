@@ -1,16 +1,16 @@
-package com.yenaly.han1meviewer.logic.network
+package com.wuwei.han1meviewer.logic.network
 
 import android.util.Log
 import com.google.firebase.Firebase
 import com.google.firebase.remoteconfig.remoteConfig
-import com.yenaly.han1meviewer.BuildConfig
-import com.yenaly.han1meviewer.FirebaseConstants
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.logic.model.github.CommitComparison
-import com.yenaly.han1meviewer.logic.model.github.Latest
-import com.yenaly.han1meviewer.util.checkNeedUpdate
-import com.yenaly.han1meviewer.util.copyTo
-import com.yenaly.han1meviewer.util.runSuspendCatching
+import com.wuwei.han1meviewer.BuildConfig
+import com.wuwei.han1meviewer.FirebaseConstants
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.logic.model.github.CommitComparison
+import com.wuwei.han1meviewer.logic.model.github.Latest
+import com.wuwei.han1meviewer.util.checkNeedUpdate
+import com.wuwei.han1meviewer.util.copyTo
+import com.wuwei.han1meviewer.util.runSuspendCatching
 import okio.use
 import java.io.File
 import java.util.zip.ZipInputStream

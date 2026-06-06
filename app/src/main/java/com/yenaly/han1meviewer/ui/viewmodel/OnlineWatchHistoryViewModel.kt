@@ -1,15 +1,15 @@
-package com.yenaly.han1meviewer.ui.viewmodel
+package com.wuwei.han1meviewer.ui.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.viewModelScope
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.logic.NetworkRepo
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.logic.model.MyListItems
-import com.yenaly.han1meviewer.logic.model.OnlineWatchHistorySort
-import com.yenaly.han1meviewer.logic.state.PageLoadingState
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.ui.viewmodel.AppViewModel.csrfToken
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.logic.NetworkRepo
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.model.MyListItems
+import com.wuwei.han1meviewer.logic.model.OnlineWatchHistorySort
+import com.wuwei.han1meviewer.logic.state.PageLoadingState
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.ui.viewmodel.AppViewModel.csrfToken
 import com.yenaly.yenaly_libs.base.YenalyViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -65,7 +65,7 @@ class OnlineWatchHistoryViewModel(application: Application) : YenalyViewModel(ap
     private fun loadPage(page: Int) {
         val userId = Preferences.savedUserId
         if (userId.isBlank()) {
-            _state.value = PageLoadingState.Error(IllegalStateException(application.getString(com.yenaly.han1meviewer.R.string.not_logged_in_currently)))
+            _state.value = PageLoadingState.Error(IllegalStateException(application.getString(com.wuwei.han1meviewer.R.string.not_logged_in_currently)))
             _isLoadingMore.value = false
             return
         }

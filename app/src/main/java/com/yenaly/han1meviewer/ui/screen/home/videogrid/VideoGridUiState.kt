@@ -1,7 +1,7 @@
-package com.yenaly.han1meviewer.ui.screen.home.videogrid
+package com.wuwei.han1meviewer.ui.screen.home.videogrid
 
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.logic.state.PageLoadingState
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.state.PageLoadingState
 
 /**
  * 视频网格页面的 UI 状态。

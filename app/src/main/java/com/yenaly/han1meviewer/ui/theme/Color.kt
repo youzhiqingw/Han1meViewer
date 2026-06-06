@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.theme
+package com.wuwei.han1meviewer.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

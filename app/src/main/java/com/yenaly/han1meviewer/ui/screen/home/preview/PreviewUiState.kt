@@ -1,8 +1,8 @@
-package com.yenaly.han1meviewer.ui.screen.home.preview
+package com.wuwei.han1meviewer.ui.screen.home.preview
 
 import androidx.compose.runtime.saveable.listSaver
-import com.yenaly.han1meviewer.logic.model.HanimePreview
-import com.yenaly.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.logic.model.HanimePreview
+import com.wuwei.han1meviewer.logic.state.WebsiteState
 
 /**
  * 预览页面路由状态。

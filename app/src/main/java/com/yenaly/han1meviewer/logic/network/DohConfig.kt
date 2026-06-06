@@ -1,6 +1,6 @@
-package com.yenaly.han1meviewer.logic.network
+package com.wuwei.han1meviewer.logic.network
 
-import com.yenaly.han1meviewer.Preferences
+import com.wuwei.han1meviewer.Preferences
 
 data class DohPreset(
     val key: String,

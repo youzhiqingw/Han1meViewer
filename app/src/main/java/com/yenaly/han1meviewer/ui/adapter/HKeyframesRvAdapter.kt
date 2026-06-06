@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.adapter
+package com.wuwei.han1meviewer.ui.adapter
 
 import android.content.Context
 import android.view.View
@@ -9,10 +9,10 @@ import cn.jzvd.JZUtils
 import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.google.android.material.button.MaterialButton
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.entity.HKeyframeEntity
-import com.yenaly.han1meviewer.ui.activity.MainActivity
-import com.yenaly.han1meviewer.util.showAlertDialog
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.entity.HKeyframeEntity
+import com.wuwei.han1meviewer.ui.activity.MainActivity
+import com.wuwei.han1meviewer.util.showAlertDialog
 import com.yenaly.yenaly_libs.utils.showShortToast
 
 /**

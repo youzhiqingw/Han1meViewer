@@ -1,21 +1,21 @@
-package com.yenaly.han1meviewer.ui.preview
+package com.wuwei.han1meviewer.ui.preview
 
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.entity.download.DownloadGroupEntity
-import com.yenaly.han1meviewer.logic.entity.download.HanimeDownloadEntity
-import com.yenaly.han1meviewer.logic.entity.download.VideoWithCategories
-import com.yenaly.han1meviewer.logic.model.Announcement
-import com.yenaly.han1meviewer.logic.model.DownloadHeaderNode
-import com.yenaly.han1meviewer.logic.model.DownloadItemNode
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.logic.model.HanimePreview
-import com.yenaly.han1meviewer.logic.model.HanimeVideo
-import com.yenaly.han1meviewer.logic.model.HomePage
-import com.yenaly.han1meviewer.logic.model.Playlists
-import com.yenaly.han1meviewer.logic.model.SubscriptionItem
-import com.yenaly.han1meviewer.logic.model.SubscriptionVideosItem
-import com.yenaly.han1meviewer.logic.model.VideoComments
-import com.yenaly.han1meviewer.ui.screen.home.homepage.HomeCategory
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.entity.download.DownloadGroupEntity
+import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
+import com.wuwei.han1meviewer.logic.entity.download.VideoWithCategories
+import com.wuwei.han1meviewer.logic.model.Announcement
+import com.wuwei.han1meviewer.logic.model.DownloadHeaderNode
+import com.wuwei.han1meviewer.logic.model.DownloadItemNode
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.model.HanimePreview
+import com.wuwei.han1meviewer.logic.model.HanimeVideo
+import com.wuwei.han1meviewer.logic.model.HomePage
+import com.wuwei.han1meviewer.logic.model.Playlists
+import com.wuwei.han1meviewer.logic.model.SubscriptionItem
+import com.wuwei.han1meviewer.logic.model.SubscriptionVideosItem
+import com.wuwei.han1meviewer.logic.model.VideoComments
+import com.wuwei.han1meviewer.ui.screen.home.homepage.HomeCategory
 import kotlinx.datetime.LocalDate
 
 
@@ -356,7 +356,7 @@ val fakeDownloadedVideos = fakeHomePageVideos.take(3).mapIndexed { index, item -
             videoUrl = "https://example.com/test$index.mp4",
             length = 100L * 1024 * 1024,
             downloadedLength = 100L * 1024 * 1024,
-            state = com.yenaly.han1meviewer.logic.state.DownloadState.Finished,
+            state = com.wuwei.han1meviewer.logic.state.DownloadState.Finished,
             id = index + 1,
         ),
         categories = emptyList(),
@@ -392,7 +392,7 @@ val fakeVideoIntroduction = HanimeVideo(
     introduction = "思春期的性学习 2。为了拓展自己的知识，女主开始在图书馆进行一些不太适合公开讨论的研究。\nhttps://hanime1.me/watch?v=101573",
     uploadTime = LocalDate(2024, 5, 10),
     views = "137.6万次",
-    videoUrls = com.yenaly.han1meviewer.HanimeResolution().apply {
+    videoUrls = com.wuwei.han1meviewer.HanimeResolution().apply {
         parseResolution("720P", "https://example.com/video.mp4", "video/mp4")
     }.toResolutionLinkMap(),
     tags = fakeTagList2,

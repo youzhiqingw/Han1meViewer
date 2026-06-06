@@ -1,6 +1,6 @@
-package com.yenaly.han1meviewer.ui.screen.home.dailycheckin
+package com.wuwei.han1meviewer.ui.screen.home.dailycheckin
 
-import com.yenaly.han1meviewer.ui.viewmodel.MonthlyStats
+import com.wuwei.han1meviewer.ui.viewmodel.MonthlyStats
 import java.time.LocalDate
 import java.time.YearMonth
 

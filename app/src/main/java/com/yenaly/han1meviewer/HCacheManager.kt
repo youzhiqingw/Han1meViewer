@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer
+package com.wuwei.han1meviewer
 
 import android.content.Context
 import android.os.Looper
@@ -6,10 +6,10 @@ import android.util.Log
 import androidx.annotation.WorkerThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
-import com.yenaly.han1meviewer.logic.DatabaseRepo
-import com.yenaly.han1meviewer.logic.model.HanimeVideo
-import com.yenaly.han1meviewer.ui.navigation.settings.SettingsPreferenceKeys
-import com.yenaly.han1meviewer.util.SafFileManager
+import com.wuwei.han1meviewer.logic.DatabaseRepo
+import com.wuwei.han1meviewer.logic.model.HanimeVideo
+import com.wuwei.han1meviewer.ui.navigation.settings.SettingsPreferenceKeys
+import com.wuwei.han1meviewer.util.SafFileManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow

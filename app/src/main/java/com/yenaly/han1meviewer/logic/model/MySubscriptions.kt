@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.model
+package com.wuwei.han1meviewer.logic.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

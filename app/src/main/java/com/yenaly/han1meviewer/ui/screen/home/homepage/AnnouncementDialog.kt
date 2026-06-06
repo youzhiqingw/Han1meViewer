@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.homepage
+package com.wuwei.han1meviewer.ui.screen.home.homepage
 
 import android.content.ContentValues
 import android.content.Context
@@ -52,11 +52,11 @@ import coil3.request.ImageRequest
 import coil3.request.SuccessResult
 import coil3.request.crossfade
 import coil3.toBitmap
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.Announcement
-import com.yenaly.han1meviewer.ui.component.ConfirmDialog
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.preview.fakeAnnouncements
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.Announcement
+import com.wuwei.han1meviewer.ui.component.ConfirmDialog
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.fakeAnnouncements
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

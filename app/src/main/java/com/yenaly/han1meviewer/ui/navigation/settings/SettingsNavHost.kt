@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.navigation.settings
+package com.wuwei.han1meviewer.ui.navigation.settings
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,9 +21,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.activity.MainActivity
-import com.yenaly.han1meviewer.util.logScreenViewEvent
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.activity.MainActivity
+import com.wuwei.han1meviewer.util.logScreenViewEvent
 import com.yenaly.yenaly_libs.utils.findActivity
 
 @OptIn(ExperimentalMaterial3Api::class)

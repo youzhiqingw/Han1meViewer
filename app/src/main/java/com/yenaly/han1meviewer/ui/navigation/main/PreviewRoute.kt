@@ -1,11 +1,11 @@
-package com.yenaly.han1meviewer.ui.navigation.main
+package com.wuwei.han1meviewer.ui.navigation.main
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.yenaly.han1meviewer.ui.activity.MainActivity
-import com.yenaly.han1meviewer.ui.screen.home.PreviewScreen
-import com.yenaly.han1meviewer.ui.viewmodel.CommentViewModel
-import com.yenaly.han1meviewer.ui.viewmodel.PreviewViewModel
+import com.wuwei.han1meviewer.ui.activity.MainActivity
+import com.wuwei.han1meviewer.ui.screen.home.PreviewScreen
+import com.wuwei.han1meviewer.ui.viewmodel.CommentViewModel
+import com.wuwei.han1meviewer.ui.viewmodel.PreviewViewModel
 
 @Composable
 fun PreviewRouteScreen(

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.util
+package com.wuwei.han1meviewer.util
 
 import android.content.ActivityNotFoundException
 import android.content.ContentResolver
@@ -7,10 +7,10 @@ import android.content.Intent
 import android.util.Log
 import androidx.core.content.FileProvider
 import androidx.core.net.toUri
-import com.yenaly.han1meviewer.FILE_PROVIDER_AUTHORITY
-import com.yenaly.han1meviewer.HFileManager
-import com.yenaly.han1meviewer.HJson
-import com.yenaly.han1meviewer.R
+import com.wuwei.han1meviewer.FILE_PROVIDER_AUTHORITY
+import com.wuwei.han1meviewer.HFileManager
+import com.wuwei.han1meviewer.HJson
+import com.wuwei.han1meviewer.R
 import com.yenaly.yenaly_libs.utils.application
 import com.yenaly.yenaly_libs.utils.applicationContext
 import com.yenaly.yenaly_libs.utils.showShortToast
@@ -27,7 +27,7 @@ import java.io.OutputStream
     "Use alternative",
     ReplaceWith(
         "HFileManager.createVideoName(title, quality, suffix)",
-        imports = ["com.yenaly.han1meviewer.HFileManager"]
+        imports = ["com.wuwei.han1meviewer.HFileManager"]
     )
 )
 fun createDownloadName(title: String, quality: String, suffix: String = HFileManager.DEF_VIDEO_TYPE) =
@@ -37,7 +37,7 @@ fun createDownloadName(title: String, quality: String, suffix: String = HFileMan
     "Use alternative",
     ReplaceWith(
         "HFileManager.getDownloadVideoFile(videoCode, title, quality, suffix)",
-        imports = ["com.yenaly.han1meviewer.HFileManager"]
+        imports = ["com.wuwei.han1meviewer.HFileManager"]
     )
 )
 fun getDownloadedHanimeFile(title: String, quality: String, suffix: String = HFileManager.DEF_VIDEO_TYPE): File {

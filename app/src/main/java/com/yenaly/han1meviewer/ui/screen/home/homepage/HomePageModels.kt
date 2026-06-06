@@ -1,8 +1,8 @@
-package com.yenaly.han1meviewer.ui.screen.home.homepage
+package com.wuwei.han1meviewer.ui.screen.home.homepage
 
 import androidx.annotation.StringRes
 import androidx.compose.runtime.staticCompositionLocalOf
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
 
 /**
  * 为首页搜索相关组件提供搜索历史查询能力。

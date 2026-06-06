@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen
+package com.wuwei.han1meviewer.ui.screen
 
 import android.util.Log
 import androidx.compose.runtime.Composable
@@ -19,10 +19,10 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.ui.theme.SpacingLarge
-import com.yenaly.han1meviewer.ui.theme.SpacingNormal
-import com.yenaly.han1meviewer.ui.theme.VideoNormalCardMinWidth
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.ui.theme.SpacingLarge
+import com.wuwei.han1meviewer.ui.theme.SpacingNormal
+import com.wuwei.han1meviewer.ui.theme.VideoNormalCardMinWidth
 
 @Composable
 fun RetryableImage(

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.util
+package com.wuwei.han1meviewer.util
 
 import android.app.Activity
 import android.content.Context
@@ -7,7 +7,7 @@ import android.os.Build
 import android.view.View
 import android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
 import androidx.appcompat.app.AppCompatDelegate
-import com.yenaly.han1meviewer.Preferences
+import com.wuwei.han1meviewer.Preferences
 
 object ThemeUtils {
     fun applyDarkModeFromPreferences(context: Context) {

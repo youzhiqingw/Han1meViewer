@@ -1,6 +1,6 @@
-package com.yenaly.han1meviewer.ui.screen.home.dailycheckin
+package com.wuwei.han1meviewer.ui.screen.home.dailycheckin
 
-import com.yenaly.han1meviewer.ui.viewmodel.MonthlyStats
+import com.wuwei.han1meviewer.ui.viewmodel.MonthlyStats
 
 /** 月度统计中打卡类型卡片最大展示数量 */
 internal const val STATS_TYPE_DISPLAY_COUNT = 6

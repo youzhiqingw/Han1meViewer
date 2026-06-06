@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.download
+package com.wuwei.han1meviewer.ui.screen.home.download
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
@@ -41,12 +41,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.yenaly.han1meviewer.LOCAL_DATE_TIME_FORMAT
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.entity.download.VideoWithCategories
-import com.yenaly.han1meviewer.logic.model.DownloadHeaderNode
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.preview.fakeDownloadedNodes
+import com.wuwei.han1meviewer.LOCAL_DATE_TIME_FORMAT
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.entity.download.VideoWithCategories
+import com.wuwei.han1meviewer.logic.model.DownloadHeaderNode
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.fakeDownloadedNodes
 import com.yenaly.yenaly_libs.utils.formatFileSizeV2
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format
@@ -335,7 +335,7 @@ private fun PreviewDownloadGroupHeader() {
 @Composable
 private fun PreviewDownloadedVideoCard() {
     val node = fakeDownloadedNodes
-        .filterIsInstance<com.yenaly.han1meviewer.logic.model.DownloadItemNode>()
+        .filterIsInstance<com.wuwei.han1meviewer.logic.model.DownloadItemNode>()
         .firstOrNull()?.data
         ?: return
     ComponentPreview {

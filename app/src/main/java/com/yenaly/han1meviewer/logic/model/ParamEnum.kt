@@ -1,6 +1,6 @@
-package com.yenaly.han1meviewer.logic.model
+package com.wuwei.han1meviewer.logic.model
 
-import com.yenaly.han1meviewer.EMPTY_STRING
+import com.wuwei.han1meviewer.EMPTY_STRING
 
 enum class MyListType(val value: String) {
     FAV_VIDEO("likes"), // 喜欢的视频

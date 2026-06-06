@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.dao
+package com.wuwei.han1meviewer.logic.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -6,7 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.yenaly.han1meviewer.logic.entity.HKeyframeEntity
+import com.wuwei.han1meviewer.logic.entity.HKeyframeEntity
 import kotlinx.coroutines.flow.Flow
 
 /**

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.settings.dialog
+package com.wuwei.han1meviewer.ui.screen.settings.dialog
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -27,7 +27,7 @@ import androidx.compose.ui.window.DialogProperties
 import com.mikepenz.aboutlibraries.ui.compose.LibraryDefaults
 import com.mikepenz.aboutlibraries.ui.compose.android.produceLibraries
 import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
-import com.yenaly.han1meviewer.R
+import com.wuwei.han1meviewer.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

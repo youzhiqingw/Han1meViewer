@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home
+package com.wuwei.han1meviewer.ui.screen.home
 
 import android.app.Activity
 import android.widget.Toast
@@ -26,17 +26,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.component.ConfirmDialog
-import com.yenaly.han1meviewer.ui.component.appbar.HanimeScaffold
-import com.yenaly.han1meviewer.ui.screen.home.dailycheckin.CheckInDialog
-import com.yenaly.han1meviewer.ui.screen.home.dailycheckin.ContributionReportDialog
-import com.yenaly.han1meviewer.ui.screen.home.dailycheckin.DailyCheckInContent
-import com.yenaly.han1meviewer.ui.screen.home.dailycheckin.DailyCheckInEvent
-import com.yenaly.han1meviewer.ui.screen.home.dailycheckin.DailyCheckInUiState
-import com.yenaly.han1meviewer.ui.screen.home.dailycheckin.createCalendarEvent
-import com.yenaly.han1meviewer.ui.screen.home.dailycheckin.updateReportWindowMode
-import com.yenaly.han1meviewer.ui.viewmodel.CheckInCalendarViewModel
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.component.ConfirmDialog
+import com.wuwei.han1meviewer.ui.component.appbar.HanimeScaffold
+import com.wuwei.han1meviewer.ui.screen.home.dailycheckin.CheckInDialog
+import com.wuwei.han1meviewer.ui.screen.home.dailycheckin.ContributionReportDialog
+import com.wuwei.han1meviewer.ui.screen.home.dailycheckin.DailyCheckInContent
+import com.wuwei.han1meviewer.ui.screen.home.dailycheckin.DailyCheckInEvent
+import com.wuwei.han1meviewer.ui.screen.home.dailycheckin.DailyCheckInUiState
+import com.wuwei.han1meviewer.ui.screen.home.dailycheckin.createCalendarEvent
+import com.wuwei.han1meviewer.ui.screen.home.dailycheckin.updateReportWindowMode
+import com.wuwei.han1meviewer.ui.viewmodel.CheckInCalendarViewModel
 import kotlinx.coroutines.flow.distinctUntilChanged
 import java.time.LocalDate
 import java.time.YearMonth

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.navigation.settings
+package com.wuwei.han1meviewer.ui.navigation.settings
 
 import android.content.Context
 import androidx.compose.material.icons.Icons
@@ -20,15 +20,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.core.content.edit
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.entity.HKeyframeEntity
-import com.yenaly.han1meviewer.ui.component.ConfirmDialog
-import com.yenaly.han1meviewer.ui.screen.settings.HKeyframeSettingsScreen
-import com.yenaly.han1meviewer.ui.screen.settings.HKeyframeSettingsUiState
-import com.yenaly.han1meviewer.ui.screen.settings.HKeyframesScreen
-import com.yenaly.han1meviewer.ui.screen.settings.SharedHKeyframesScreen
-import com.yenaly.han1meviewer.ui.viewmodel.SettingsViewModel
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.entity.HKeyframeEntity
+import com.wuwei.han1meviewer.ui.component.ConfirmDialog
+import com.wuwei.han1meviewer.ui.screen.settings.HKeyframeSettingsScreen
+import com.wuwei.han1meviewer.ui.screen.settings.HKeyframeSettingsUiState
+import com.wuwei.han1meviewer.ui.screen.settings.HKeyframesScreen
+import com.wuwei.han1meviewer.ui.screen.settings.SharedHKeyframesScreen
+import com.wuwei.han1meviewer.ui.viewmodel.SettingsViewModel
 import com.yenaly.yenaly_libs.utils.copyToClipboard
 import com.yenaly.yenaly_libs.utils.decodeFromStringByBase64
 import com.yenaly.yenaly_libs.utils.showShortToast

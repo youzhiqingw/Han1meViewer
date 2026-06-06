@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer
+package com.wuwei.han1meviewer
 
 data class SearchGridColumnsConfig(
     val compactColumns: Int = DEFAULT_COMPACT_COLUMNS,

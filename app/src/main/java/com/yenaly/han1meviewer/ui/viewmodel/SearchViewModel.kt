@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.viewmodel
+package com.wuwei.han1meviewer.ui.viewmodel
 
 import android.app.Application
 import android.os.Parcelable
@@ -6,17 +6,17 @@ import android.util.Log
 import android.util.SparseArray
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.yenaly.han1meviewer.HanimeConstants.HANIME_URL
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.logic.DatabaseRepo
-import com.yenaly.han1meviewer.logic.DatabaseRepo.HanimeAdvancedSearchRepo.toSearchOptionSet
-import com.yenaly.han1meviewer.logic.NetworkRepo
-import com.yenaly.han1meviewer.logic.entity.HanimeAdvancedSearchHistoryEntity
-import com.yenaly.han1meviewer.logic.entity.SearchHistoryEntity
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.logic.model.SearchOption
-import com.yenaly.han1meviewer.logic.state.PageLoadingState
-import com.yenaly.han1meviewer.util.loadAssetAs
+import com.wuwei.han1meviewer.HanimeConstants.HANIME_URL
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.logic.DatabaseRepo
+import com.wuwei.han1meviewer.logic.DatabaseRepo.HanimeAdvancedSearchRepo.toSearchOptionSet
+import com.wuwei.han1meviewer.logic.NetworkRepo
+import com.wuwei.han1meviewer.logic.entity.HanimeAdvancedSearchHistoryEntity
+import com.wuwei.han1meviewer.logic.entity.SearchHistoryEntity
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.model.SearchOption
+import com.wuwei.han1meviewer.logic.state.PageLoadingState
+import com.wuwei.han1meviewer.util.loadAssetAs
 import com.yenaly.yenaly_libs.base.YenalyViewModel
 import com.yenaly.yenaly_libs.utils.unsafeLazy
 import kotlinx.coroutines.Dispatchers

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.navigation.settings
+package com.wuwei.han1meviewer.ui.navigation.settings
 
 import android.content.Context
 import androidx.compose.runtime.Composable
@@ -10,11 +10,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.edit
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.screen.settings.MpvChoiceDialog
-import com.yenaly.han1meviewer.ui.screen.settings.MpvPlayerSettingsScreen
-import com.yenaly.han1meviewer.ui.screen.settings.MpvPlayerSettingsUiState
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.screen.settings.MpvChoiceDialog
+import com.wuwei.han1meviewer.ui.screen.settings.MpvPlayerSettingsScreen
+import com.wuwei.han1meviewer.ui.screen.settings.MpvPlayerSettingsUiState
 
 private const val MPV_PROFILE = "mpv_profile"
 private const val MPV_INTERPOLATION = "mpv_interpolation"

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.video
+package com.wuwei.han1meviewer.ui.screen.video
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.BorderStroke
@@ -76,28 +76,28 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ResolutionLinkMap
-import com.yenaly.han1meviewer.logic.entity.CheckInRecordEntity
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.logic.model.HanimeVideo
-import com.yenaly.han1meviewer.logic.state.VideoLoadingState
-import com.yenaly.han1meviewer.ui.component.BottomSheetHandler
-import com.yenaly.han1meviewer.ui.component.ExpandableRichText
-import com.yenaly.han1meviewer.ui.component.TagChipGroup
-import com.yenaly.han1meviewer.ui.component.VideoCardItem
-import com.yenaly.han1meviewer.ui.component.content.EmptyContent
-import com.yenaly.han1meviewer.ui.component.content.ErrorContent
-import com.yenaly.han1meviewer.ui.component.content.LoadingContent
-import com.yenaly.han1meviewer.ui.component.lazy.LazyColumn
-import com.yenaly.han1meviewer.ui.component.lazy.LazyRow
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.preview.fakeVideoIntroduction
-import com.yenaly.han1meviewer.ui.screen.rememberCardResponsiveWidth
-import com.yenaly.han1meviewer.ui.theme.SpacingNormal
-import com.yenaly.han1meviewer.ui.theme.VideoNormalCardMinWidth
-import com.yenaly.han1meviewer.ui.theme.VideoSimplifiedCardMinWidth
-import com.yenaly.han1meviewer.util.DisplayTextLocalizer
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ResolutionLinkMap
+import com.wuwei.han1meviewer.logic.entity.CheckInRecordEntity
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.logic.model.HanimeVideo
+import com.wuwei.han1meviewer.logic.state.VideoLoadingState
+import com.wuwei.han1meviewer.ui.component.BottomSheetHandler
+import com.wuwei.han1meviewer.ui.component.ExpandableRichText
+import com.wuwei.han1meviewer.ui.component.TagChipGroup
+import com.wuwei.han1meviewer.ui.component.VideoCardItem
+import com.wuwei.han1meviewer.ui.component.content.EmptyContent
+import com.wuwei.han1meviewer.ui.component.content.ErrorContent
+import com.wuwei.han1meviewer.ui.component.content.LoadingContent
+import com.wuwei.han1meviewer.ui.component.lazy.LazyColumn
+import com.wuwei.han1meviewer.ui.component.lazy.LazyRow
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.fakeVideoIntroduction
+import com.wuwei.han1meviewer.ui.screen.rememberCardResponsiveWidth
+import com.wuwei.han1meviewer.ui.theme.SpacingNormal
+import com.wuwei.han1meviewer.ui.theme.VideoNormalCardMinWidth
+import com.wuwei.han1meviewer.ui.theme.VideoSimplifiedCardMinWidth
+import com.wuwei.han1meviewer.util.DisplayTextLocalizer
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.format
@@ -446,7 +446,7 @@ private fun DownloadQualityDialog(
                             .selectable(
                                 selected = false,
                                 onClick = {
-                                    if (quality == com.yenaly.han1meviewer.HanimeResolution.RES_UNKNOWN) {
+                                    if (quality == com.wuwei.han1meviewer.HanimeResolution.RES_UNKNOWN) {
                                         onOpenOfficial()
                                     } else {
                                         onSelectQuality(quality)
@@ -458,7 +458,7 @@ private fun DownloadQualityDialog(
                         horizontalArrangement = Arrangement.SpaceBetween,
                     ) {
                         Text(quality)
-                        if (quality == com.yenaly.han1meviewer.HanimeResolution.RES_UNKNOWN) {
+                        if (quality == com.wuwei.han1meviewer.HanimeResolution.RES_UNKNOWN) {
                             Text(
                                 text = stringResource(R.string.go_to_official),
                                 color = MaterialTheme.colorScheme.primary,
@@ -594,7 +594,7 @@ private fun QuickCheckInDialog(
                     val record = CheckInRecordEntity(
                         date = java.time.LocalDate.now().toString(),
                         time = time,
-                        type = com.yenaly.han1meviewer.logic.entity.CheckInType.MASTURBATION.storeName,
+                        type = com.wuwei.han1meviewer.logic.entity.CheckInType.MASTURBATION.storeName,
                         sideDishes = "${video.title}$sep${video.playlist?.video?.firstOrNull { it.isPlaying }?.videoCode ?: ""}".removeSuffix(
                             sep
                         ),

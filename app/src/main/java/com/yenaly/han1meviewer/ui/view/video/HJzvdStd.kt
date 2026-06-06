@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.view.video
+package com.wuwei.han1meviewer.ui.view.video
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -49,16 +49,16 @@ import cn.jzvd.JzvdStd
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.color.MaterialColors
 import com.itxca.spannablex.spannable
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.entity.HKeyframeEntity
-import com.yenaly.han1meviewer.ui.activity.MainActivity
-import com.yenaly.han1meviewer.ui.adapter.HKeyframeRvAdapter
-import com.yenaly.han1meviewer.ui.adapter.SuperResolutionAdapter
-import com.yenaly.han1meviewer.ui.adapter.VideoSpeedAdapter
-import com.yenaly.han1meviewer.ui.navigation.main.HomeRoute
-import com.yenaly.han1meviewer.util.setStateViewLayout
-import com.yenaly.han1meviewer.util.showAlertDialog
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.entity.HKeyframeEntity
+import com.wuwei.han1meviewer.ui.activity.MainActivity
+import com.wuwei.han1meviewer.ui.adapter.HKeyframeRvAdapter
+import com.wuwei.han1meviewer.ui.adapter.SuperResolutionAdapter
+import com.wuwei.han1meviewer.ui.adapter.VideoSpeedAdapter
+import com.wuwei.han1meviewer.ui.navigation.main.HomeRoute
+import com.wuwei.han1meviewer.util.setStateViewLayout
+import com.wuwei.han1meviewer.util.showAlertDialog
 import com.yenaly.yenaly_libs.utils.OrientationManager
 import com.yenaly.yenaly_libs.utils.appScreenWidth
 import com.yenaly.yenaly_libs.utils.findActivityOrNull

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.activity
+package com.wuwei.han1meviewer.ui.activity
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -17,12 +17,12 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.ComposeView
 import androidx.preference.PreferenceManager
-import com.yenaly.han1meviewer.Preferences.cloudFlareCookie
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.USER_AGENT
-import com.yenaly.han1meviewer.ui.screen.web.CloudflareScreen
-import com.yenaly.han1meviewer.ui.theme.HanimeTheme
-import com.yenaly.han1meviewer.util.CookieString
+import com.wuwei.han1meviewer.Preferences.cloudFlareCookie
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.USER_AGENT
+import com.wuwei.han1meviewer.ui.screen.web.CloudflareScreen
+import com.wuwei.han1meviewer.ui.theme.HanimeTheme
+import com.wuwei.han1meviewer.util.CookieString
 import java.util.Locale
 
 class CloudflareActivity : AppCompatActivity() {

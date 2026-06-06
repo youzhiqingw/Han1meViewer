@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer
+package com.wuwei.han1meviewer
 
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime

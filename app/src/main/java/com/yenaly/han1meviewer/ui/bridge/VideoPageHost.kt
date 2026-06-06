@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.bridge
+package com.wuwei.han1meviewer.ui.bridge
 
 interface VideoPageHost {
     fun showCommentBadge(count: Int)

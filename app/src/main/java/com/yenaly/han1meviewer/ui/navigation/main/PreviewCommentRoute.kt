@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.navigation.main
+package com.wuwei.han1meviewer.ui.navigation.main
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -25,17 +25,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.yenaly.han1meviewer.PREVIEW_COMMENT_PREFIX
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.state.WebsiteState
-import com.yenaly.han1meviewer.ui.activity.MainActivity
-import com.yenaly.han1meviewer.ui.component.BottomSheetHandler
-import com.yenaly.han1meviewer.ui.screen.video.ChildCommentScreen
-import com.yenaly.han1meviewer.ui.screen.video.CommentMessage
-import com.yenaly.han1meviewer.ui.screen.video.CommentScreen
-import com.yenaly.han1meviewer.ui.viewmodel.CommentViewModel
-import com.yenaly.han1meviewer.ui.viewmodel.PreviewCommentPrefetcher
+import com.wuwei.han1meviewer.PREVIEW_COMMENT_PREFIX
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.ui.activity.MainActivity
+import com.wuwei.han1meviewer.ui.component.BottomSheetHandler
+import com.wuwei.han1meviewer.ui.screen.video.ChildCommentScreen
+import com.wuwei.han1meviewer.ui.screen.video.CommentMessage
+import com.wuwei.han1meviewer.ui.screen.video.CommentScreen
+import com.wuwei.han1meviewer.ui.viewmodel.CommentViewModel
+import com.wuwei.han1meviewer.ui.viewmodel.PreviewCommentPrefetcher
 import com.yenaly.yenaly_libs.utils.application
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch

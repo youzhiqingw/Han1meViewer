@@ -1,6 +1,6 @@
-package com.yenaly.han1meviewer.logic.model
+package com.wuwei.han1meviewer.logic.model
 
-import com.yenaly.han1meviewer.ResolutionLinkMap
+import com.wuwei.han1meviewer.ResolutionLinkMap
 import com.yenaly.yenaly_libs.utils.mapToArray
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable

@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.dailycheckin
+package com.wuwei.han1meviewer.ui.screen.home.dailycheckin
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -48,9 +48,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.component.appbar.HanimeScaffold
-import com.yenaly.han1meviewer.ui.viewmodel.MonthlyStats
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.component.appbar.HanimeScaffold
+import com.wuwei.han1meviewer.ui.viewmodel.MonthlyStats
 import java.time.LocalDate
 import java.time.YearMonth
 

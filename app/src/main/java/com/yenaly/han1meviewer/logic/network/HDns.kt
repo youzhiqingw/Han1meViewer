@@ -1,8 +1,8 @@
-package com.yenaly.han1meviewer.logic.network
+package com.wuwei.han1meviewer.logic.network
 
 import android.util.Log
-import com.yenaly.han1meviewer.HanimeConstants.HANIME_HOSTNAME
-import com.yenaly.han1meviewer.Preferences
+import com.wuwei.han1meviewer.HanimeConstants.HANIME_HOSTNAME
+import com.wuwei.han1meviewer.Preferences
 import okhttp3.Dns
 import okhttp3.dnsoverhttps.DnsOverHttps
 import okhttp3.HttpUrl.Companion.toHttpUrl

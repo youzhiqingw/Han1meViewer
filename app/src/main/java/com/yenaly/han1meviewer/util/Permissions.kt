@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.util
+package com.wuwei.han1meviewer.util
 
 import android.Manifest
 import android.content.Context
@@ -9,7 +9,7 @@ import android.provider.Settings
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import com.yenaly.han1meviewer.R
+import com.wuwei.han1meviewer.R
 import com.yenaly.yenaly_libs.utils.awaitActivityResult
 import com.yenaly.yenaly_libs.utils.requestPermission
 import com.yenaly.yenaly_libs.utils.requireComponentActivity

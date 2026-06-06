@@ -1,9 +1,9 @@
-package com.yenaly.han1meviewer.ui.viewmodel
+package com.wuwei.han1meviewer.ui.viewmodel
 
 import android.app.Application
-import com.yenaly.han1meviewer.ui.viewmodel.mylist.FavSubViewModel
-import com.yenaly.han1meviewer.ui.viewmodel.mylist.PlaylistSubViewModel
-import com.yenaly.han1meviewer.ui.viewmodel.mylist.WatchLaterSubViewModel
+import com.wuwei.han1meviewer.ui.viewmodel.mylist.FavSubViewModel
+import com.wuwei.han1meviewer.ui.viewmodel.mylist.PlaylistSubViewModel
+import com.wuwei.han1meviewer.ui.viewmodel.mylist.WatchLaterSubViewModel
 import com.yenaly.yenaly_libs.base.YenalyViewModel
 
 /**

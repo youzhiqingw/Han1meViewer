@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.worker
+package com.wuwei.han1meviewer.worker
 
 import android.annotation.SuppressLint
 import android.app.Notification
@@ -22,16 +22,16 @@ import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
-import com.yenaly.han1meviewer.EMPTY_STRING
-import com.yenaly.han1meviewer.FILE_PROVIDER_AUTHORITY
-import com.yenaly.han1meviewer.Preferences
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.UPDATE_NOTIFICATION_CHANNEL
-import com.yenaly.han1meviewer.logic.model.github.Latest
-import com.yenaly.han1meviewer.logic.network.HUpdater
-import com.yenaly.han1meviewer.util.installApkPackage
-import com.yenaly.han1meviewer.util.runSuspendCatching
-import com.yenaly.han1meviewer.util.updateFile
+import com.wuwei.han1meviewer.EMPTY_STRING
+import com.wuwei.han1meviewer.FILE_PROVIDER_AUTHORITY
+import com.wuwei.han1meviewer.Preferences
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.UPDATE_NOTIFICATION_CHANNEL
+import com.wuwei.han1meviewer.logic.model.github.Latest
+import com.wuwei.han1meviewer.logic.network.HUpdater
+import com.wuwei.han1meviewer.util.installApkPackage
+import com.wuwei.han1meviewer.util.runSuspendCatching
+import com.wuwei.han1meviewer.util.updateFile
 import com.yenaly.yenaly_libs.utils.showShortToast
 import java.io.File
 import java.util.Locale

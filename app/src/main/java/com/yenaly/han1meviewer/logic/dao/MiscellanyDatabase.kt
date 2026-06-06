@@ -1,9 +1,9 @@
-package com.yenaly.han1meviewer.logic.dao
+package com.wuwei.han1meviewer.logic.dao
 
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.yenaly.han1meviewer.logic.entity.HKeyframeEntity
+import com.wuwei.han1meviewer.logic.entity.HKeyframeEntity
 import com.yenaly.yenaly_libs.utils.applicationContext
 
 /**

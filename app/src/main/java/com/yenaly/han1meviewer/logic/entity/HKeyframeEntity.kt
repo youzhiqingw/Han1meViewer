@@ -1,13 +1,13 @@
 @file:Suppress("PLUGIN_IS_NOT_ENABLED")
 
-package com.yenaly.han1meviewer.logic.entity
+package com.wuwei.han1meviewer.logic.entity
 
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
-import com.yenaly.han1meviewer.logic.model.MultiItemEntity
+import com.wuwei.han1meviewer.logic.model.MultiItemEntity
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

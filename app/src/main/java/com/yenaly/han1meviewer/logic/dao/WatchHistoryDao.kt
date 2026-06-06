@@ -1,7 +1,7 @@
-package com.yenaly.han1meviewer.logic.dao
+package com.wuwei.han1meviewer.logic.dao
 
 import androidx.room.*
-import com.yenaly.han1meviewer.logic.entity.WatchHistoryEntity
+import com.wuwei.han1meviewer.logic.entity.WatchHistoryEntity
 import kotlinx.coroutines.flow.Flow
 
 /**

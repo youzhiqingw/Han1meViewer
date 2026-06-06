@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.widget
+package com.wuwei.han1meviewer.ui.widget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -6,10 +6,10 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.dao.CheckInRecordDatabase
-import com.yenaly.han1meviewer.logic.entity.CheckInRecordEntity
-import com.yenaly.han1meviewer.logic.entity.CheckInType
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.dao.CheckInRecordDatabase
+import com.wuwei.han1meviewer.logic.entity.CheckInRecordEntity
+import com.wuwei.han1meviewer.logic.entity.CheckInType
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -23,7 +23,7 @@ import java.time.format.DateTimeFormatter
 class CheckInWidgetProvider : AppWidgetProvider() {
 
     companion object {
-        const val ACTION_CHECK_IN = "com.yenaly.han1meviewer.ACTION_WIDGET_CHECK_IN"
+        const val ACTION_CHECK_IN = "com.wuwei.han1meviewer.ACTION_WIDGET_CHECK_IN"
     }
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)

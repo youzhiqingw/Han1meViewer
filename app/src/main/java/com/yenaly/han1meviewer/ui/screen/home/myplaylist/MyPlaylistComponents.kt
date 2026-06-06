@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.myplaylist
+package com.wuwei.han1meviewer.ui.screen.home.myplaylist
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,11 +24,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.Playlists
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.preview.fakePlaylists
-import com.yenaly.han1meviewer.ui.screen.RetryableImage
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.Playlists
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.fakePlaylists
+import com.wuwei.han1meviewer.ui.screen.RetryableImage
 
 /**
  * 播放列表项组件。
