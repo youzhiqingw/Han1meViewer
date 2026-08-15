@@ -1,19 +1,8 @@
-# 🚫 请不要在任何公开平台宣传本软件
+# 请不要在任何公开平台宣传本软件
 
 本项目来自[misaka10032w/Han1meViewer: hanime1的三方客户端，提高了一些播放体验](https://github.com/misaka10032w/Han1meViewer)分支，仅供个人部分功能性修改使用。请下载以上分支安装包使用。
-
-# 🌸 Han1meViewer
-
-🔞 R18 警告：未满 18 岁禁止下载和使用。
-
-Han1meViewer 是一个使用 Kotlin 开发的 Android 客户端，用于浏览、搜索、播放和管理 hanime 相关公开视频页面内容。当前项目以 Jetpack Compose、Navigation Compose、ViewModel、StateFlow、Retrofit、Jsoup、Room、WorkManager、Media3/JZVD/MPV 为主要技术栈，围绕视频浏览、详情播放、搜索、用户列表、下载管理、评论、订阅、设置和隐私保护等功能组织。
-
-本应用没有任何官方网站。GitHub Release 与 CI 构建产物是唯一下载及更新渠道。
-
-## 📜 项目来源与许可
-
+## 项目来源与许可
 此项目最初 Fork 自 [YenalyLiew/Han1meViewer](https://github.com/YenalyLiew/Han1meViewer)，感谢原作者的贡献。原项目采用 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)。
-
 根据 Apache 2.0 许可证要求：
 
 - 保留原版权声明。
@@ -24,7 +13,7 @@ Han1meViewer 是一个使用 Kotlin 开发的 Android 客户端，用于浏览�
 
 许可证文件：[LICENSE](LICENSE)
 
-## ⚠️ 免责声明
+##  免责声明
 
 本应用程序与 `https://hanime1.me/` 及其关联方无任何隶属、合作或授权关系。
 
@@ -131,16 +120,6 @@ Telegram 群组：[https://t.me/Han1meViewer](https://t.me/Han1meViewer) （非�
 - 新公告建议先在 WebUI 中预览，再切换为 `isActive = true`。
 - 过期或不再需要显示的公告应直接下线，而不是删除，以便回溯。
 - 重要公告优先级数值应更高或更低需与 WebUI 约定保持一致，避免排序混乱。
-
-## 📷 截图预览
-
-![readme0](readme_01.png) ![readme1](readme_02.png)
-
-![readme2](readme_03.png) ![readme3](readme_04.png)
-
-![readme4](readme_05.png) ![readme5](readme_06.png)
-
-![readme6](readme_07.png)
 
 ## 🧱 当前架构
 
@@ -276,18 +255,6 @@ Han1meViewer/
 ├── README.md                     项目说明
 └── README_TECH.md                历史技术说明与部分实现笔记
 ```
-
-## 🤝 贡献说明
-
-- 提交代码前请先确认可以通过 `:app:compileDebugKotlin`。
-- 修改网络列表、分页或 Compose `Lazy*` 列表时，请检查重复 key 风险。
-- 修改播放、下载、账号、Cookie、Cloudflare、更新逻辑时，请尽量说明验证方式。
-- 提交共享关键 H 帧可参考 `.github/PULL_REQUEST_TEMPLATE/submit_h_keyframe.md`。
-
-## 🧩 TODO
-
-- 随时有想法随时写。
-
 ## 📄 许可证
 
 本项目继承原始项目的 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)。主要条款包括：
