@@ -94,6 +94,7 @@ import com.wuwei.han1meviewer.ui.component.lazy.LazyRow
 import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 import com.wuwei.han1meviewer.ui.preview.fakeVideoIntroduction
 import com.wuwei.han1meviewer.ui.screen.rememberCardResponsiveWidth
+import com.wuwei.han1meviewer.ui.screen.rememberRandomLoadingHint
 import com.wuwei.han1meviewer.ui.theme.SpacingNormal
 import com.wuwei.han1meviewer.ui.theme.VideoNormalCardMinWidth
 import com.wuwei.han1meviewer.ui.theme.VideoSimplifiedCardMinWidth
@@ -152,6 +153,7 @@ fun VideoIntroductionScreen(
             .widthIn(max = maxScreenWidth)
     ) {
         val currentVideo = video ?: (state as? VideoLoadingState.Success)?.info
+        val loadingHint = rememberRandomLoadingHint()
         when {
             currentVideo != null -> VideoIntroductionContent(
                 video = currentVideo,
@@ -199,7 +201,7 @@ fun VideoIntroductionScreen(
 
             else -> LoadingContent(
                 modifier = Modifier.align(Alignment.Center),
-                message = stringResource(R.string.loading),
+                message = loadingHint,
             )
         }
     }
@@ -677,6 +679,10 @@ private fun PlaylistBottomSheet(
     onDismiss: () -> Unit,
     onOpenVideo: (HanimeInfo) -> Unit,
 ) {
+    val playingIndex = remember(playlist) {
+        playlist.video.indexOfFirst { it.isPlaying }.coerceAtLeast(0)
+    }
+
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         dragHandle = { BottomSheetHandler() },
@@ -712,7 +718,15 @@ private fun PlaylistBottomSheet(
 
             Spacer(modifier = Modifier.height(12.dp))
 
+            val listState = remember(playlist, playingIndex) {
+                LazyListState(firstVisibleItemIndex = playingIndex)
+            }
+            LaunchedEffect(playingIndex) {
+                listState.scrollToItem(playingIndex)
+            }
+
             LazyColumn(
+                state = listState,
                 modifier = Modifier.fillMaxWidth(),
                 contentPadding = PaddingValues(bottom = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -724,7 +738,7 @@ private fun PlaylistBottomSheet(
                             .clip(androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
                             .background(
                                 if (item.isPlaying) {
-                                    MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.45f)
+                                    MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.65f)
                                 } else {
                                     MaterialTheme.colorScheme.surface
                                 }
@@ -744,7 +758,7 @@ private fun PlaylistBottomSheet(
                             modifier = Modifier
                                 .width(100.dp)
                                 .height(66.dp)
-                                .clip(androidx.compose.foundation.shape.RoundedCornerShape(10.dp)),
+                                .clip(RoundedCornerShape(10.dp)),
                             contentScale = ContentScale.Crop,
                         )
                         Column(modifier = Modifier.weight(1f)) {
@@ -770,6 +784,44 @@ private fun PlaylistBottomSheet(
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis,
                             )
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Text(
+                                    text = item.duration.orEmpty(),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = if (item.isPlaying) {
+                                        MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.75f)
+                                    } else {
+                                        MaterialTheme.colorScheme.onSurfaceVariant
+                                    },
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                )
+                                Text(
+                                    text = item.views.orEmpty(),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = if (item.isPlaying) {
+                                        MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.75f)
+                                    } else {
+                                        MaterialTheme.colorScheme.onSurfaceVariant
+                                    },
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                )
+                                Text(
+                                    text = item.uploadTime.orEmpty(),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = if (item.isPlaying) {
+                                        MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.75f)
+                                    } else {
+                                        MaterialTheme.colorScheme.onSurfaceVariant
+                                    },
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                )
+                            }
                         }
                         if (item.isPlaying) {
                             Text(

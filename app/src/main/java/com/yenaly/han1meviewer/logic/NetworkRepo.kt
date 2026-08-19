@@ -2,6 +2,7 @@ package com.wuwei.han1meviewer.logic
 
 import android.util.Log
 import com.wuwei.han1meviewer.EMPTY_STRING
+import com.wuwei.han1meviewer.Preferences
 import com.wuwei.han1meviewer.Preferences.isAlreadyLogin
 import com.wuwei.han1meviewer.R
 import com.wuwei.han1meviewer.logic.exception.CloudFlareBlockedException
@@ -47,7 +48,7 @@ object NetworkRepo {
     //<editor-fold desc="Hanime">
 
     fun getHomePage() = websiteIOFlow(
-        request = { HanimeNetwork.hanimeService.getHomePage() },
+        request = { HanimeNetwork.hanimeService.getHomePage(Preferences.homeUrl) },
         action = Parser::homePageVer2
     )
 
@@ -357,7 +358,6 @@ object NetworkRepo {
         listCode: String,
         videoCode: String,
         isChecked: Boolean,
-        position: Int,
         csrfToken: String?,
     ) = websiteIOFlow(
         request = {
@@ -367,7 +367,7 @@ object NetworkRepo {
         }
     ) {
         Log.d("add_to_playlist_body", it)
-        return@websiteIOFlow WebsiteState.Success(position)
+        return@websiteIOFlow WebsiteState.Success(Unit)
     }
 
     fun modifyPlaylist(
@@ -616,7 +616,7 @@ object NetworkRepo {
         emit(VideoLoadingState.Error(handleException(e)))
     }.flowOn(Dispatchers.IO)
 
-    private fun Response<ResponseBody>.throwRequestException(): Nothing {
+    internal fun Response<ResponseBody>.throwRequestException(): Nothing {
         val body = errorBody()?.string()
         when (val code = code()) {
             403 -> if (!body.isNullOrBlank()) {
@@ -644,7 +644,7 @@ object NetworkRepo {
         }
     }
 
-    private fun handleException(e: Throwable): Throwable {
+    internal fun handleException(e: Throwable): Throwable {
         return when (e) {
             is CancellationException -> throw e
             is ParseException -> {

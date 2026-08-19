@@ -65,7 +65,7 @@ object Parser {
         val userInfo = parseBody.selectFirst("div[id=user-modal-dp-wrapper]")
         val avatarUrl: String? = userInfo?.selectFirst("img")?.absUrl("src")
         val username: String? = userInfo?.getElementById("user-modal-name")?.text()
-        val userHomePageLink = parseBody.getElementById("user-modal-trigger")!!.attr("href")
+        val userHomePageLink = parseBody.getElementById("user-modal-trigger")?.attr("href")?:""
 
         if (isAlreadyLogin && isLoginStateExpired(userHomePageLink, username)) {
             return WebsiteState.Error(LoginStateExpiredException(getString(R.string.login_state_expired)))
@@ -246,13 +246,17 @@ object Parser {
         val durationAndViews = hanimeSearchItem.select("div[class^=thumb-container]")
         val duration = durationAndViews.select("div[class^=duration]").text()
         val views = durationAndViews.select("div[class^=stat-item]").getOrNull(1)?.text()
-        val artistAndUploadTime = hanimeSearchItem.selectFirst("div.subtitle a, div.video-meta-data a")!!.text().trim()
+        val subtitleElement = hanimeSearchItem.selectFirst("div.subtitle, div.video-meta-data")
+        val artistAndUploadTime = subtitleElement?.text()?.trim().orEmpty()
         var artist = ""
         var uploadTime = ""
         if (artistAndUploadTime.contains("•")) {
             val parts = artistAndUploadTime.split("•").map { it.trim() }
-            artist = parts[0].trim()
-            uploadTime = parts[1].trim()
+            artist = parts.getOrNull(0).orEmpty()
+            uploadTime = parts.getOrNull(1).orEmpty()
+        } else {
+            artist = subtitleElement?.selectFirst("a")?.text()?.trim().orEmpty()
+            uploadTime = subtitleElement?.selectFirst("span.subtitle-time, span")?.text()?.trim().orEmpty()
         }
         val infoBoxes = hanimeSearchItem.selectFirst(".stats-container .stat-item")
         val reviews = infoBoxes?.ownText()?.trim() ?: ""
@@ -392,53 +396,104 @@ object Parser {
             ?.selectFirst("input")?.hasAttr("checked") == true
         val myList = HanimeVideo.MyList(isWatchLater = isWatchLater, myListInfo = myListInfo)
 
-        val playlistWrapper = parseBody.selectFirst("div[id=video-playlist-wrapper]")
+        val playlistWrapper = parseBody.selectFirst("div.video-playlist-wrapper")
+            ?: parseBody.selectFirst("div[id=video-playlist-wrapper]")
         val playlist = playlistWrapper?.let {
             val playlistVideoList = mutableListOf<HanimeInfo>()
-            val playlistName = it.selectFirst("div > div > h4")?.text()
             val playlistScroll = it.getElementById("playlist-scroll")
-            playlistScroll?.children()?.forEach { parent ->
-                if (parent.tagName() == "a") {
-                    return@forEach
+            if (playlistScroll != null) {
+                val children = playlistScroll.children()
+                if (children.firstOrNull()?.hasClass("playlist-hover-wrap") == true) {
+                    // 新版页面结构
+                    val playlistName = it.selectFirst("#playlist-top-block h4 a")?.text()
+                    children.forEach { child ->
+                        val dataHref = child.attr("data-href")
+                        val videoCode = dataHref.toVideoCode()
+                            .throwIfParseNull(Parser::hanimeVideoVer2.name, "videoCode")
+                        val thumbContainer = child.selectFirst(".thumb-container")
+                        val coverUrl = thumbContainer?.selectFirst("img.main-thumb")?.absUrl("src")
+                            .throwIfParseNull(Parser::hanimeVideoVer2.name, "playlistEachCoverUrl")
+                        val title = child.selectFirst("h4.video-title a")?.text()
+                            .throwIfParseNull(Parser::hanimeVideoVer2.name, "playlistEachTitle")
+                        val duration = thumbContainer?.selectFirst(".duration")?.text()
+                        val statItems = thumbContainer?.select(".stat-item")
+                        val reviews = statItems?.firstOrNull()?.ownText()?.trim()
+                        val views = statItems?.getOrNull(1)?.text()
+                        val isPlaying = child.hasClass("videos-scroll")
+                        val artist = child.selectFirst(".meta-author a")?.text()
+                        val genre = child.selectFirst(".meta-stats a")?.text()
+                        val uploadTime = child.selectFirst(".meta-stats span")?.text()
+                        playlistVideoList.add(
+                            HanimeInfo(
+                                title = title, coverUrl = coverUrl,
+                                videoCode = videoCode,
+                                duration = duration.logIfParseNull(
+                                    Parser::hanimeVideoVer2.name,
+                                    "$title duration"
+                                ),
+                                views = views.logIfParseNull(
+                                    Parser::hanimeVideoVer2.name,
+                                    "$title views"
+                                ),
+                                isPlaying = isPlaying,
+                                itemType = HanimeInfo.NORMAL,
+                                currentArtist = artist,
+                                reviews = reviews,
+                                genre = genre,
+                                uploadTime = uploadTime
+                            )
+                        )
+                    }
+                    HanimeVideo.Playlist(playlistName = playlistName, video = playlistVideoList)
+                } else {
+                    // 旧版页面结构（兼容兜底）
+                    val playlistName = it.selectFirst("div > div > h4")?.text()
+                    children.forEach { parent ->
+                        if (parent.tagName() == "a") {
+                            return@forEach
+                        }
+                        val videoCode = parent.selectFirst("div > a")?.absUrl("href")?.toVideoCode()
+                            .throwIfParseNull(Parser::hanimeVideoVer2.name, "videoCode")
+                        val cardMobilePanel = parent.selectFirst("div[class^=card-mobile-panel]")
+                        val eachTitleCover = cardMobilePanel?.select("div > div > div > img")?.getOrNull(1)
+                        val eachIsPlaying = cardMobilePanel?.select("div > div > div > div")
+                            ?.firstOrNull()
+                            ?.text()
+                            ?.contains("播放") == true
+                        val cardMobileDuration = cardMobilePanel?.select("div[class*=card-mobile-duration]")
+                        val eachDuration = cardMobileDuration?.firstOrNull()?.text()
+                        val eachViews = cardMobileDuration?.getOrNull(2)?.text()
+                        val playlistEachCoverUrl = eachTitleCover?.absUrl("src")
+                            .throwIfParseNull(Parser::hanimeVideoVer2.name, "playlistEachCoverUrl")
+                        val playlistEachTitle = eachTitleCover?.attr("alt")
+                            .throwIfParseNull(Parser::hanimeVideoVer2.name, "playlistEachTitle")
+                        val artist = cardMobilePanel?.selectFirst("a.card-mobile-user")?.text()
+                        val infoBoxes = cardMobilePanel?.select("div.card-mobile-duration.card-playlist-large")
+                        val reviews = infoBoxes?.firstOrNull()?.ownText()?.trim()
+                        playlistVideoList.add(
+                            HanimeInfo(
+                                title = playlistEachTitle, coverUrl = playlistEachCoverUrl,
+                                videoCode = videoCode,
+                                duration = eachDuration.logIfParseNull(
+                                    Parser::hanimeVideoVer2.name,
+                                    "$playlistEachTitle duration"
+                                ),
+                                views = eachViews.logIfParseNull(
+                                    Parser::hanimeVideoVer2.name,
+                                    "$playlistEachTitle views"
+                                ),
+                                isPlaying = eachIsPlaying,
+                                itemType = HanimeInfo.NORMAL,
+                                currentArtist = artist,
+                                reviews = reviews
+                            )
+                        )
+                    }
+                    HanimeVideo.Playlist(playlistName = playlistName, video = playlistVideoList)
                 }
-                val videoCode = parent.selectFirst("div > a")?.absUrl("href")?.toVideoCode()
-                    .throwIfParseNull(Parser::hanimeVideoVer2.name, "videoCode")
-                val cardMobilePanel = parent.selectFirst("div[class^=card-mobile-panel]")
-                val eachTitleCover = cardMobilePanel?.select("div > div > div > img")?.getOrNull(1)
-                val eachIsPlaying = cardMobilePanel?.select("div > div > div > div")
-                    ?.firstOrNull()
-                    ?.text()
-                    ?.contains("播放") == true
-                val cardMobileDuration = cardMobilePanel?.select("div[class*=card-mobile-duration]")
-                val eachDuration = cardMobileDuration?.firstOrNull()?.text()
-                val eachViews = cardMobileDuration?.getOrNull(2)?.text()
-                val playlistEachCoverUrl = eachTitleCover?.absUrl("src")
-                    .throwIfParseNull(Parser::hanimeVideoVer2.name, "playlistEachCoverUrl")
-                val playlistEachTitle = eachTitleCover?.attr("alt")
-                    .throwIfParseNull(Parser::hanimeVideoVer2.name, "playlistEachTitle")
-                val artist = cardMobilePanel?.selectFirst("a.card-mobile-user")?.text()
-                val infoBoxes = cardMobilePanel?.select("div.card-mobile-duration.card-playlist-large")
-                val reviews = infoBoxes?.firstOrNull()?.ownText()?.trim()
-                playlistVideoList.add(
-                    HanimeInfo(
-                        title = playlistEachTitle, coverUrl = playlistEachCoverUrl,
-                        videoCode = videoCode,
-                        duration = eachDuration.logIfParseNull(
-                            Parser::hanimeVideoVer2.name,
-                            "$playlistEachTitle duration"
-                        ),
-                        views = eachViews.logIfParseNull(
-                            Parser::hanimeVideoVer2.name,
-                            "$playlistEachTitle views"
-                        ),
-                        isPlaying = eachIsPlaying,
-                        itemType = HanimeInfo.NORMAL,
-                        currentArtist = artist,
-                        reviews = reviews
-                    )
-                )
+            } else {
+                null
             }
-            HanimeVideo.Playlist(playlistName = playlistName, video = playlistVideoList)
         }
 
         val relatedAnimeList = mutableListOf<HanimeInfo>()
@@ -775,7 +830,7 @@ object Parser {
                 card.selectFirst("img.main-thumb")?.attr("src")
             } ?: return@mapNotNull null
             val duration = card.selectFirst("div.duration")?.text()?.trim()
-            val subtitleText = card.selectFirst("div.subtitle a")?.text()?.trim().orEmpty()
+            val subtitleText = card.selectFirst("div.subtitle")?.text()?.trim().orEmpty()
             val artist = subtitleText.substringBefore("•").trim().ifBlank { null }
             val uploadTime = subtitleText.substringAfter("•", "").trim().ifBlank { null }
             val remoteVideoUrl = link.attr("href")
@@ -1063,13 +1118,17 @@ object Parser {
                     val durationAndViews = videoCard.select("div[class^=thumb-container]")
                     val duration = durationAndViews.select("div[class^=duration]").text()
                     val views = durationAndViews.select("div[class^=stat-item]").getOrNull(1)?.text()
-                    val artistAndUploadTime = videoCard.select("div.subtitle a").text().trim()
+                    val subtitleElement = videoCard.selectFirst("div.subtitle")
+                    val artistAndUploadTime = subtitleElement?.text()?.trim().orEmpty()
                     var artist = ""
                     var uploadTime = ""
                     if (artistAndUploadTime.contains("•")) {
                         val parts = artistAndUploadTime.split("•").map { it.trim() }
-                        artist = parts[0].trim()
-                        uploadTime = parts[1].trim()
+                        artist = parts.getOrNull(0).orEmpty()
+                        uploadTime = parts.getOrNull(1).orEmpty()
+                    } else {
+                        artist = subtitleElement?.selectFirst("a")?.text()?.trim().orEmpty()
+                        uploadTime = subtitleElement?.selectFirst("span.subtitle-time, span")?.text()?.trim().orEmpty()
                     }
                     val infoBoxes = videoCard.selectFirst(".stats-container .stat-item")
                     val reviews = infoBoxes?.ownText()?.trim() ?: ""

@@ -37,7 +37,7 @@ android {
         applicationId = "com.wuwei.han1meviewer"
         minSdk = property("min.sdk")?.toString()?.toIntOrNull()
         targetSdk = property("target.sdk")?.toString()?.toIntOrNull()
-        val (code, name) = createVersion(major = 0, minor = 26, patch = 0)
+        val (code, name) = createVersion(major = 1, minor = 0, patch = 3)
         versionCode = code
         versionName = name
 
@@ -154,7 +154,6 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.compose.ui.ui.tooling.preview)
     implementation(libs.androidx.ui)
-    androidTestImplementation(platform(libs.compose.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.compose.ui.ui.tooling)
     implementation(libs.androidx.navigation.compose)
@@ -219,6 +218,7 @@ dependencies {
     androidTestImplementation(libs.test.junit)
     androidTestImplementation(libs.test.espresso.core)
 
+    implementation(libs.crashx)
     // debugImplementation(libs.leak.canary)
 }
 

@@ -23,7 +23,7 @@ import com.wuwei.han1meviewer.Preferences
 import com.wuwei.han1meviewer.R
 import com.wuwei.han1meviewer.logic.exception.CloudFlareBlockedException
 import com.wuwei.han1meviewer.logic.model.github.Latest
-import com.wuwei.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.logic.state.PageState
 import com.wuwei.han1meviewer.ui.activity.MainActivity
 import com.wuwei.han1meviewer.ui.component.UpdateDialog
 import com.wuwei.han1meviewer.ui.component.UsageNoticeDialog
@@ -33,12 +33,12 @@ import com.wuwei.han1meviewer.ui.navigation.main.handleMainIntent
 import com.wuwei.han1meviewer.ui.navigation.main.navigateDrawerDestination
 import com.wuwei.han1meviewer.ui.theme.HanimeTheme
 import com.wuwei.han1meviewer.ui.viewmodel.AppViewModel
-import com.wuwei.han1meviewer.ui.viewmodel.MainViewModel
+import com.wuwei.han1meviewer.ui.screen.home.homepage.HomePageViewModel
 import com.wuwei.han1meviewer.util.getUpdateIfExists
 import com.wuwei.han1meviewer.util.installApkPackage
 import com.wuwei.han1meviewer.util.requestPostNotificationPermission
 import com.wuwei.han1meviewer.worker.HUpdateWorker
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.utils.showShortToast
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import kotlin.time.ExperimentalTime
@@ -47,7 +47,7 @@ import kotlin.time.ExperimentalTime
 @Composable
 fun MainActivityContent(
     activity: MainActivity,
-    viewModel: MainViewModel,
+    viewModel: HomePageViewModel,
     pendingNavigationRequests: Flow<Intent>,
     showAuthGuard: Boolean,
     onOpenAccount: () -> Unit,
@@ -69,16 +69,16 @@ fun MainActivityContent(
         val homeState by viewModel.homePageFlow.collectAsStateWithLifecycle()
         val isLoggedIn by Preferences.loginStateFlow.collectAsStateWithLifecycle()
         val headerAvatarUrl = if (isLoggedIn) {
-            (homeState as? WebsiteState.Success)?.info?.avatarUrl
+            (homeState as? PageState.Success)?.info?.page?.avatarUrl
         } else {
             null
         }
         val headerUsername = if (isLoggedIn) {
-            (homeState as? WebsiteState.Success)?.info?.username
+            (homeState as? PageState.Success)?.info?.page?.username
         } else {
             null
         }
-        val headerIsLoading = isLoggedIn && homeState is WebsiteState.Loading
+        val headerIsLoading = isLoggedIn && homeState is PageState.Loading
         val selectedDrawerDestination = currentMainDestination.drawerDestination
 
         LaunchedEffect(composeNavController) {
@@ -96,13 +96,13 @@ fun MainActivityContent(
             }
         }
         LaunchedEffect(viewModel) {
-            viewModel.sessionExpiredMessage.collect { message ->
-                showShortToast(message)
+            viewModel.sessionExpiredMessage.collect { event ->
+                event.message?.let(::showShortToast) ?: showShortToast(event.fallbackResId)
             }
         }
         LaunchedEffect(homeState) {
-            if (homeState is WebsiteState.Error) {
-                val throwable = (homeState as WebsiteState.Error).throwable
+            if (homeState is PageState.Error) {
+                val throwable = (homeState as PageState.Error).throwable
                 if (throwable is CloudFlareBlockedException) {
                     Log.e("error", "被屏蔽时的处理")
                 }

@@ -35,17 +35,17 @@ import androidx.preference.PreferenceManager
 import com.google.android.material.snackbar.Snackbar
 import com.wuwei.han1meviewer.HanimeConstants.ANIME_URL
 import com.wuwei.han1meviewer.HanimeConstants.HANIME_URL
+import com.wuwei.han1meviewer.PermissionRequester
 import com.wuwei.han1meviewer.Preferences
 import com.wuwei.han1meviewer.R
 import com.wuwei.han1meviewer.logout
 import com.wuwei.han1meviewer.ui.bridge.VideoPageHost
-import com.wuwei.han1meviewer.PermissionRequester
-import com.wuwei.han1meviewer.ui.navigation.navigateSafely
 import com.wuwei.han1meviewer.ui.navigation.main.AccountRoute
 import com.wuwei.han1meviewer.ui.navigation.main.VideoRoute
+import com.wuwei.han1meviewer.ui.navigation.navigateSafely
 import com.wuwei.han1meviewer.ui.navigation.settings.SettingsPreferenceKeys
+import com.wuwei.han1meviewer.ui.screen.home.homepage.HomePageViewModel
 import com.wuwei.han1meviewer.ui.screen.main.MainActivityContent
-import com.wuwei.han1meviewer.ui.viewmodel.MainViewModel
 import com.wuwei.han1meviewer.util.showAlertDialog
 import com.wuwei.han1meviewer.videoUrlRegex
 import com.yenaly.yenaly_libs.ActivityManager
@@ -62,7 +62,7 @@ import java.util.Locale
  */
 class MainActivity : FrameActivity(), PermissionRequester {
 
-    val viewModel by viewModels<MainViewModel>()
+    val viewModel by viewModels<HomePageViewModel>()
 
     lateinit var navController: NavHostController
     private var showAuthGuard by mutableStateOf(true)

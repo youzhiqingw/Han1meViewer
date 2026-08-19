@@ -13,7 +13,8 @@ import com.wuwei.han1meviewer.R
 import com.wuwei.han1meviewer.logic.entity.HKeyframeEntity
 import com.wuwei.han1meviewer.ui.activity.MainActivity
 import com.wuwei.han1meviewer.util.showAlertDialog
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei..yenaly_libs.utils.findActivityOrNull
+import com.wuwei..yenaly_libs.utils.showShortToast
 
 /**
  * @project Han1meViewer
@@ -98,16 +99,14 @@ class HKeyframeRvAdapter(
                         setPositiveButton(R.string.confirm) { _, _ ->
                             val prompt = etPrompt.text.toString()
                             val pos = etPosition.text.toString().toLong()
-                            when (context) {
-                                is MainActivity -> {
-                                    context.viewModel.modifyHKeyframe(
-                                        videoCode, item, HKeyframeEntity.Keyframe(
-                                            position = pos,
-                                            prompt = prompt
-                                        )
+                            context.findActivityOrNull<MainActivity>()?.let { activity ->
+                                activity.viewModel.modifyHKeyframe(
+                                    videoCode, item, HKeyframeEntity.Keyframe(
+                                        position = pos,
+                                        prompt = prompt
                                     )
-                                     showShortToast(R.string.modify_success)
-                                }
+                                )
+                                showShortToast(R.string.modify_success)
                             }
                         }
                         setNegativeButton(R.string.cancel, null)
@@ -122,11 +121,9 @@ class HKeyframeRvAdapter(
                         setTitle(R.string.sure_to_delete)
                         setMessage(JZUtils.stringForTime(item.position))
                         setPositiveButton(R.string.confirm) { _, _ ->
-                            when (context) {
-                                is MainActivity -> {
-                                    context.viewModel.removeHKeyframe(videoCode, item)
-                                     showShortToast(R.string.delete_success)
-                                }
+                            context.findActivityOrNull<MainActivity>()?.let { activity ->
+                                activity.viewModel.removeHKeyframe(videoCode, item)
+                                showShortToast(R.string.delete_success)
                             }
                         }
                         setNegativeButton(R.string.cancel, null)
