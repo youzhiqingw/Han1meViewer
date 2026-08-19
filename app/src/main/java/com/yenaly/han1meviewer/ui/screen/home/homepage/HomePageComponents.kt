@@ -151,19 +151,18 @@ fun HomePageTopBar(
 /**
  * 显示首页 Banner 轮播图。
  *
- * @param banner Banner 数据，为空时不渲染内容。
+ * @param banners Banner 数据列表，为空时不渲染内容。
  * @param onBannerClick 点击 Banner 时调用，参数为视频编号。
  * @param modifier 应用于轮播图根布局的修饰符。
  */
 @Composable
 fun BannerCarousel(
-    banner: HomePage.Banner?,
+    banners: List<HomePage.Banner>,
     onBannerClick: (String?) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    if (banner == null) return
+    if (banners.isEmpty()) return
 
-    val banners = listOf(banner)
     val pagerState = rememberPagerState(pageCount = { banners.size.coerceAtLeast(1) })
 
     Column(modifier = modifier) {
@@ -563,7 +562,7 @@ fun HomePageContent(
     LazyColumn(modifier = modifier.fillMaxSize()) {
         item(key = "banner") {
             BannerCarousel(
-                banner = banner,
+                banners = listOfNotNull(banner),
                 onBannerClick = onBannerClick,
                 modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
             )
@@ -593,19 +592,6 @@ fun HomePageContent(
     }
 }
 
-/**
- * 将公告秒级时间戳格式化为本地时间字符串。
- *
- * @param timestamp 秒级 Unix 时间戳。
- * @return 本地日期时间字符串。
- */
-fun formatTimestamp(timestamp: Long): String {
-    val instant = Instant.ofEpochSecond(timestamp)
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-        .withZone(ZoneId.systemDefault())
-    return formatter.format(instant)
-}
-
 @Preview(showBackground = true, name = "首页顶栏")
 @Composable
 private fun HomePageTopBarPreview() {
@@ -629,7 +615,7 @@ private fun BannerCarouselPreview() {
                 .padding(12.dp)
         ) {
             BannerCarousel(
-                banner = fakeBanner,
+                banners = fakeBanner,
                 onBannerClick = {}
             )
         }

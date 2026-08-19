@@ -41,7 +41,7 @@ import com.wuwei.han1meviewer.ui.screen.home.homepage.HomePageContent
 import com.wuwei.han1meviewer.ui.screen.home.homepage.HomePageTopBar
 import com.wuwei.han1meviewer.ui.screen.home.homepage.buildCategoryList
 import com.wuwei.han1meviewer.ui.screen.home.homepage.toAdvancedSearchParams
-import com.wuwei.han1meviewer.ui.screen.home.homepage.toHomePageErrorMessageRes
+import com.wuwei.han1meviewer.util.toNetworkErrorMessageRes
 import com.wuwei.han1meviewer.ui.viewmodel.MainViewModel
 
 /**
@@ -160,7 +160,7 @@ fun HomePageScreen(
                     }
 
                     is WebsiteState.Error -> HomePageError(
-                        message = stringResource(currentState.throwable.toHomePageErrorMessageRes()),
+                        message = stringResource(currentState.throwable.toNetworkErrorMessageRes()),
                         onRetry = {
                             isRefreshing = true
                             viewModel.getHomePage()

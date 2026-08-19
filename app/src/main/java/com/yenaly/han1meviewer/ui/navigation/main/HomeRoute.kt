@@ -20,8 +20,8 @@ import com.wuwei.han1meviewer.ui.screen.home.homepage.HomePageScreen
 import com.wuwei.han1meviewer.ui.screen.home.homepage.HomeUiEvent
 import com.wuwei.han1meviewer.ui.screen.home.homepage.LocalSearchHistoryQuery
 import com.wuwei.han1meviewer.ui.viewmodel.CheckInCalendarViewModel
-import com.yenaly.yenaly_libs.utils.copyTextToClipboard
-import com.wuwei.han1meviewer.util.showShortToast
+import com.wuwei.yenaly_libs.utils.copyTextToClipboard
+import com.wuwei.yenaly_libs.utils.showShortToast
 import kotlinx.coroutines.flow.first
 import java.time.LocalDate
 import java.time.LocalTime
