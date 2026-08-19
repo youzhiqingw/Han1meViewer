@@ -62,6 +62,7 @@ import com.wuwei.han1meviewer.ui.component.lazy.LazyRow
 import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 import com.wuwei.han1meviewer.ui.preview.fakeAnnouncements
 import com.wuwei.han1meviewer.ui.preview.fakeBanner
+import com.wuwei.han1meviewer.ui.screen.home.homepage.component.AnnouncementDialog
 import com.wuwei.han1meviewer.ui.preview.fakeCategories
 import com.wuwei.han1meviewer.ui.preview.fakeHomePageVideos
 import com.wuwei.han1meviewer.ui.screen.RetryableImage
@@ -698,7 +699,7 @@ private fun HomePageContentPreview() {
     ComponentPreview {
         Surface(color = MaterialTheme.colorScheme.background) {
             HomePageContent(
-                banner = fakeBanner,
+                banner = fakeBanner.firstOrNull(),
                 announcements = fakeAnnouncements,
                 categories = fakeCategories,
                 onBannerClick = {},
