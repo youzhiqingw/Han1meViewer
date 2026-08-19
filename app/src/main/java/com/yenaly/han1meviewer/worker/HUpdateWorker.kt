@@ -32,7 +32,7 @@ import com.wuwei.han1meviewer.logic.network.HUpdater
 import com.wuwei.han1meviewer.util.installApkPackage
 import com.wuwei.han1meviewer.util.runSuspendCatching
 import com.wuwei.han1meviewer.util.updateFile
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.utils.showShortToast
 import java.io.File
 import java.util.Locale
 import kotlin.random.Random

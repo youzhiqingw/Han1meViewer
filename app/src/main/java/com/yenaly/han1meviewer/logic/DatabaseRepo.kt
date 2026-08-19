@@ -14,7 +14,7 @@ import com.wuwei.han1meviewer.logic.entity.WatchHistoryEntity
 import com.wuwei.han1meviewer.logic.entity.download.DownloadGroupEntity
 import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
 import com.wuwei.han1meviewer.logic.model.SearchOption
-import com.yenaly.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.applicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow

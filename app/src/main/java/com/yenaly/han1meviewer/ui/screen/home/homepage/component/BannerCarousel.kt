@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.homepage.component
+package com.wuwei.han1meviewer.ui.screen.home.homepage.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -33,11 +33,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.HomePage
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.preview.fakeBanner
-import com.yenaly.han1meviewer.ui.screen.RetryableImage
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.HomePage
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.fakeBanner
+import com.wuwei.han1meviewer.ui.screen.RetryableImage
 
 /**
  * 显示首页 Banner 轮播图。

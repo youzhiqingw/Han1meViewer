@@ -10,8 +10,8 @@ import com.wuwei.han1meviewer.logic.network.interceptor.GetchuInterceptor
 import com.wuwei.han1meviewer.logic.network.interceptor.SpeedLimitInterceptor
 import com.wuwei.han1meviewer.logic.network.interceptor.UrlLoggingInterceptor
 import com.wuwei.han1meviewer.logic.network.interceptor.UserAgentInterceptor
-import com.yenaly.yenaly_libs.utils.applicationContext
-import com.yenaly.yenaly_libs.utils.unsafeLazy
+import com.wuwei.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.unsafeLazy
 import okhttp3.Cache
 import okhttp3.CookieJar
 import okhttp3.MediaType.Companion.toMediaType

@@ -7,8 +7,8 @@ import com.wuwei.han1meviewer.getHanimeSearchShareText
 import com.wuwei.han1meviewer.getHanimeShareText
 import com.wuwei.han1meviewer.ui.screen.home.SubscriptionScreen
 import com.wuwei.han1meviewer.ui.viewmodel.MySubscriptionsViewModel
-import com.yenaly.yenaly_libs.utils.copyTextToClipboard
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.utils.copyTextToClipboard
+import com.wuwei.yenaly_libs.utils.showShortToast
 
 @Composable
 fun SubscriptionRouteScreen(

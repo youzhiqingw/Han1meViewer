@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.utils.view
+package com.wuwei.yenaly_libs.utils.view
 
 import android.util.SparseIntArray
 import androidx.annotation.IdRes
@@ -10,7 +10,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
-import com.yenaly.yenaly_libs.utils.activity
+import com.wuwei.yenaly_libs.utils.activity
 
 /**
  * A mediator to link a BottomNavigationView with a ViewPager2. For FragmentActivity only!

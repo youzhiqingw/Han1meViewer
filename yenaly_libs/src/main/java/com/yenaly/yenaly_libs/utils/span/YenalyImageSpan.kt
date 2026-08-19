@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.yenaly.yenaly_libs.utils.span
+package com.wuwei.yenaly_libs.utils.span
 
 import android.graphics.Canvas
 import android.graphics.Paint

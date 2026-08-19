@@ -1,11 +1,11 @@
-package com.yenaly.han1meviewer.logic
+package com.wuwei.han1meviewer.logic
 
 import android.util.Log
-import com.yenaly.han1meviewer.EMPTY_STRING
-import com.yenaly.han1meviewer.GETCHU_BASE_URL
-import com.yenaly.han1meviewer.logic.model.GetchuPreview
-import com.yenaly.han1meviewer.logic.model.GetchuPreviewDetail
-import com.yenaly.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.EMPTY_STRING
+import com.wuwei.han1meviewer.GETCHU_BASE_URL
+import com.wuwei.han1meviewer.logic.model.GetchuPreview
+import com.wuwei.han1meviewer.logic.model.GetchuPreviewDetail
+import com.wuwei.han1meviewer.logic.state.WebsiteState
 import org.json.JSONObject
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element

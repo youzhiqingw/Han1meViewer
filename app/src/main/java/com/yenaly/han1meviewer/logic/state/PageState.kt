@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.logic.state
+package com.wuwei.han1meviewer.logic.state
 
 sealed class PageState<out T> {
     data class Success<out T>(

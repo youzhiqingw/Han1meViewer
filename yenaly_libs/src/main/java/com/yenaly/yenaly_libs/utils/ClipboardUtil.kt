@@ -1,6 +1,6 @@
 @file:JvmName("ClipboardUtil")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.content.ClipData
 import android.content.ClipboardManager

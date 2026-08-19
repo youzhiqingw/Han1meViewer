@@ -1,6 +1,6 @@
 @file:JvmName("UnicodeUtil")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 /**
  * 将字符串转成Unicode编码，包括但不限于中文

@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.utils.view
+package com.wuwei.yenaly_libs.utils.view
 
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout

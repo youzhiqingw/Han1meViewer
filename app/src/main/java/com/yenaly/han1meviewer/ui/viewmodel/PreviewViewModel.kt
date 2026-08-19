@@ -6,7 +6,7 @@ import com.wuwei.han1meviewer.logic.NetworkRepo
 import com.wuwei.han1meviewer.logic.model.HanimePreview
 import com.wuwei.han1meviewer.logic.state.WebsiteState
 import com.wuwei.han1meviewer.util.TagLocalizer
-import com.yenaly.yenaly_libs.base.YenalyViewModel
+import com.wuwei.yenaly_libs.base.YenalyViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

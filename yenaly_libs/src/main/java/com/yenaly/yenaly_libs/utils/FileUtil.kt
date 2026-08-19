@@ -1,6 +1,6 @@
 @file:JvmName("FileUtil")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.util.Log
 import androidx.annotation.WorkerThread

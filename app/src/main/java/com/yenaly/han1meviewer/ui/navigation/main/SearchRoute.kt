@@ -12,8 +12,8 @@ import com.wuwei.han1meviewer.getHanimeShareText
 import com.wuwei.han1meviewer.ui.screen.search.AdvancedSearchSheet
 import com.wuwei.han1meviewer.ui.screen.search.SearchScreen
 import com.wuwei.han1meviewer.ui.viewmodel.SearchViewModel
-import com.yenaly.yenaly_libs.utils.copyTextToClipboard
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.utils.copyTextToClipboard
+import com.wuwei.yenaly_libs.utils.showShortToast
 import kotlinx.serialization.json.Json
 
 @Composable

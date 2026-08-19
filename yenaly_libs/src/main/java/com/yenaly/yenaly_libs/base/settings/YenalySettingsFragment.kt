@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.base.settings
+package com.wuwei.yenaly_libs.base.settings
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -8,7 +8,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.transition.MaterialSharedAxis
-import com.yenaly.yenaly_libs.utils.unsafeLazy
+import com.wuwei.yenaly_libs.utils.unsafeLazy
 
 /**
  * @ProjectName : YenalyModule

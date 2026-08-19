@@ -4,7 +4,7 @@ import android.app.Application
 import com.wuwei.han1meviewer.ui.viewmodel.mylist.FavSubViewModel
 import com.wuwei.han1meviewer.ui.viewmodel.mylist.PlaylistSubViewModel
 import com.wuwei.han1meviewer.ui.viewmodel.mylist.WatchLaterSubViewModel
-import com.yenaly.yenaly_libs.base.YenalyViewModel
+import com.wuwei.yenaly_libs.base.YenalyViewModel
 
 /**
  * @project Han1meViewer

@@ -24,8 +24,8 @@ import com.wuwei.han1meviewer.logic.state.VideoLoadingState
 import com.wuwei.han1meviewer.logic.state.WebsiteState
 import com.wuwei.han1meviewer.ui.viewmodel.AppViewModel.csrfToken
 import com.wuwei.han1meviewer.util.TagLocalizer
-import com.yenaly.yenaly_libs.base.YenalyViewModel
-import com.yenaly.yenaly_libs.utils.dp
+import com.wuwei.yenaly_libs.base.YenalyViewModel
+import com.wuwei.yenaly_libs.utils.dp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow

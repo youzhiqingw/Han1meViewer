@@ -3,8 +3,8 @@ package com.wuwei.han1meviewer
 import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.core.view.updateLayoutParams
-import com.yenaly.yenaly_libs.utils.applicationContext
-import com.yenaly.yenaly_libs.utils.dp
+import com.wuwei.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.dp
 
 /**
  * 用于计算视频封面的大小动态调整！

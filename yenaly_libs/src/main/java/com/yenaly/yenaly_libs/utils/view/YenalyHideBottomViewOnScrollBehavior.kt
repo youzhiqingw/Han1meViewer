@@ -1,6 +1,6 @@
 @file:Suppress("unused", "MemberVisibilityCanBePrivate")
 
-package com.yenaly.yenaly_libs.utils.view
+package com.wuwei.yenaly_libs.utils.view
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter

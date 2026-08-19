@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.homepage.component
+package com.wuwei.han1meviewer.ui.screen.home.homepage.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,15 +21,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.HanimeInfo
-import com.yenaly.han1meviewer.ui.component.VideoCardItem
-import com.yenaly.han1meviewer.ui.component.lazy.LazyRow
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.preview.fakeHomePageVideos
-import com.yenaly.han1meviewer.ui.screen.rememberCardResponsiveWidth
-import com.yenaly.han1meviewer.ui.theme.SpacingLarge
-import com.yenaly.han1meviewer.ui.theme.SpacingNormal
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.HanimeInfo
+import com.wuwei.han1meviewer.ui.component.VideoCardItem
+import com.wuwei.han1meviewer.ui.component.lazy.LazyRow
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.fakeHomePageVideos
+import com.wuwei.han1meviewer.ui.screen.rememberCardResponsiveWidth
+import com.wuwei.han1meviewer.ui.theme.SpacingLarge
+import com.wuwei.han1meviewer.ui.theme.SpacingNormal
 
 /**
  * 显示横向滚动的视频分类行。

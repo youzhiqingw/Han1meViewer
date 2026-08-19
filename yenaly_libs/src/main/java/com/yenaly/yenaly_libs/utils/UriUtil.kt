@@ -1,6 +1,6 @@
 @file:JvmName("UriUtil")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.net.Uri
 import android.webkit.MimeTypeMap

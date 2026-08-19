@@ -12,7 +12,7 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.yenaly.yenaly_libs.base.YenalyInitializer"
+                android:name="com.wuwei.yenaly_libs.base.YenalyInitializer"
                 android:value="androidx.startup" />
         </provider>
         -->

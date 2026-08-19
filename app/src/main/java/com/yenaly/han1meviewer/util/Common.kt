@@ -5,7 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
 import com.wuwei.han1meviewer.R
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.utils.showShortToast
 import java.security.MessageDigest
 
 fun isLegalBuild(context: Context, sha: String): Boolean {

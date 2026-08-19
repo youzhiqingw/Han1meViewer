@@ -15,8 +15,8 @@ import com.wuwei.han1meviewer.Preferences
 import com.wuwei.han1meviewer.R
 import com.wuwei.han1meviewer.logic.model.github.Latest
 import com.wuwei.han1meviewer.worker.HUpdateWorker
-import com.yenaly.yenaly_libs.utils.dp
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.utils.dp
+import com.wuwei.yenaly_libs.utils.showShortToast
 import java.io.File
 import java.util.regex.Pattern
 

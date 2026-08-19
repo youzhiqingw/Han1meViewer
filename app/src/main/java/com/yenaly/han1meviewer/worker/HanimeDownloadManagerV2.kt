@@ -13,7 +13,7 @@ import com.wuwei.han1meviewer.logic.dao.DownloadDatabase
 import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
 import com.wuwei.han1meviewer.logic.state.DownloadState
 import com.wuwei.han1meviewer.util.runSuspendCatching
-import com.yenaly.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.applicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

@@ -1,7 +1,7 @@
 package com.wuwei.han1meviewer.util
 
 import com.wuwei.han1meviewer.logic.model.SearchOption
-import com.yenaly.yenaly_libs.utils.LanguageHelper
+import com.wuwei.yenaly_libs.utils.LanguageHelper
 
 object TagLocalizer {
 

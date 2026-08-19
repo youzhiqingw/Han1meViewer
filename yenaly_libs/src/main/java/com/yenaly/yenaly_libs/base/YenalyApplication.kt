@@ -1,12 +1,12 @@
 @file:Suppress("unused")
 
-package com.yenaly.yenaly_libs.base
+package com.wuwei.yenaly_libs.base
 
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import com.yenaly.yenaly_libs.ActivityManager
-import com.yenaly.yenaly_libs.BuildConfig
+import com.wuwei.yenaly_libs.ActivityManager
+import com.wuwei.yenaly_libs.BuildConfig
 import java.lang.ref.WeakReference
 
 /**

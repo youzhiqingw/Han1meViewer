@@ -1,10 +1,10 @@
-package com.yenaly.yenaly_libs
+package com.wuwei.yenaly_libs
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.util.Log
-import com.yenaly.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.applicationContext
 import java.lang.ref.WeakReference
 import kotlin.system.exitProcess
 

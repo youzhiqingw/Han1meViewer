@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.base
+package com.wuwei.yenaly_libs.base
 
 import android.content.Context
 import android.content.res.Configuration
@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.preference.PreferenceManager
-import com.yenaly.yenaly_libs.base.frame.FrameActivity
+import com.wuwei.yenaly_libs.base.frame.FrameActivity
 import java.util.Locale
 
 /**

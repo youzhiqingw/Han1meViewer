@@ -1,7 +1,7 @@
 @file:JvmName("ClickUtil")
 @file:Suppress("unused")
 
-package com.yenaly.yenaly_libs.utils.view
+package com.wuwei.yenaly_libs.utils.view
 
 import android.view.View
 import androidx.annotation.IdRes

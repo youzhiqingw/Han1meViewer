@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.utils.view
+package com.wuwei.yenaly_libs.utils.view
 
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.coroutines.channels.awaitClose

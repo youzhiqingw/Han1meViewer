@@ -1,6 +1,6 @@
 @file:JvmName("ActivityResultUtil")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.content.Context
 import android.content.pm.PackageManager

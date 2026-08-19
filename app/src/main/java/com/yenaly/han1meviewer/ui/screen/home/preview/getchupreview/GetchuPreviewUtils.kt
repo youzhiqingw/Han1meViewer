@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.preview.getchupreview
+package com.wuwei.han1meviewer.ui.screen.home.preview.getchupreview
 
 import android.content.Context
 import androidx.compose.runtime.Composable
@@ -6,9 +6,9 @@ import androidx.compose.ui.platform.LocalContext
 import coil3.ImageLoader
 import coil3.network.okhttp.OkHttpNetworkFetcherFactory
 import coil3.request.ImageRequest
-import com.yenaly.han1meviewer.DESKTOP_USER_AGENT
-import com.yenaly.han1meviewer.logic.network.HDns
-import com.yenaly.han1meviewer.logic.network.HProxySelector
+import com.wuwei.han1meviewer.DESKTOP_USER_AGENT
+import com.wuwei.han1meviewer.logic.network.HDns
+import com.wuwei.han1meviewer.logic.network.HProxySelector
 import okhttp3.OkHttpClient
 import java.time.LocalDate
 import java.util.concurrent.TimeUnit

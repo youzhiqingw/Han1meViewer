@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.base
+package com.wuwei.yenaly_libs.base
 
 import android.app.Dialog
 import android.os.Bundle
@@ -8,7 +8,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.yenaly.yenaly_libs.R
+import com.wuwei.yenaly_libs.R
 
 /**
  * @ProjectName : YenalyModule

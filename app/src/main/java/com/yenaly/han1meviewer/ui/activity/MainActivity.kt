@@ -48,10 +48,10 @@ import com.wuwei.han1meviewer.ui.screen.home.homepage.HomePageViewModel
 import com.wuwei.han1meviewer.ui.screen.main.MainActivityContent
 import com.wuwei.han1meviewer.util.showAlertDialog
 import com.wuwei.han1meviewer.videoUrlRegex
-import com.yenaly.yenaly_libs.ActivityManager
-import com.yenaly.yenaly_libs.base.frame.FrameActivity
-import com.yenaly.yenaly_libs.utils.showSnackBar
-import com.yenaly.yenaly_libs.utils.textFromClipboard
+import com.wuwei.yenaly_libs.ActivityManager
+import com.wuwei.yenaly_libs.base.frame.FrameActivity
+import com.wuwei.yenaly_libs.utils.showSnackBar
+import com.wuwei.yenaly_libs.utils.textFromClipboard
 import kotlinx.coroutines.flow.MutableSharedFlow
 import java.util.Locale
 

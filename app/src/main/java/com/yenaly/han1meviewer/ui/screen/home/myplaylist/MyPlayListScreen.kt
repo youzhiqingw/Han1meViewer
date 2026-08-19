@@ -41,7 +41,7 @@ import com.wuwei.han1meviewer.ui.component.appbar.HanimeScaffold
 import com.wuwei.han1meviewer.ui.component.content.EmptyContent
 import com.wuwei.han1meviewer.ui.viewmodel.MyPlayListViewModelV2
 import com.wuwei.han1meviewer.util.showAlertDialog
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.utils.showShortToast
 
 /**
  * 播放列表页面 Screen 层。

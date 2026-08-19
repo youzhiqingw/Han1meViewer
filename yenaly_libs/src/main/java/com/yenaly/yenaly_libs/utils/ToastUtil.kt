@@ -1,6 +1,6 @@
 @file:JvmName("ToastUtil")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.widget.Toast
 import androidx.annotation.StringRes

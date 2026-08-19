@@ -1,10 +1,10 @@
 @file:JvmName("EditTextUtil")
 
-package com.yenaly.yenaly_libs.utils.view
+package com.wuwei.yenaly_libs.utils.view
 
 import android.view.Window
 import android.widget.EditText
-import com.yenaly.yenaly_libs.utils.showIme
+import com.wuwei.yenaly_libs.utils.showIme
 
 /**
  * 在EditText上聚焦并显示软键盘

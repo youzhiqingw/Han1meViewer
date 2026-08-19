@@ -75,3 +75,15 @@ BUILD_GUIDE.md
 
 # 忽略 debug 测试构建
 /app/build/outputs/apk/debug/
+docs/开发调试场景.md
+TECH_STACK.md
+docs/FEASIBILITY-ANALYSIS.md
+docs/Han1meViewer_开发计划.md
+docs/vibe-coding/HentaiTV-Integration-Guide.md
+Settings_Analysis.md
+docs/vibe-coding/PLAN-multi-site-support.md
+docs/vibe-coding/PRD-multi-site-support.md
+docs/vibe-coding/README.md
+docs/vibe-coding/SPEC-multi-site-support.md
+docs/vibe-coding/TASK-multi-site-support.md
+Settings_Analysis_Supplement.md

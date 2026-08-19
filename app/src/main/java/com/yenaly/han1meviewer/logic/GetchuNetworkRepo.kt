@@ -1,11 +1,11 @@
-package com.yenaly.han1meviewer.logic
+package com.wuwei.han1meviewer.logic
 
 import android.util.Log
-import com.yenaly.han1meviewer.EMPTY_STRING
-import com.yenaly.han1meviewer.logic.NetworkRepo.handleException
-import com.yenaly.han1meviewer.logic.NetworkRepo.throwRequestException
-import com.yenaly.han1meviewer.logic.network.HanimeNetwork
-import com.yenaly.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.EMPTY_STRING
+import com.wuwei.han1meviewer.logic.NetworkRepo.handleException
+import com.wuwei.han1meviewer.logic.NetworkRepo.throwRequestException
+import com.wuwei.han1meviewer.logic.network.HanimeNetwork
+import com.wuwei.han1meviewer.logic.state.WebsiteState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow

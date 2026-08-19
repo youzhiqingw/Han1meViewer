@@ -1,9 +1,9 @@
-package com.yenaly.yenaly_libs.base.preference
+package com.wuwei.yenaly_libs.base.preference
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.preference.SwitchPreferenceCompat
-import com.yenaly.yenaly_libs.R
+import com.wuwei.yenaly_libs.R
 
 open class MaterialSwitchPreference @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,

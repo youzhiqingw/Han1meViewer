@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.preview.getchupreview
+package com.wuwei.han1meviewer.ui.screen.home.preview.getchupreview
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -20,17 +20,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.state.PageState
-import com.yenaly.han1meviewer.logic.state.dataOrNull
-import com.yenaly.han1meviewer.pienization
-import com.yenaly.han1meviewer.ui.component.PageContent
-import com.yenaly.han1meviewer.ui.component.isFirstPageEmpty
-import com.yenaly.han1meviewer.ui.component.isFirstPageError
-import com.yenaly.han1meviewer.ui.component.isFirstPageLoading
-import com.yenaly.han1meviewer.ui.screen.home.preview.PreviewImageViewerDialog
-import com.yenaly.han1meviewer.ui.screen.home.preview.PreviewImageViewerState
-import com.yenaly.han1meviewer.ui.screen.rememberRandomLoadingHint
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.state.PageState
+import com.wuwei.han1meviewer.logic.state.dataOrNull
+import com.wuwei.han1meviewer.pienization
+import com.wuwei.han1meviewer.ui.component.PageContent
+import com.wuwei.han1meviewer.ui.component.isFirstPageEmpty
+import com.wuwei.han1meviewer.ui.component.isFirstPageError
+import com.wuwei.han1meviewer.ui.component.isFirstPageLoading
+import com.wuwei.han1meviewer.ui.screen.home.preview.PreviewImageViewerDialog
+import com.wuwei.han1meviewer.ui.screen.home.preview.PreviewImageViewerState
+import com.wuwei.han1meviewer.ui.screen.rememberRandomLoadingHint
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

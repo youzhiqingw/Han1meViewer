@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.homepage
+package com.wuwei.han1meviewer.ui.screen.home.homepage
 
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
@@ -27,17 +27,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.state.PageState
-import com.yenaly.han1meviewer.logic.state.dataOrNull
-import com.yenaly.han1meviewer.ui.component.PageContent
-import com.yenaly.han1meviewer.ui.component.PullRefreshOverlay
-import com.yenaly.han1meviewer.ui.component.isFirstPageEmpty
-import com.yenaly.han1meviewer.ui.component.isFirstPageError
-import com.yenaly.han1meviewer.ui.component.isFirstPageLoading
-import com.yenaly.han1meviewer.ui.screen.home.homepage.component.HomePageTopBar
-import com.yenaly.han1meviewer.ui.screen.rememberRandomLoadingHint
-import com.yenaly.han1meviewer.util.toNetworkErrorMessageRes
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.state.PageState
+import com.wuwei.han1meviewer.logic.state.dataOrNull
+import com.wuwei.han1meviewer.ui.component.PageContent
+import com.wuwei.han1meviewer.ui.component.PullRefreshOverlay
+import com.wuwei.han1meviewer.ui.component.isFirstPageEmpty
+import com.wuwei.han1meviewer.ui.component.isFirstPageError
+import com.wuwei.han1meviewer.ui.component.isFirstPageLoading
+import com.wuwei.han1meviewer.ui.screen.home.homepage.component.HomePageTopBar
+import com.wuwei.han1meviewer.ui.screen.rememberRandomLoadingHint
+import com.wuwei.han1meviewer.util.toNetworkErrorMessageRes
 
 /**
  * 首页容器屏幕，负责连接 ViewModel 状态与导航回调。

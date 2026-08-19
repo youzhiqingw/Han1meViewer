@@ -10,7 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.wuwei.han1meviewer.logic.entity.HanimeAdvancedSearchHistoryEntity
 import com.wuwei.han1meviewer.logic.entity.SearchHistoryEntity
 import com.wuwei.han1meviewer.logic.entity.WatchHistoryEntity
-import com.yenaly.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.applicationContext
 
 /**
  * @project Hanime1

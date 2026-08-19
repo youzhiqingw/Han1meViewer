@@ -1,7 +1,7 @@
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.util.Log
-import com.yenaly.yenaly_libs.BuildConfig
+import com.wuwei.yenaly_libs.BuildConfig
 
 fun <T : Any> logFieldsChange(tag: String, oldItem: T, newItem: T) {
     if (!BuildConfig.DEBUG) return

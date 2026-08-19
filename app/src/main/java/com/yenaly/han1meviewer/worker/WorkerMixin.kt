@@ -1,7 +1,7 @@
 package com.wuwei.han1meviewer.worker
 
 import androidx.work.ListenableWorker
-import com.yenaly.yenaly_libs.utils.unsafeLazy
+import com.wuwei.yenaly_libs.utils.unsafeLazy
 
 /**
  * @project Han1meViewer

@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.base
+package com.wuwei.yenaly_libs.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

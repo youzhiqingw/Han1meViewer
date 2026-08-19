@@ -28,10 +28,10 @@ import com.wuwei.han1meviewer.ui.view.video.HJzvdStd
 import com.wuwei.han1meviewer.util.SafFileManager.checkSafPermissions
 import com.wuwei.han1meviewer.util.SafFileManager.migratePrivateToSaf
 import com.wuwei.han1meviewer.util.showAlertDialog
-import com.yenaly.yenaly_libs.utils.formatBytesPerSecond
-import com.yenaly.yenaly_libs.utils.formatFileSizeV2
-import com.yenaly.yenaly_libs.utils.showLongToast
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.utils.formatBytesPerSecond
+import com.wuwei.yenaly_libs.utils.formatFileSizeV2
+import com.wuwei.yenaly_libs.utils.showLongToast
+import com.wuwei.yenaly_libs.utils.showShortToast
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone

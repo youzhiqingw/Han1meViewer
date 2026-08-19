@@ -1,9 +1,9 @@
-package com.yenaly.yenaly_libs
+package com.wuwei.yenaly_libs
 
-import com.yenaly.yenaly_libs.utils.folderSize
-import com.yenaly.yenaly_libs.utils.formatFileSizeV2
-import com.yenaly.yenaly_libs.utils.md5
-import com.yenaly.yenaly_libs.utils.secondToTimeCase
+import com.wuwei.yenaly_libs.utils.folderSize
+import com.wuwei.yenaly_libs.utils.formatFileSizeV2
+import com.wuwei.yenaly_libs.utils.md5
+import com.wuwei.yenaly_libs.utils.secondToTimeCase
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.io.File

@@ -1,8 +1,8 @@
-package com.yenaly.yenaly_libs.base
+package com.wuwei.yenaly_libs.base
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.yenaly.yenaly_libs.utils.unsafeLazy
+import com.wuwei.yenaly_libs.utils.unsafeLazy
 
 /**
  * @ProjectName : YenalyModule

@@ -1,7 +1,7 @@
 @file:Suppress("unused")
 @file:JvmName("ContextUtil")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.app.Activity
 import android.app.Application
@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.color.MaterialColors
-import com.yenaly.yenaly_libs.ActivityManager
+import com.wuwei.yenaly_libs.ActivityManager
 
 /**
  * Global application context.

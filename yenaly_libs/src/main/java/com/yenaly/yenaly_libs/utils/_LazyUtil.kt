@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 /**
  * Android一般用不到[LazyThreadSafetyMode.SYNCHRONIZED]的lazy，

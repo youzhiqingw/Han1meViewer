@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.base
+package com.wuwei.yenaly_libs.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.transition.MaterialSharedAxis
-import com.yenaly.yenaly_libs.base.frame.FrameFragment
+import com.wuwei.yenaly_libs.base.frame.FrameFragment
 
 /**
  * @ProjectName : YenalyModule

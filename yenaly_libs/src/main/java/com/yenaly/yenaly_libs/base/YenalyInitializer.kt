@@ -1,11 +1,11 @@
 @file:Suppress("unused")
 
-package com.yenaly.yenaly_libs.base
+package com.wuwei.yenaly_libs.base
 
 import android.content.Context
 import androidx.annotation.CallSuper
 import androidx.startup.Initializer
-import com.yenaly.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.applicationContext
 
 /**
  * @ProjectName : YenalyModule

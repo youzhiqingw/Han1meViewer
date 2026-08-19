@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.base.preference
+package com.wuwei.yenaly_libs.base.preference
 
 import android.content.Context
 import android.util.AttributeSet

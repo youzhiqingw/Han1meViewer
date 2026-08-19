@@ -1,6 +1,6 @@
 @file:JvmName("TextUtil")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.text.format.Formatter
 import androidx.annotation.IntRange

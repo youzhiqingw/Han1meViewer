@@ -9,7 +9,7 @@ import com.wuwei.han1meviewer.logic.model.UserAccountAction
 import com.wuwei.han1meviewer.logic.model.UserAccountActionEvent
 import com.wuwei.han1meviewer.logic.model.UserAccountSubmittingState
 import com.wuwei.han1meviewer.logic.state.WebsiteState
-import com.yenaly.yenaly_libs.base.YenalyViewModel
+import com.wuwei.yenaly_libs.base.YenalyViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow

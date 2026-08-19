@@ -1,10 +1,10 @@
-package com.yenaly.yenaly_libs.base.settings
+package com.wuwei.yenaly_libs.base.settings
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.yenaly.yenaly_libs.R
-import com.yenaly.yenaly_libs.base.frame.FrameActivity
-import com.yenaly.yenaly_libs.databinding.YenalySettingsDataBinding
+import com.wuwei.yenaly_libs.R
+import com.wuwei.yenaly_libs.base.frame.FrameActivity
+import com.wuwei.yenaly_libs.databinding.YenalySettingsDataBinding
 
 /**
  * @ProjectName : YenalyModule

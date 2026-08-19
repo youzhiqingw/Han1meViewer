@@ -1,6 +1,6 @@
-package com.yenaly.han1meviewer.logic.network.interceptor
+package com.wuwei.han1meviewer.logic.network.interceptor
 
-import com.yenaly.han1meviewer.DESKTOP_USER_AGENT
+import com.wuwei.han1meviewer.DESKTOP_USER_AGENT
 import okhttp3.Interceptor
 import okhttp3.Response
 

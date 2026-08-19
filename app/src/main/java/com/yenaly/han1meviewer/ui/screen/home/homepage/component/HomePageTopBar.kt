@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.homepage.component
+package com.wuwei.han1meviewer.ui.screen.home.homepage.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -32,8 +32,8 @@ import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 
 /**
  * 渲染首页顶部栏，包含抽屉入口、搜索入口和新番列表入口。

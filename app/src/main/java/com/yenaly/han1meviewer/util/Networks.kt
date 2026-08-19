@@ -1,7 +1,7 @@
 package com.wuwei.han1meviewer.util
 
 import com.google.common.util.concurrent.ListenableFuture
-import com.yenaly.han1meviewer.R
+import com.wuwei.han1meviewer.R
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.suspendCancellableCoroutine
 import okhttp3.Call

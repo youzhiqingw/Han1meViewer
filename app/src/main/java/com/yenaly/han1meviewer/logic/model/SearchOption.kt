@@ -4,7 +4,7 @@ import android.os.Parcelable
 import android.util.SparseArray
 import androidx.core.util.valueIterator
 import com.wuwei.han1meviewer.R
-import com.yenaly.yenaly_libs.utils.LanguageHelper
+import com.wuwei.yenaly_libs.utils.LanguageHelper
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

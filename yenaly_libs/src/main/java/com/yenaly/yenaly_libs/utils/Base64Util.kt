@@ -1,7 +1,7 @@
 @file:Suppress("unused")
 @file:JvmName("Base64Util")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.util.Base64
 

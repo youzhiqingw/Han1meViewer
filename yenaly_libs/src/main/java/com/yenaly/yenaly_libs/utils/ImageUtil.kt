@@ -1,6 +1,6 @@
 @file:JvmName("ImageUtil")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable

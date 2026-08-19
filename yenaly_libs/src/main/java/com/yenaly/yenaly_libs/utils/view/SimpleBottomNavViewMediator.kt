@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.utils.view
+package com.wuwei.yenaly_libs.utils.view
 
 import android.util.SparseArray
 import android.util.SparseIntArray
@@ -13,7 +13,7 @@ import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
-import com.yenaly.yenaly_libs.utils.activity
+import com.wuwei.yenaly_libs.utils.activity
 
 /**
  * @project Han1meViewer

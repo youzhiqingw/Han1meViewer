@@ -59,13 +59,13 @@ import com.wuwei.han1meviewer.ui.adapter.VideoSpeedAdapter
 import com.wuwei.han1meviewer.ui.navigation.main.HomeRoute
 import com.wuwei.han1meviewer.util.setStateViewLayout
 import com.wuwei.han1meviewer.util.showAlertDialog
-import com.yenaly.yenaly_libs.utils.OrientationManager
-import com.yenaly.yenaly_libs.utils.appScreenWidth
-import com.yenaly.yenaly_libs.utils.findActivityOrNull
-import com.yenaly.yenaly_libs.utils.navBarHeight
-import com.yenaly.yenaly_libs.utils.statusBarHeight
-import com.yenaly.yenaly_libs.utils.unsafeLazy
-import com.yenaly.yenaly_libs.utils.view.removeItself
+import com.wuwei.yenaly_libs.utils.OrientationManager
+import com.wuwei.yenaly_libs.utils.appScreenWidth
+import com.wuwei.yenaly_libs.utils.findActivityOrNull
+import com.wuwei.yenaly_libs.utils.navBarHeight
+import com.wuwei.yenaly_libs.utils.statusBarHeight
+import com.wuwei.yenaly_libs.utils.unsafeLazy
+import com.wuwei.yenaly_libs.utils.view.removeItself
 import java.util.Timer
 import kotlin.math.absoluteValue
 

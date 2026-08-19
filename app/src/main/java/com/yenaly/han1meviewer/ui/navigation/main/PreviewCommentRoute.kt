@@ -36,7 +36,7 @@ import com.wuwei.han1meviewer.ui.screen.video.CommentMessage
 import com.wuwei.han1meviewer.ui.screen.video.CommentScreen
 import com.wuwei.han1meviewer.ui.viewmodel.CommentViewModel
 import com.wuwei.han1meviewer.ui.viewmodel.PreviewCommentPrefetcher
-import com.yenaly.yenaly_libs.utils.application
+import com.wuwei.yenaly_libs.utils.application
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 

@@ -1,6 +1,6 @@
-package com.yenaly.han1meviewer.ui.screen.home.homepage
+package com.wuwei.han1meviewer.ui.screen.home.homepage
 
-import com.yenaly.han1meviewer.logic.model.Announcement
+import com.wuwei.han1meviewer.logic.model.Announcement
 
 /**
  * 主页 UI 事件集合，用于在主界面（Home）中处理用户交互行为，功能如函数名所写。

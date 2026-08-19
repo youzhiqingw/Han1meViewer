@@ -1,11 +1,11 @@
-package com.yenaly.yenaly_libs.base
+package com.wuwei.yenaly_libs.base
 
 import android.content.Context
 import android.content.Intent
-import com.yenaly.yenaly_libs.ActivityManager
-import com.yenaly.yenaly_libs.base.dialog.YenalyCrashDialogActivity
-import com.yenaly.yenaly_libs.utils.applicationContext
-import com.yenaly.yenaly_libs.utils.startActivity
+import com.wuwei.yenaly_libs.ActivityManager
+import com.wuwei.yenaly_libs.base.dialog.YenalyCrashDialogActivity
+import com.wuwei.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.startActivity
 import java.io.PrintWriter
 import java.io.StringWriter
 

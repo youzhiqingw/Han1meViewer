@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.base.frame
+package com.wuwei.yenaly_libs.base.frame
 
 import android.os.Bundle
 import android.util.Log

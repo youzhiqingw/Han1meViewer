@@ -8,7 +8,7 @@ import com.wuwei.han1meviewer.logic.entity.CheckInRecordEntity
 import com.wuwei.han1meviewer.logic.entity.SideDishEntity
 import com.wuwei.han1meviewer.logic.entity.WatchHistoryEntity
 import com.wuwei.han1meviewer.ui.screen.home.dailycheckin.DailyCheckInUiState
-import com.yenaly.yenaly_libs.utils.application
+import com.wuwei.yenaly_libs.utils.application
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

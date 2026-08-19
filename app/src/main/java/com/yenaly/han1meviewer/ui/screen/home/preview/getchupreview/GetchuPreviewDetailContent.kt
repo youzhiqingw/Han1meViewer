@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.preview.getchupreview
+package com.wuwei.han1meviewer.ui.screen.home.preview.getchupreview
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -42,12 +42,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.ImageLoader
 import coil3.compose.AsyncImage
-import com.yenaly.han1meviewer.R
-import com.yenaly.han1meviewer.logic.model.GetchuPreviewDetail
-import com.yenaly.han1meviewer.ui.component.lazy.LazyColumn
-import com.yenaly.han1meviewer.ui.component.lazy.LazyRow
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.preview.fakeGetchuPreviewDetail
+import com.wuwei.han1meviewer.R
+import com.wuwei.han1meviewer.logic.model.GetchuPreviewDetail
+import com.wuwei.han1meviewer.ui.component.lazy.LazyColumn
+import com.wuwei.han1meviewer.ui.component.lazy.LazyRow
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.fakeGetchuPreviewDetail
 
 @Composable
 internal fun GetchuPreviewDetailContent(

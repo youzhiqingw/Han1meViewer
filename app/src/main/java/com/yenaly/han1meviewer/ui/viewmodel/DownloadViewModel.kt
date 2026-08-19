@@ -6,7 +6,7 @@ import com.wuwei.han1meviewer.logic.DatabaseRepo
 import com.wuwei.han1meviewer.logic.entity.download.DownloadGroupEntity
 import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
 import com.wuwei.han1meviewer.logic.entity.download.VideoWithCategories
-import com.yenaly.yenaly_libs.base.YenalyViewModel
+import com.wuwei.yenaly_libs.base.YenalyViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

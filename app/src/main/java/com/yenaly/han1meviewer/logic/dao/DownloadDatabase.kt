@@ -12,7 +12,7 @@ import com.wuwei.han1meviewer.logic.entity.download.DownloadGroupEntity
 import com.wuwei.han1meviewer.logic.entity.download.HanimeCategoryCrossRef
 import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
 import com.wuwei.han1meviewer.logic.state.DownloadState
-import com.yenaly.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.applicationContext
 
 /**
  * @project Han1meViewer

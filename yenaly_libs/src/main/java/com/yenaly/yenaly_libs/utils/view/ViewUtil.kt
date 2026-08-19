@@ -1,7 +1,7 @@
 @file:JvmName("ViewUtil")
 @file:Suppress("unused")
 
-package com.yenaly.yenaly_libs.utils.view
+package com.wuwei.yenaly_libs.utils.view
 
 import android.graphics.Outline
 import android.graphics.Path

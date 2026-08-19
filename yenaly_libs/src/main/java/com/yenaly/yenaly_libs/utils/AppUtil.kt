@@ -1,6 +1,6 @@
 @file:JvmName("AppUtil")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.content.pm.ApplicationInfo
 import androidx.core.content.pm.PackageInfoCompat

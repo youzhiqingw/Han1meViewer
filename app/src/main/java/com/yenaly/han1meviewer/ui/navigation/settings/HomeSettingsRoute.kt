@@ -65,11 +65,11 @@ import com.wuwei.han1meviewer.ui.theme.ThemeColorPreset
 import com.wuwei.han1meviewer.ui.viewmodel.AppViewModel
 import com.wuwei.han1meviewer.util.ThemeUtils
 import com.wuwei.han1meviewer.util.showToast
-import com.yenaly.yenaly_libs.ActivityManager
-import com.yenaly.yenaly_libs.utils.applicationContext
-import com.yenaly.yenaly_libs.utils.browse
-import com.yenaly.yenaly_libs.utils.folderSize
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.ActivityManager
+import com.wuwei.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.browse
+import com.wuwei.yenaly_libs.utils.folderSize
+import com.wuwei.yenaly_libs.utils.showShortToast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

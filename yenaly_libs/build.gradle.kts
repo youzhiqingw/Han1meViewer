@@ -37,7 +37,7 @@ android {
         buildConfig = true
     }
     resourcePrefix = "yenaly_"
-    namespace = "com.yenaly.yenaly_libs"
+    namespace = "com.wuwei.yenaly_libs"
 }
 kotlin {
     compilerOptions {

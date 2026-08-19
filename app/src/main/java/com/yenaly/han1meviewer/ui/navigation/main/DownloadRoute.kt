@@ -23,8 +23,8 @@ import com.wuwei.han1meviewer.util.SafFileManager.checkSafPermissions
 import com.wuwei.han1meviewer.util.SafFileManager.scanAndImportHanimeDownloads
 import com.wuwei.han1meviewer.util.openDownloadedHanimeVideoLocally
 import com.wuwei.han1meviewer.worker.HanimeDownloadManagerV2
-import com.yenaly.yenaly_libs.utils.application
-import com.yenaly.yenaly_libs.utils.showLongToast
+import com.wuwei.yenaly_libs.utils.application
+import com.wuwei.yenaly_libs.utils.showLongToast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -33,8 +33,8 @@ import com.wuwei.han1meviewer.login
 import com.wuwei.han1meviewer.ui.screen.login.LoginDialog
 import com.wuwei.han1meviewer.ui.screen.login.LoginScreen
 import com.wuwei.han1meviewer.ui.theme.HanimeTheme
-import com.yenaly.yenaly_libs.base.frame.FrameActivity
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.base.frame.FrameActivity
+import com.wuwei.yenaly_libs.utils.showShortToast
 import kotlinx.coroutines.launch
 import java.util.Locale
 

@@ -11,7 +11,7 @@ import com.wuwei.han1meviewer.Preferences
 import com.wuwei.han1meviewer.logic.dao.DownloadDatabase
 import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
 import com.wuwei.han1meviewer.util.runSuspendCatching
-import com.yenaly.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.applicationContext
 import java.util.Queue
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentLinkedQueue

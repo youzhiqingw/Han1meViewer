@@ -13,8 +13,8 @@ import com.wuwei.han1meviewer.R
 import com.wuwei.han1meviewer.logic.entity.HKeyframeEntity
 import com.wuwei.han1meviewer.ui.activity.MainActivity
 import com.wuwei.han1meviewer.util.showAlertDialog
-import com.wuwei..yenaly_libs.utils.findActivityOrNull
-import com.wuwei..yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.utils.findActivityOrNull
+import com.wuwei.yenaly_libs.utils.showShortToast
 
 /**
  * @project Han1meViewer

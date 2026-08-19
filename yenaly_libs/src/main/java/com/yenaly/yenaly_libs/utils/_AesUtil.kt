@@ -1,7 +1,7 @@
 @file:Suppress("unused")
 @file:JvmName("AesUtil")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import java.io.File
 import java.io.FileInputStream

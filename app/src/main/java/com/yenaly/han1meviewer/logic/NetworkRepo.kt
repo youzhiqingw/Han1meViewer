@@ -22,7 +22,7 @@ import com.wuwei.han1meviewer.logic.network.HanimeNetwork
 import com.wuwei.han1meviewer.logic.state.PageLoadingState
 import com.wuwei.han1meviewer.logic.state.VideoLoadingState
 import com.wuwei.han1meviewer.logic.state.WebsiteState
-import com.yenaly.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.applicationContext
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch

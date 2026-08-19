@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yenaly.yenaly_libs.base.view
+package com.wuwei.yenaly_libs.base.view
 
 import android.content.Context
 import android.util.AttributeSet

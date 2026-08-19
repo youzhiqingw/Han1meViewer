@@ -10,10 +10,10 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import com.wuwei.han1meviewer.R
-import com.yenaly.yenaly_libs.utils.awaitActivityResult
-import com.yenaly.yenaly_libs.utils.requestPermission
-import com.yenaly.yenaly_libs.utils.requireComponentActivity
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.utils.awaitActivityResult
+import com.wuwei.yenaly_libs.utils.requestPermission
+import com.wuwei.yenaly_libs.utils.requireComponentActivity
+import com.wuwei.yenaly_libs.utils.showShortToast
 
 
 /**

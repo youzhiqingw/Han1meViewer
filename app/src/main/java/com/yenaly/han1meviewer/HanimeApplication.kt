@@ -17,8 +17,8 @@ import com.wuwei.han1meviewer.logic.network.HProxySelector
 import com.wuwei.han1meviewer.ui.viewmodel.AppViewModel
 import com.wuwei.han1meviewer.util.AnimeShaders
 import com.wuwei.han1meviewer.util.ThemeUtils
-import com.yenaly.yenaly_libs.base.YenalyApplication
-import com.yenaly.yenaly_libs.utils.LanguageHelper
+import com.wuwei.yenaly_libs.base.YenalyApplication
+import com.wuwei.yenaly_libs.utils.LanguageHelper
 import `is`.xyz.mpv.MPVLib
 import java.net.ProxySelector
 

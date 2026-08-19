@@ -17,8 +17,8 @@ import com.wuwei.han1meviewer.logic.model.HanimeInfo
 import com.wuwei.han1meviewer.logic.model.SearchOption
 import com.wuwei.han1meviewer.logic.state.PageLoadingState
 import com.wuwei.han1meviewer.util.loadAssetAs
-import com.yenaly.yenaly_libs.base.YenalyViewModel
-import com.yenaly.yenaly_libs.utils.unsafeLazy
+import com.wuwei.yenaly_libs.base.YenalyViewModel
+import com.wuwei.yenaly_libs.utils.unsafeLazy
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

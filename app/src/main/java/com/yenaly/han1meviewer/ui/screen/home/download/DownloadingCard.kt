@@ -45,7 +45,7 @@ import com.wuwei.han1meviewer.logic.entity.download.HanimeDownloadEntity
 import com.wuwei.han1meviewer.logic.state.DownloadState
 import com.wuwei.han1meviewer.ui.preview.ComponentPreview
 import com.wuwei.han1meviewer.ui.preview.fakeHomePageVideos
-import com.yenaly.yenaly_libs.utils.formatFileSizeV2
+import com.wuwei.yenaly_libs.utils.formatFileSizeV2
 
 /**
  * 下载中任务卡片。

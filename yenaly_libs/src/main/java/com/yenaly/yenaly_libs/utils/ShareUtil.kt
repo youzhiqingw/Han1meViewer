@@ -1,11 +1,11 @@
 @file:JvmName("ShareUtil")
 @file:Suppress("unused")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.net.Uri
 import androidx.core.app.ShareCompat
-import com.yenaly.yenaly_libs.ActivityManager
+import com.wuwei.yenaly_libs.ActivityManager
 
 @JvmOverloads
 fun shareText(content: CharSequence, title: CharSequence? = null) {

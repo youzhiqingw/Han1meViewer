@@ -12,7 +12,7 @@ import com.wuwei.han1meviewer.logic.model.HanimeInfo
 import com.wuwei.han1meviewer.logic.model.MyListItems
 import com.wuwei.han1meviewer.logic.state.PageLoadingState
 import com.wuwei.han1meviewer.ui.screen.home.creatorcenter.CreatorCenterUiState
-import com.yenaly.yenaly_libs.base.YenalyViewModel
+import com.wuwei.yenaly_libs.base.YenalyViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

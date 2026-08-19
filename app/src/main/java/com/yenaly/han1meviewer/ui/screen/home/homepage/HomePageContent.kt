@@ -1,4 +1,4 @@
-package com.yenaly.han1meviewer.ui.screen.home.homepage
+package com.wuwei.han1meviewer.ui.screen.home.homepage
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -10,13 +10,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yenaly.han1meviewer.ui.component.lazy.LazyColumn
-import com.yenaly.han1meviewer.ui.preview.ComponentPreview
-import com.yenaly.han1meviewer.ui.preview.fakeAnnouncements
-import com.yenaly.han1meviewer.ui.preview.fakeHomePage
-import com.yenaly.han1meviewer.ui.screen.home.homepage.component.AnnouncementCard
-import com.yenaly.han1meviewer.ui.screen.home.homepage.component.BannerCarousel
-import com.yenaly.han1meviewer.ui.screen.home.homepage.component.CategoryRow
+import com.wuwei.han1meviewer.ui.component.lazy.LazyColumn
+import com.wuwei.han1meviewer.ui.preview.ComponentPreview
+import com.wuwei.han1meviewer.ui.preview.fakeAnnouncements
+import com.wuwei.han1meviewer.ui.preview.fakeHomePage
+import com.wuwei.han1meviewer.ui.screen.home.homepage.component.AnnouncementCard
+import com.wuwei.han1meviewer.ui.screen.home.homepage.component.BannerCarousel
+import com.wuwei.han1meviewer.ui.screen.home.homepage.component.CategoryRow
 
 /**
  * 渲染首页可滚动内容区域。

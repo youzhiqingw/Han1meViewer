@@ -1,4 +1,4 @@
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import com.google.gson.GsonBuilder
 import kotlin.reflect.javaType

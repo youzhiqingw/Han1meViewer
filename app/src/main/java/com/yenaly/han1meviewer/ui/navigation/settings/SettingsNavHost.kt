@@ -24,7 +24,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.wuwei.han1meviewer.R
 import com.wuwei.han1meviewer.ui.activity.MainActivity
 import com.wuwei.han1meviewer.util.logScreenViewEvent
-import com.yenaly.yenaly_libs.utils.findActivity
+import com.wuwei.yenaly_libs.utils.findActivity
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

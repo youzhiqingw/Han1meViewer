@@ -1,14 +1,14 @@
-package com.yenaly.han1meviewer.ui.screen.home.preview.getchupreview
+package com.wuwei.han1meviewer.ui.screen.home.preview.getchupreview
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yenaly.han1meviewer.logic.GetchuNetworkRepo.getGetchuPreview
-import com.yenaly.han1meviewer.logic.GetchuNetworkRepo.getGetchuPreviewDetail
-import com.yenaly.han1meviewer.logic.model.GetchuPreview
-import com.yenaly.han1meviewer.logic.model.GetchuPreviewDetail
-import com.yenaly.han1meviewer.logic.state.PageState
-import com.yenaly.han1meviewer.logic.state.WebsiteState
+import com.wuwei.han1meviewer.logic.GetchuNetworkRepo.getGetchuPreview
+import com.wuwei.han1meviewer.logic.GetchuNetworkRepo.getGetchuPreviewDetail
+import com.wuwei.han1meviewer.logic.model.GetchuPreview
+import com.wuwei.han1meviewer.logic.model.GetchuPreviewDetail
+import com.wuwei.han1meviewer.logic.state.PageState
+import com.wuwei.han1meviewer.logic.state.WebsiteState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow

@@ -1,6 +1,6 @@
 package com.wuwei.han1meviewer.util
 
-import com.yenaly.yenaly_libs.utils.LanguageHelper
+import com.wuwei.yenaly_libs.utils.LanguageHelper
 import java.math.BigDecimal
 import java.util.Locale
 

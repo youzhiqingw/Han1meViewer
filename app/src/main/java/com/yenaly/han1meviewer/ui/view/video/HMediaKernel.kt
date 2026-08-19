@@ -41,7 +41,7 @@ import com.wuwei.han1meviewer.USER_AGENT
 import com.wuwei.han1meviewer.logic.network.HProxySelector
 import com.wuwei.han1meviewer.util.AnimeShaders
 import com.wuwei.han1meviewer.util.AnimeShaders.getCert
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.utils.showShortToast
 import `is`.xyz.mpv.MPVLib
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit

@@ -1,6 +1,6 @@
 @file:JvmName("SnackBarUtil")
 
-package com.yenaly.yenaly_libs.utils
+package com.wuwei.yenaly_libs.utils
 
 import android.app.Activity
 import android.view.View

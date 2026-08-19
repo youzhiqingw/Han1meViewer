@@ -10,7 +10,7 @@ import com.wuwei.han1meviewer.logic.model.OnlineWatchHistorySort
 import com.wuwei.han1meviewer.logic.state.PageLoadingState
 import com.wuwei.han1meviewer.logic.state.WebsiteState
 import com.wuwei.han1meviewer.ui.viewmodel.AppViewModel.csrfToken
-import com.yenaly.yenaly_libs.base.YenalyViewModel
+import com.wuwei.yenaly_libs.base.YenalyViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow

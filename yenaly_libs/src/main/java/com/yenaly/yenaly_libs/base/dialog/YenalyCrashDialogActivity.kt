@@ -1,14 +1,14 @@
-package com.yenaly.yenaly_libs.base.dialog
+package com.wuwei.yenaly_libs.base.dialog
 
 import android.os.Bundle
 import androidx.core.text.parseAsHtml
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.yenaly.yenaly_libs.ActivityManager
-import com.yenaly.yenaly_libs.R
-import com.yenaly.yenaly_libs.base.frame.FrameActivity
-import com.yenaly.yenaly_libs.utils.copyToClipboard
-import com.yenaly.yenaly_libs.utils.intentExtra
-import com.yenaly.yenaly_libs.utils.sp
+import com.wuwei.yenaly_libs.ActivityManager
+import com.wuwei.yenaly_libs.R
+import com.wuwei.yenaly_libs.base.frame.FrameActivity
+import com.wuwei.yenaly_libs.utils.copyToClipboard
+import com.wuwei.yenaly_libs.utils.intentExtra
+import com.wuwei.yenaly_libs.utils.sp
 
 /**
  * @ProjectName : YenalyModule

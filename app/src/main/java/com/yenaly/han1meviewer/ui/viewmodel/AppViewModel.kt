@@ -14,8 +14,8 @@ import com.wuwei.han1meviewer.logic.state.WebsiteState
 import com.wuwei.han1meviewer.worker.HUpdateWorker
 import com.wuwei.han1meviewer.worker.HanimeDownloadManagerV2
 import com.wuwei.han1meviewer.worker.HanimeDownloadWorker
-import com.yenaly.yenaly_libs.base.YenalyViewModel
-import com.yenaly.yenaly_libs.utils.application
+import com.wuwei.yenaly_libs.base.YenalyViewModel
+import com.wuwei.yenaly_libs.utils.application
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow

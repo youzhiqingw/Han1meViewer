@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.yenaly.yenaly_libs.utils.span
+package com.wuwei.yenaly_libs.utils.span
 
 import android.graphics.BlurMaskFilter
 import android.graphics.Typeface
@@ -15,7 +15,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.Px
 import androidx.core.content.ContextCompat
-import com.yenaly.yenaly_libs.utils.applicationContext
+import com.wuwei.yenaly_libs.utils.applicationContext
 
 /**
  * @ProjectName : YenalyModule

@@ -29,9 +29,9 @@ import com.wuwei.han1meviewer.ui.screen.settings.HKeyframeSettingsUiState
 import com.wuwei.han1meviewer.ui.screen.settings.HKeyframesScreen
 import com.wuwei.han1meviewer.ui.screen.settings.SharedHKeyframesScreen
 import com.wuwei.han1meviewer.ui.viewmodel.SettingsViewModel
-import com.yenaly.yenaly_libs.utils.copyToClipboard
-import com.yenaly.yenaly_libs.utils.decodeFromStringByBase64
-import com.yenaly.yenaly_libs.utils.showShortToast
+import com.wuwei.yenaly_libs.utils.copyToClipboard
+import com.wuwei.yenaly_libs.utils.decodeFromStringByBase64
+import com.wuwei.yenaly_libs.utils.showShortToast
 import kotlinx.serialization.json.Json
 
 private const val H_KEYFRAMES_ENABLE = "h_keyframes_enable"

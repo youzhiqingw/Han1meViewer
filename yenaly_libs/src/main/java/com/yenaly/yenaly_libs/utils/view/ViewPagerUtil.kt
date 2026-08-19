@@ -1,6 +1,6 @@
 @file:JvmName("ViewPagerUtil")
 
-package com.yenaly.yenaly_libs.utils.view
+package com.wuwei.yenaly_libs.utils.view
 
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
