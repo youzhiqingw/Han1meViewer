@@ -70,6 +70,7 @@ import com.wuwei.han1meviewer.ui.view.video.HMediaKernel
 import com.wuwei.han1meviewer.ui.view.video.HanimeDataSource
 import com.wuwei.han1meviewer.ui.view.video.VideoPlayerAppBarBehavior
 import com.wuwei.han1meviewer.ui.viewmodel.CommentViewModel
+import com.wuwei.han1meviewer.ui.viewmodel.PreviewCommentPrefetcher
 import com.wuwei.han1meviewer.ui.viewmodel.VideoViewModel
 import com.wuwei.han1meviewer.util.checkBadGuy
 import com.wuwei.han1meviewer.util.loadAssetAs
@@ -446,6 +447,14 @@ fun VideoRouteHostScreen(
         onDispose {
             lifecycleOwner.lifecycle.removeObserver(orientationManager)
             lifecycleOwner.lifecycle.removeObserver(lifecycleObserver)
+        }
+    }
+
+    // 确保退出视频页时清理评论预取器单例，防止强引用泄漏
+    DisposableEffect(Unit) {
+        onDispose {
+            PreviewCommentPrefetcher.bye(PreviewCommentPrefetcher.Scope.PREVIEW_ACTIVITY)
+            PreviewCommentPrefetcher.bye(PreviewCommentPrefetcher.Scope.PREVIEW_COMMENT_ACTIVITY)
         }
     }
 

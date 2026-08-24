@@ -312,4 +312,10 @@ class SearchViewModel(
             }
         }
     }
+
+    override fun onCleared() {
+        tagMap.clear()
+        brandMap.clear()
+        super.onCleared()
+    }
 }

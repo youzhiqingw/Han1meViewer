@@ -3,12 +3,13 @@ package com.wuwei.han1meviewer.ui.viewmodel
 import android.util.Log
 import androidx.annotation.IntDef
 import com.wuwei.han1meviewer.logic.model.VideoComments
+import kotlinx.coroutines.flow.MutableStateFlow
 
 /**
  * 连通预览页与预览评论页的评论预取器。
  */
 class PreviewCommentPrefetcher private constructor(
-    private val commentViewModel: CommentViewModel
+    private var commentViewModel: CommentViewModel? = null
 ) {
 
     @IntDef(flag = true, value = [Scope.PREVIEW_ACTIVITY, Scope.PREVIEW_COMMENT_ACTIVITY])
@@ -32,6 +33,7 @@ class PreviewCommentPrefetcher private constructor(
             prefetcher?.also {
                 it.activityMask = it.activityMask and scope.inv()
                 if (it.activityMask == 0) {
+                    it.commentViewModel = null
                     prefetcher = null
                     Log.i(TAG, "bye executed successfully")
                 } else {
@@ -54,17 +56,20 @@ class PreviewCommentPrefetcher private constructor(
 
     private var activityMask = 0
 
-    val commentFlow get() = commentViewModel.videoCommentFlow
+    private val emptyCommentFlow =
+        MutableStateFlow<List<VideoComments.VideoComment>>(emptyList())
+
+    val commentFlow get() = commentViewModel?.videoCommentFlow ?: emptyCommentFlow
 
     fun tag(@Scope scope: Int) {
         activityMask = activityMask or scope
     }
 
     fun fetch(type: String, code: String) {
-        commentViewModel.getComment(type, code)
+        commentViewModel?.getComment(type, code)
     }
 
     fun update(comments: List<VideoComments.VideoComment>) {
-        commentViewModel.updateComments(comments)
+        commentViewModel?.updateComments(comments)
     }
 }

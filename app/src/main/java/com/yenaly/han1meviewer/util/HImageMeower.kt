@@ -4,6 +4,7 @@ import android.util.Log
 import android.widget.ImageView
 import coil.ImageLoader
 import coil.imageLoader
+import coil.memory.MemoryCache
 import coil.request.ErrorResult
 import coil.request.ImageRequest
 import coil.request.ImageResult
@@ -26,6 +27,10 @@ object HImageMeower {
     private val imageLoader = ImageLoader.Builder(applicationContext)
         .okHttpClient(okHttpClient)
         .build()
+
+    fun clearMemoryCache() {
+        imageLoader.memoryCache?.clear()
+    }
 
     suspend fun execute(data: Any): ImageResult {
         Log.d(TAG, "execute: $data")

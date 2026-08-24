@@ -28,6 +28,11 @@ class MySubscriptionsViewModel : ViewModel() {
     private val cachedVideos = mutableListOf<SubscriptionVideosItem>()
     private val cachedArtists = mutableListOf<SubscriptionItem>()
 
+    companion object {
+        private const val MAX_CACHED_VIDEOS = 32
+        private const val MAX_CACHED_ARTISTS = 32
+    }
+
     private val _refreshCompleted = MutableSharedFlow<Unit>()
     val refreshCompleted: SharedFlow<Unit> = _refreshCompleted
 
@@ -66,9 +71,15 @@ class MySubscriptionsViewModel : ViewModel() {
                         if (currentPage == 1) {
                             cachedArtists.clear()
                             cachedArtists.addAll(info.subscriptions)
+                            if (cachedArtists.size > MAX_CACHED_ARTISTS) {
+                                cachedArtists.subList(0, cachedArtists.size - MAX_CACHED_ARTISTS).clear()
+                            }
                         }
                         if (info.subscriptionsVideos.isNotEmpty()) {
                             cachedVideos.addAll(info.subscriptionsVideos)
+                            if (cachedVideos.size > MAX_CACHED_VIDEOS) {
+                                cachedVideos.subList(0, cachedVideos.size - MAX_CACHED_VIDEOS).clear()
+                            }
                             currentPage++
                             Log.i("getMySubscriptions","currentPage:$currentPage")
                         } else {
@@ -90,4 +101,10 @@ class MySubscriptionsViewModel : ViewModel() {
     }
 
     fun canLoadMore() = hasMore && !isLoadingMore
+
+    override fun onCleared() {
+        cachedVideos.clear()
+        cachedArtists.clear()
+        super.onCleared()
+    }
 }

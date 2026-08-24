@@ -1,12 +1,12 @@
 package com.wuwei.han1meviewer.logic.network
 
-import android.util.Log
 import com.wuwei.han1meviewer.Preferences
 import com.wuwei.han1meviewer.util.CookieString
 import com.wuwei.han1meviewer.util.toLoginCookieList
 import okhttp3.Cookie
 import okhttp3.CookieJar
 import okhttp3.HttpUrl
+import java.util.Collections
 
 /**
  * 用於管理 Cookie。
@@ -21,8 +21,17 @@ import okhttp3.HttpUrl
 class HCookieJar : CookieJar {
 
     companion object {
+        private const val MAX_HOST_COUNT = 200
+
         @JvmStatic
-        val cookieMap: MutableMap<String, MutableList<Cookie>> = mutableMapOf()
+        val cookieMap: MutableMap<String, MutableList<Cookie>> =
+            Collections.synchronizedMap(
+                object : LinkedHashMap<String, MutableList<Cookie>>(16, 0.75f, true) {
+                    override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, MutableList<Cookie>>): Boolean {
+                        return size > MAX_HOST_COUNT
+                    }
+                }
+            )
     }
 
     override fun loadForRequest(url: HttpUrl): List<Cookie> {
@@ -33,14 +42,21 @@ class HCookieJar : CookieJar {
         cookies.addAll(Preferences.loginCookieStateFlow.value.toLoginCookieList(host))
         cookies.addAll(Preferences.cloudFlareCookieStateFlow.value.toLoginCookieList(host))
 
-        Log.d("HCookieJar", "loadForRequest for $host: $cookies")
-
         return cookies
     }
 
     override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
-        cookieMap[url.host] = cookies.toMutableList().also {
-            it += Preferences.loginCookieStateFlow.value.toLoginCookieList(url.host)
-        }
+        val host = url.host
+        val now = System.currentTimeMillis()
+
+        // 过滤掉已过期 Cookie（expiresAt == Long.MIN_VALUE 为会话 Cookie，永不过期）
+        val validCookies = cookies.filter { it.expiresAt == Long.MIN_VALUE || it.expiresAt >= now }
+
+        // 合并登录 Cookie（不覆盖响应 Cookie）
+        val merged = mutableListOf<Cookie>()
+        merged.addAll(validCookies)
+        merged += Preferences.loginCookieStateFlow.value.toLoginCookieList(host)
+
+        cookieMap[host] = merged
     }
 }

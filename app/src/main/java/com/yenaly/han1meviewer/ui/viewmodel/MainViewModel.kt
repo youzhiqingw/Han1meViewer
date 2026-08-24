@@ -42,7 +42,11 @@ class MainViewModel(application: Application) : YenalyViewModel(application) {
     private val _homePageFlow =
         MutableStateFlow<WebsiteState<HomePage>>(WebsiteState.Loading)
     val homePageFlow = _homePageFlow.asStateFlow()
-    val horizontalScrollPositions = mutableMapOf<String, Int>()
+    val horizontalScrollPositions = object : LinkedHashMap<String, Int>(16, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, Int>): Boolean {
+            return size > 64
+        }
+    }
     private val _announcements = MutableLiveData<List<Announcement>>()
     val announcements: LiveData<List<Announcement>> = _announcements
     private val database = FirebaseDatabase.getInstance(FIREBASE_REALTIME_DATABASE)
@@ -162,5 +166,10 @@ class MainViewModel(application: Application) : YenalyViewModel(application) {
             "setting_pref"
         )
         _announcements.value = emptyList()
+    }
+
+    override fun onCleared() {
+        horizontalScrollPositions.clear()
+        super.onCleared()
     }
 }

@@ -245,16 +245,45 @@ class ExoMediaKernel(jzvd: Jzvd) : JZMediaInterface(jzvd), Player.Listener, HMed
     }
 
     override fun release() {
-        if (mMediaHandler != null && mMediaHandlerThread != null && _exoPlayer != null) { //不知道有没有妖孽
-            val tmpHandlerThread = mMediaHandlerThread
-            val tmpMediaPlayer = exoPlayer
-            SAVED_SURFACE = null
-            mMediaHandler?.post {
-                tmpMediaPlayer.release() //release就不能放到主线程里，界面会卡顿
-                tmpHandlerThread.quit()
-                _exoPlayer = null
-            }
+        val tmpExoPlayer = _exoPlayer
+        val tmpHandlerThread = mMediaHandlerThread
+        val tmpHandler = mMediaHandler
+
+        // 清除 pending callback，防止延迟执行泄漏
+        callback = null
+
+        // 清理 Handler 消息队列，必须放在 post 之前，否则会清掉刚提交的释放任务
+        try {
+            tmpHandler?.removeCallbacksAndMessages(null)
+        } catch (_: IllegalStateException) {
         }
+
+        if (tmpExoPlayer != null && tmpHandler != null) {
+            SAVED_SURFACE = null
+            tmpHandler.post {
+                try {
+                    tmpExoPlayer.release()
+                } catch (_: Exception) {
+                    Log.w(TAG, "ExoPlayer release failed", _)
+                }
+                tmpHandlerThread?.quit()
+            }
+        } else if (tmpHandler != null) {
+            tmpHandler.post {
+                tmpHandlerThread?.quit()
+            }
+        } else {
+            try {
+                tmpExoPlayer?.release()
+            } catch (_: Exception) {
+                Log.w(TAG, "ExoPlayer release failed", _)
+            }
+            tmpHandlerThread?.quit()
+        }
+
+        _exoPlayer = null
+        mMediaHandler = null
+        mMediaHandlerThread = null
     }
 
 
@@ -678,9 +707,6 @@ class MpvMediaKernel(jzvd: Jzvd) : JZMediaInterface(jzvd) {
         } finally {
             currentPfd = null
             detachFd = null
-            handler.postDelayed({
-                Log.i(TAG, "${from ?: "releaseCurrentPfd"} completed. PFD cleared.")
-            }, 200)
         }
     }
 
@@ -726,6 +752,12 @@ class MpvMediaKernel(jzvd: Jzvd) : JZMediaInterface(jzvd) {
     }
 
     override fun release() {
+        // 先清理所有 pending handler 任务，防止延迟 Runnable 持有 kernel 引用
+        try {
+            handler.removeCallbacksAndMessages(null)
+        } catch (_: IllegalStateException) {
+        }
+
         clearSuperResolution()
         MPVLib.setPropertyBoolean("pause", true)
         MPVLib.command(arrayOf("loadfile", "", "replace"))
@@ -733,9 +765,10 @@ class MpvMediaKernel(jzvd: Jzvd) : JZMediaInterface(jzvd) {
         MPVLib.setOptionString("force-window", "no")
         MPVLib.detachSurface()
         MPVLib.removeObserver(mpvEventObserver)
-        handler.postDelayed({
-            releaseCurrentPfd("jzvd-release")
-        },200)
+
+        // 直接释放 PFD，不需要延迟（release 在主线程调用，PFD 关闭是同步操作）
+        releaseCurrentPfd("jzvd-release")
+
         SAVED_SURFACE = null
     }
 

@@ -39,7 +39,11 @@ class CommentViewModel(application: Application) : YenalyViewModel(application) 
 
     lateinit var code: String
 
-    private val commentUiStateMap = mutableMapOf<String, CommentUiState>()
+    private val commentUiStateMap = object : LinkedHashMap<String, CommentUiState>(16, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, CommentUiState>): Boolean {
+            return size > 16
+        }
+    }
 
     var currentUserId: String? = null
     //reportMessage为点击举报按钮之后的响应及错误信息
@@ -304,4 +308,9 @@ class CommentViewModel(application: Application) : YenalyViewModel(application) 
         }
     }
     fun clearVideoReplyList() { _videoReplyFlow.value = emptyList() }
+
+    override fun onCleared() {
+        commentUiStateMap.clear()
+        super.onCleared()
+    }
 }

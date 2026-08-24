@@ -77,8 +77,14 @@ class VideoViewModel(application: Application) : YenalyViewModel(application) {
          * 最小的 HKeyframe 保存間隔，暫定 5s
          */
         const val MIN_H_KEYFRAME_SAVE_INTERVAL = 5_000 // ms
+
+        private const val MAX_INTRO_UI_STATES = 32
     }
-    private val videoIntroUiStateMap = mutableMapOf<String, VideoIntroUiState>()
+    private val videoIntroUiStateMap = object : LinkedHashMap<String, VideoIntroUiState>(16, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, VideoIntroUiState>): Boolean {
+            return size > MAX_INTRO_UI_STATES
+        }
+    }
     var videoCode: String = EMPTY_STRING
         set(value) {
             field = value
@@ -441,5 +447,10 @@ class VideoViewModel(application: Application) : YenalyViewModel(application) {
                 _forceRefresh.emit(Unit)
             }
         }
+    }
+
+    override fun onCleared() {
+        videoIntroUiStateMap.clear()
+        super.onCleared()
     }
 }

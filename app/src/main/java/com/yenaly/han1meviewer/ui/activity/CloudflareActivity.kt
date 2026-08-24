@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.webkit.CookieManager
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
@@ -34,6 +36,7 @@ class CloudflareActivity : AppCompatActivity() {
 
     private val progressState = mutableIntStateOf(0)
     private val tipTextState = mutableStateOf("")
+    private var webView: WebView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -62,9 +65,9 @@ class CloudflareActivity : AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun createWebView(url: String): WebView {
-        return WebView(this).apply {
-            val wv = this
-            settings.apply {
+        return WebView(this).also { wv ->
+            webView = wv
+            wv.settings.apply {
                 javaScriptEnabled = true
                 domStorageEnabled = true
                 mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
@@ -140,6 +143,15 @@ class CloudflareActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        webView?.apply {
+            stopLoading()
+            loadUrl("about:blank")
+            (parent as? ViewGroup)?.removeView(this)
+            removeAllViews()
+            destroy()
+        }
+        webView = null
+        onFinished = null
         super.onDestroy()
     }
 

@@ -18,8 +18,16 @@ import kotlinx.coroutines.launch
 
 class GetchuPreviewViewModel : ViewModel() {
 
-    private val previewCache = linkedMapOf<String, PageState<GetchuPreview>>()
-    private val detailCache = linkedMapOf<String, PageState<GetchuPreviewDetail>>()
+    private val previewCache = object : LinkedHashMap<String, PageState<GetchuPreview>>(16, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, PageState<GetchuPreview>>): Boolean {
+            return size > 16
+        }
+    }
+    private val detailCache = object : LinkedHashMap<String, PageState<GetchuPreviewDetail>>(16, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, PageState<GetchuPreviewDetail>>): Boolean {
+            return size > 16
+        }
+    }
 
     private val _previewFlow = MutableStateFlow<PageState<GetchuPreview>>(PageState.Loading)
     val previewFlow = _previewFlow.asStateFlow()
@@ -95,5 +103,11 @@ class GetchuPreviewViewModel : ViewModel() {
                 else -> "Success(${value?.let { it::class.simpleName }})"
             }
         }
+    }
+
+    override fun onCleared() {
+        previewCache.clear()
+        detailCache.clear()
+        super.onCleared()
     }
 }

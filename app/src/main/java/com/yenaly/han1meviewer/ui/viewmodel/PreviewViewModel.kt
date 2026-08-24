@@ -22,7 +22,11 @@ import kotlinx.coroutines.withContext
  */
 class PreviewViewModel(application: Application) : YenalyViewModel(application) {
 
-    private val previewCache = linkedMapOf<String, WebsiteState<HanimePreview>>()
+    private val previewCache = object : LinkedHashMap<String, WebsiteState<HanimePreview>>(16, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, WebsiteState<HanimePreview>>): Boolean {
+            return size > 16
+        }
+    }
 
     private val _previewFlow =
         MutableStateFlow<WebsiteState<HanimePreview>>(WebsiteState.Loading)
@@ -59,6 +63,11 @@ class PreviewViewModel(application: Application) : YenalyViewModel(application) 
     }
 
     fun getCachedPreview(date: String): WebsiteState<HanimePreview>? = previewCache[date]
+
+    override fun onCleared() {
+        previewCache.clear()
+        super.onCleared()
+    }
 
     private fun WebsiteState<HanimePreview>.withLocalizedTags(): WebsiteState<HanimePreview> {
         return if (this is WebsiteState.Success) {

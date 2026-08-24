@@ -38,6 +38,7 @@ import com.wuwei.yenaly_libs.utils.saveTo
 import com.wuwei.yenaly_libs.utils.showShortToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
@@ -182,6 +183,12 @@ class HanimeDownloadWorker(
         if (fastPathCancel) return Result.success()
         setForeground(createForegroundInfo())
         return download()
+    }
+
+    override fun onStopped() {
+        mainScope.coroutineContext.cancelChildren()
+        dbScope.coroutineContext.cancelChildren()
+        super.onStopped()
     }
 
     private suspend fun createNewRaf(file: File): HanimeDownloadEntity? {

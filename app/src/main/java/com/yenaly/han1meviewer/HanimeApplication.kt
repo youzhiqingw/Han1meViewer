@@ -1,5 +1,6 @@
 package com.wuwei.han1meviewer
 
+import android.content.ComponentCallbacks2
 import android.content.ComponentName
 import android.content.pm.PackageManager
 import android.util.Log
@@ -16,18 +17,15 @@ import com.google.firebase.remoteconfig.remoteConfigSettings
 import com.wuwei.han1meviewer.logic.network.HProxySelector
 import com.wuwei.han1meviewer.ui.viewmodel.AppViewModel
 import com.wuwei.han1meviewer.util.AnimeShaders
+import com.wuwei.han1meviewer.util.HImageMeower
 import com.wuwei.han1meviewer.util.ThemeUtils
 import com.wuwei.yenaly_libs.base.YenalyApplication
 import com.wuwei.yenaly_libs.utils.LanguageHelper
 import `is`.xyz.mpv.MPVLib
 import java.net.ProxySelector
+import coil3.SingletonImageLoader
 
-/**
- * @project Hanime1
- * @author Yenaly Liew
- * @time 2022/06/08 008 17:32
- */
-class HanimeApplication : YenalyApplication() {
+class HanimeApplication : YenalyApplication(), ComponentCallbacks2 {
 
     companion object {
         const val TAG = "HanimeApplication"
@@ -59,6 +57,26 @@ class HanimeApplication : YenalyApplication() {
         }
         val selected = Preferences.fakeLauncherIcon
         switchLauncher(selected)
+    }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+
+        val shouldClearImageMemory =
+            level == ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN ||
+                    level >= ComponentCallbacks2.TRIM_MEMORY_BACKGROUND
+
+        if (!shouldClearImageMemory) return
+
+        try {
+            HImageMeower.clearMemoryCache()
+        } catch (_: Throwable) {
+        }
+
+        try {
+            SingletonImageLoader.get(this).memoryCache?.clear()
+        } catch (_: Throwable) {
+        }
     }
 
     private fun initFirebase() {
