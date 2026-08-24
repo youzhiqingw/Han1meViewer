@@ -263,8 +263,8 @@ class ExoMediaKernel(jzvd: Jzvd) : JZMediaInterface(jzvd), Player.Listener, HMed
             tmpHandler.post {
                 try {
                     tmpExoPlayer.release()
-                } catch (_: Exception) {
-                    Log.w(TAG, "ExoPlayer release failed", _)
+                } catch (e: Exception) {
+                    Log.w(TAG, "ExoPlayer release failed", e)
                 }
                 tmpHandlerThread?.quit()
             }
@@ -275,8 +275,8 @@ class ExoMediaKernel(jzvd: Jzvd) : JZMediaInterface(jzvd), Player.Listener, HMed
         } else {
             try {
                 tmpExoPlayer?.release()
-            } catch (_: Exception) {
-                Log.w(TAG, "ExoPlayer release failed", _)
+            } catch (e: Exception) {
+                Log.w(TAG, "ExoPlayer release failed", e)
             }
             tmpHandlerThread?.quit()
         }

@@ -80,14 +80,14 @@ class CloudflareActivity : AppCompatActivity() {
                 setAcceptThirdPartyCookies(wv, true)
             }
 
-            webViewClient = object : WebViewClient() {
+            wv.webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(
                     view: WebView?,
                     request: WebResourceRequest?,
                 ): Boolean = false
             }
 
-            evaluateJavascript("navigator.userAgent") { output ->
+            wv.evaluateJavascript("navigator.userAgent") { output ->
                 val userAgent = output
                     .removeSurrounding("\"")
                     .replace("\\\"", "\"")
@@ -114,7 +114,7 @@ class CloudflareActivity : AppCompatActivity() {
                 }
             }
 
-            webChromeClient = object : WebChromeClient() {
+            wv.webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView?, newProgress: Int) {
                     progressState.intValue = newProgress
                     if (newProgress >= 90) {
@@ -138,7 +138,7 @@ class CloudflareActivity : AppCompatActivity() {
                     }
                 }
             }
-            loadUrl(url)
+            wv.loadUrl(url)
         }
     }
 

@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.wuwei.han1meviewer.ui.activity.CloudflareActivity
 import okhttp3.Interceptor
 import okhttp3.Response
+import java.io.IOException
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
