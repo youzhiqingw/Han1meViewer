@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -52,32 +55,51 @@ jobs:
       - name: Get version info
         id: version
         run: |
-          VERSION_NAME=$(ls app/build/outputs/apk/release/*.apk | grep -oP 'v[0-9]+\.[0-9]+\.[0-9]+' | head -1)
-          echo "version_name=$VERSION_NAME" >> $GITHUB_OUTPUT
-          echo "version_code=$(ls app/build/outputs/apk/release/*.apk | grep -oP '[0-9]{8,}' | head -1)" >> $GITHUB_OUTPUT
+          APK=$(ls app/build/outputs/apk/release/*.apk | head -1)
+          BASENAME=$(basename "$APK" .apk)
+          VERSION_NAME="${BASENAME#Han1meViewer-}"
+          VERSION_CODE=$(printf '%s' "$BASENAME" | grep -oE '[0-9]{8,}' | head -1)
+          TAG_NAME="${VERSION_NAME}-r${GITHUB_RUN_NUMBER}"
+          echo "apk=$APK" >> "$GITHUB_OUTPUT"
+          echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
+          echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
+          echo "tag_name=$TAG_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Generate release notes
+        run: |
+          {
+            echo "## 更新内容"
+            echo ""
+            PREV_TAG="$(git describe --tags --abbrev=0 2>/dev/null || true)"
+            if [ -n "$PREV_TAG" ]; then
+              git log --pretty=format:'- %s' "$PREV_TAG..HEAD"
+              echo ""
+            else
+              git log --pretty=format:'- %s' -10
+              echo ""
+            fi
+            echo ""
+            echo "## 构建信息"
+            echo ""
+            echo "- 版本号: ${{ steps.version.outputs.version_name }}"
+            echo "- 版本代码: ${{ steps.version.outputs.version_code }}"
+            echo "- 构建时间: ${{ github.event.head_commit.timestamp }}"
+            echo "- Commit: ${{ github.sha }}"
+            echo "- 构建编号: ${{ github.run_number }}"
+            echo ""
+            echo "## 安装说明"
+            echo ""
+            echo "1. 下载 APK 文件"
+            echo "2. 在 Android 设备上安装"
+            echo "3. 首次安装可能需要允许\"未知来源\"安装"
+          } > release_notes.md
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.version.outputs.version_name }}
+          tag_name: ${{ steps.version.outputs.tag_name }}
           name: "Han1meViewer ${{ steps.version.outputs.version_name }}"
-          body: |
-            ## 更新内容
-
-            - 包名重命名为 `com.wuwei.han1meviewer`
-            - 自动构建签名 APK
-
-            ## 构建信息
-
-            - 版本号: `${{ steps.version.outputs.version_name }}`
-            - 构建时间: ${{ github.event.head_commit.timestamp }}
-            - Commit: ${{ github.sha }}
-
-            ## 安装说明
-
-            1. 下载 APK 文件
-            2. 在 Android 设备上安装
-            3. 首次安装可能需要允许"未知来源"安装
+          body_path: release_notes.md
           files: |
             app/build/outputs/apk/release/*.apk
           draft: false
